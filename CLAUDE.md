@@ -25,12 +25,29 @@ What is in place (v0.1-DRAFT):
   packages.tex PDF metadata, LICENSE, README).
 - Title page and abstract/section stubs from the template; body not
   yet written.
+- **Audit table seeded** with the three real claim rows (kinematic;
+  gauge-sector; concordance), replacing the template examples.
+- **First companion experiment landed** (the template started
+  paper-only): `src/experiments/exp_01_optical_axis_isotropy.py` +
+  `.md`, data in `data/`, run 2026-06-12 on `dcl_core` v0.2.2. It
+  answers the load-bearing observability question for the kinematic
+  channel -- *does the per-tick A=1 renormalization wash the
+  $(1,1,-1)$ anisotropy out of observable amplitudes?* **No.** An
+  isotropic pulse flattens perpendicular to $(1,1,-1)$ (spread ratio
+  $v_\parallel/v_\perp \to 0.01$), flat-axis alignment $=1.0000$,
+  $\omega$-independent, on **both** engines (integer `core3d` exact
+  A=1, and float `core` with `enforce_unity_spinor`) -- so the
+  survival is not a single-scheme artefact, and the optical axis is
+  confirmed $(1,1,-1)$ in observables.  Kinematic audit row flipped
+  `STUB`$\to$`PART`.  See
+  `notes/optical_axis_renormalization_test.md`.
 
-**Next concrete action:** draft the abstract and introduction,
-stating the two birefringence channels (kinematic along $(1,1,-1)$;
-gauge-sector with $\mathbf{Q}$ eigenvalues $\{4,4,16\}$) and the
-multi-channel concordance (P9), and seed the audit table with their
-`STUB` rows.
+**Next concrete action:** derive the **closed-form
+ordinary/extraordinary speed split** along $(1,1,-1)$ (from
+$|H_\text{RGB}|$ and the propagator eigenphases) -- the remaining step
+that flips the kinematic row `PART`$\to$`PASS`; then draft the abstract
+and introduction stating the two channels and the multi-channel
+concordance (P9).
 
 > **Working title** -- "Optical-Axis Birefringence on the A=1
 > Discrete Causal Lattice"; confirm/refine before first deposit.
@@ -71,7 +88,7 @@ claims through the audit table / claim map, not the prose.
 
 | Row | Status | What it claims |
 |---|---|---|
-| Kinematic birefringence along $(1,1,-1)$ | STUB | Closed-form ordinary/extraordinary split along the optical axis. |
+| Kinematic birefringence along $(1,1,-1)$ | PART | Closed-form ordinary/extraordinary split along the optical axis. `exp_01` numerically confirms the axis $(1,1,-1)$ and that the anisotropy survives A=1 renormalization (both engines); closed-form split pending. |
 | Gauge-sector birefringence ($\mathbf{Q}$ eigenvalues $\{4,4,16\}$) | STUB | Anisotropy in the gauge sector. |
 | Multi-channel concordance (P9) | STUB | The kinematic and gauge-sector channels predict a shared optical axis. |
 
@@ -114,5 +131,10 @@ commit version bump -> tag `vX.Y` -> push tag -> GitHub Release.
 
 ## Notes Index
 
-`notes/README.md` -- conventions for notes/. (List individual notes
-here as they accumulate.)
+`notes/README.md` -- conventions for notes/.
+
+- `notes/optical_axis_renormalization_test.md` -- numerical
+  confirmation (STABLE) that the kinematic $(1,1,-1)$ anisotropy
+  survives A=1 renormalization in observables and that the optical axis
+  is $(1,1,-1)$; backs the kinematic audit row. Experiment:
+  `src/experiments/exp_01_optical_axis_isotropy.py`.

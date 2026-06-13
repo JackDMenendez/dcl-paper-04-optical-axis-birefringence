@@ -47,20 +47,26 @@ derivations and experiments.  Status semantics in the front-matter
 \hline
 \endlastfoot
 
-% ── Example row 1 (replace with a real claim) ───────────────────────
-Example claim, fully derived
-    & One-line summary of the mechanism
-    & The standard / continuum statement it reduces to
-    & Derived analytically (\S\ref{subsec:cross_ref_example}, Eq.~\ref{eq:example_identity})
-    & \texttt{PASS} \\
-
-% ── Example row 2 (replace with a real claim) ───────────────────────
-Example claim, partial evidence
-    & One-line summary
-    & The target statement
-    & \texttt{exp\_XX}: describe the gap concretely (e.g.\ ``mechanism
-      reproduced; quantitative match pending higher-resolution run'')
+% ── Kinematic channel ───────────────────────────────────────────────
+Kinematic birefringence along $(1,1,-1)$
+    & Spinor-propagator structure factor $|H_\text{RGB}(\mathbf{k})|^2 = 1 - \mathbf{k}^T M_\text{eff}\mathbf{k}$, $M_\text{eff}$ eigenvalues $\{4/3,4/3,0\}$; flat along $(1,1,-1)$, curved (coeff.\ $4/3$) perpendicular $\Rightarrow$ ordinary/extraordinary split
+    & Isotropic $c$ under $O_h$ averaging / $a\to 0$
+    & \texttt{exp\_01\_optical\_axis\_isotropy} ($129^3$, both engines): an isotropic pulse flattens perpendicular to $(1,1,-1)$ (ratio $v_\parallel/v_\perp \to 0.01$), flat-axis alignment $=1.0000$, $\omega$-independent, exact A=1 -- anisotropy survives renormalization in observables and the optical axis is confirmed $(1,1,-1)$.  \emph{Gap:} closed-form ordinary/extraordinary speed split not yet derived analytically.
     & \texttt{PART} \\
+
+% ── Gauge sector ────────────────────────────────────────────────────
+Gauge-sector birefringence ($\mathbf{Q}$ eigenvalues $\{4,4,16\}$)
+    & Anisotropy in the induced gauge response with the same geometric origin
+    & (target: gauge-sector continuum limit)
+    & Analytical; not yet derived to closed form
+    & \texttt{STUB} \\
+
+% ── Concordance ─────────────────────────────────────────────────────
+Multi-channel concordance (P9)
+    & Kinematic and gauge-sector channels predict a \emph{shared} optical axis
+    & N/A (cross-channel consistency)
+    & Pending both channels above
+    & \texttt{STUB} \\
 
 \hline
 \end{longtable}
