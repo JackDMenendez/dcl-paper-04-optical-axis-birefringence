@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Optical-Axis Birefringence on the A=1 Discrete Causal Lattice"
+authors:
+  - family-names: Menendez
+    given-names: Jack
+    orcid: "https://orcid.org/0009-0003-1166-307X"
+    affiliation: "Independent Scholar (Eugene, OR)"
+version: v0.1-DRAFT
+date-released: 2026-06-13
+# At release time, fill in the Zenodo DOI assigned for this version:
+# doi: 10.5281/zenodo.XXXXXXXX
+repository-code: "https://github.com/JackDMenendez/dcl-paper-04-optical-axis-birefringence"
+license: MIT
+references:
+  - type: article
+    title: "Geometry First: Quantum Mechanics, Gravity, and the Origin of the Standard Model from a Single Conservation Law"
+    authors:
+      - family-names: Menendez
+        given-names: Jack
+    doi: 10.5281/zenodo.20078529
+    year: 2026
+    notes: "Paper I of the A=1 Discrete Causal Lattice series.  Establishes the bipartite octahedral lattice, the A=1 conservation axiom, and the Dirac/Lorentz structure whose frame-invariance step yields the lattice's optical-axis birefringence that this paper (Paper IV) develops."
+  - type: article
+    title: "Geometry Forces Physics: A Lie-Algebra Derivation of the Standard Model Gauge Group from a Single Conservation Law"
+    authors:
+      - family-names: Menendez
+        given-names: Jack
+    doi: 10.5281/zenodo.20292158
+    year: 2026
+    notes: "Paper II of the series (v1.01).  Source of the gauge-sector structure entering the gauge-sector birefringence channel.  This paper (Paper IV) takes up follow-on item #14 (Balanced Equations and Birefringent Channels) from Paper I's notes/follow_on_implications.md catalogue."
