@@ -49,10 +49,10 @@ derivations and experiments.  Status semantics in the front-matter
 
 % ── Kinematic channel ───────────────────────────────────────────────
 Kinematic birefringence along $(1,1,-1)$
-    & Spinor-propagator structure factor $|H_\text{RGB}(\mathbf{k})|^2 = 1 - \mathbf{k}^T M_\text{eff}\mathbf{k}$, $M_\text{eff}$ eigenvalues $\{4/3,4/3,0\}$; flat along $(1,1,-1)$, curved (coeff.\ $4/3$) perpendicular $\Rightarrow$ ordinary/extraordinary split
+    & Closed-form uniaxial split from the spinor propagator: $M_\text{eff} = \tfrac43(\mathbb{I}-\hat{\mathbf{n}}_*\hat{\mathbf{n}}_*^T)$, so $|H_\text{RGB}(\mathbf{k})|^2 = 1-\tfrac43|\mathbf{k}_\perp|^2$. Group-velocity split $\Delta v = \tfrac23\sin\omega\,|\mathbf{k}|$ (angular law $\sin\alpha$, massive sector) and $\omega$-independent dispersion-curvature split $4/3$ vs $0$ (photon + massive)
     & Isotropic $c$ under $O_h$ averaging / $a\to 0$
-    & \texttt{exp\_01\_optical\_axis\_isotropy} ($129^3$, both engines): an isotropic pulse flattens perpendicular to $(1,1,-1)$ (ratio $v_\parallel/v_\perp \to 0.01$), flat-axis alignment $=1.0000$, $\omega$-independent, exact A=1 -- anisotropy survives renormalization in observables and the optical axis is confirmed $(1,1,-1)$.  \emph{Gap:} closed-form ordinary/extraordinary speed split not yet derived analytically.
-    & \texttt{PART} \\
+    & \emph{Analytic:} eigenphase dispersion $\tan\theta = \tan(\omega/2)/|H_\text{RGB}|$ and group velocity in closed form; $|H_\text{RGB}|^2 = 1$ exactly along $(1,1,-1)$ at all orders. \texttt{exp\_02\_closed\_form\_split\_check}: structure-factor and dispersion identities to $<10^{-12}$, speed coefficients to $<10^{-5}$. \emph{Observability:} \texttt{exp\_01\_optical\_axis\_isotropy} ($129^3$, both engines) -- isotropic pulse flattens perpendicular to $(1,1,-1)$ (ratio $\to 0.01$), flat-axis alignment $=1.0000$, $\omega$-independent, survives exact A=1 renormalization.
+    & \texttt{PASS} \\
 
 % ── Gauge sector ────────────────────────────────────────────────────
 Gauge-sector birefringence ($\mathbf{Q}$ eigenvalues $\{4,4,16\}$)

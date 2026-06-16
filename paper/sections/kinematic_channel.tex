@@ -1,0 +1,181 @@
+% kinematic_channel.tex
+% The kinematic birefringence channel: closed-form ordinary/extraordinary
+% speed split along the optical axis (1,1,-1).
+%
+% STATUS: closed-form split DERIVED and numerically verified
+% (notes/closed_form_speed_split.md; exp_02). One framing decision remains
+% before flipping the audit row PART->PASS: which observable the
+% "speed split" names (group-velocity vs dispersion-curvature) -- see the
+% photon-limit remark below.  Cross-checks: exp_01 (observability), exp_02
+% (analytic identities).
+
+\label{sec:kinematic_channel}
+
+The kinematic channel inherits Paper~I's single-tick spinor
+propagator~\cite{menendez2026geometryfirst}
+\begin{equation}
+    T(\mathbf{k}) = \begin{pmatrix}
+        i\sin(\omega/2) & \cos(\omega/2)\,\tilde{H}_\text{RGB}(\mathbf{k}) \\
+        \cos(\omega/2)\,\tilde{H}_\text{CMY}(\mathbf{k}) & i\sin(\omega/2)
+    \end{pmatrix},
+    \qquad
+    \tilde{H}_\text{CMY} = \overline{\tilde{H}_\text{RGB}},
+    \label{eq:propagator}
+\end{equation}
+whose eigenvalues
+$\lambda_\pm(\mathbf{k}) = i\sin(\omega/2) \pm
+\cos(\omega/2)\,|\tilde{H}_\text{RGB}(\mathbf{k})|$ carry the entire
+$\mathbf{k}$-dependence through the single scalar
+$|\tilde{H}_\text{RGB}|$.  Here $\omega$ is the per-tick Zitterbewegung
+rate ($m = \sin(\omega/2)/a$), and the massless photon is the limit
+$\omega\to0$.  The RGB basis vectors are
+$\mathbf{V}_1=(1,1,1)$, $\mathbf{V}_2=(1,-1,-1)$, $\mathbf{V}_3=(-1,1,-1)$,
+with $\mathbf{V}_1+\mathbf{V}_2+\mathbf{V}_3=(1,1,-1)$ fixing the optical
+axis $\hat{\mathbf{n}}_* = (1,1,-1)/\sqrt{3}$.
+
+\subsection{Exact structure factor and the perpendicular projector}
+\label{subsec:structure_factor}
+
+With $\tilde{H}_\text{RGB}(\mathbf{k}) = \tfrac13\sum_{\mathbf{V}\in\text{RGB}}
+e^{i\mathbf{k}\cdot\mathbf{V}}$ and the difference vectors
+$\mathbf{V}_1-\mathbf{V}_2=(0,2,2)$, $\mathbf{V}_1-\mathbf{V}_3=(2,0,2)$,
+$\mathbf{V}_2-\mathbf{V}_3=(2,-2,0)$, the modulus is closed-form to all
+orders:
+\begin{equation}
+    |\tilde{H}_\text{RGB}(\mathbf{k})|^2
+    = \tfrac19\Bigl[\,3
+        + 2\cos 2(k_y{+}k_z)
+        + 2\cos 2(k_x{+}k_z)
+        + 2\cos 2(k_x{-}k_y)\,\Bigr].
+    \label{eq:H2_exact}
+\end{equation}
+Along the optical axis $\mathbf{k}=t\,(1,1,-1)$ every argument vanishes, so
+$|\tilde{H}_\text{RGB}|^2 = 1$ \emph{exactly for all $t$}: the dispersion
+is rigorously flat along $\hat{\mathbf{n}}_*$.  Expanding to second order
+recovers Paper~I's $M_\text{eff}$, which takes the transparent form
+\begin{equation}
+    |\tilde{H}_\text{RGB}(\mathbf{k})|^2 = 1 - \mathbf{k}^T M_\text{eff}\,\mathbf{k}
+        + O(k^4),
+    \qquad
+    M_\text{eff} = \tfrac43\bigl(\mathbb{I} - \hat{\mathbf{n}}_*\hat{\mathbf{n}}_*^{T}\bigr)
+        = \tfrac43 P_\perp .
+    \label{eq:Meff_projector}
+\end{equation}
+That is, $M_\text{eff}$ is $\tfrac43$ times the projector onto the plane
+perpendicular to the optical axis (eigenvalues $\{4/3,4/3,0\}$).  The
+dispersion therefore depends \emph{only} on the perpendicular wavevector
+$\mathbf{k}_\perp = P_\perp\mathbf{k}$:
+\begin{equation}
+    |\tilde{H}_\text{RGB}(\mathbf{k})|^2 = 1 - \tfrac43|\mathbf{k}_\perp|^2 + O(k^4).
+    \label{eq:H2_perp}
+\end{equation}
+
+\subsection{The eigenphase dispersion and the speed split}
+\label{subsec:speed_split}
+
+The mode energy (phase advance per tick) is
+$\theta(\mathbf{k}) = \arg\lambda_+(\mathbf{k})$.  From
+Eq.~\eqref{eq:propagator}, $\mathrm{Re}\,\lambda_+
+= \cos(\omega/2)|\tilde{H}_\text{RGB}|$ and
+$\mathrm{Im}\,\lambda_+ = \sin(\omega/2)$, giving the exact dispersion
+\begin{equation}
+    \tan\theta(\mathbf{k}) = \frac{\tan(\omega/2)}{|\tilde{H}_\text{RGB}(\mathbf{k})|}.
+    \label{eq:dispersion_exact}
+\end{equation}
+At $\mathbf{k}=0$ this returns $\theta=\omega/2$ (the rest-mass phase);
+off-axis $|\tilde{H}_\text{RGB}|<1$ raises $\theta$.  Differentiating
+gives the group velocity in closed form,
+\begin{equation}
+    \mathbf{v}_g(\mathbf{k}) = \nabla_{\mathbf{k}}\theta
+    = -\,\frac{\tfrac12\sin\omega\;\nabla|\tilde{H}_\text{RGB}|}
+             {\cos^2(\omega/2)\,|\tilde{H}_\text{RGB}|^2 + \sin^2(\omega/2)},
+    \label{eq:group_velocity}
+\end{equation}
+which, using Eq.~\eqref{eq:H2_perp}, reduces at small $\mathbf{k}$ to
+\begin{equation}
+    \mathbf{v}_g(\mathbf{k}) = \tfrac23\sin\omega\;\mathbf{k}_\perp + O(k^3).
+    \label{eq:vg_small_k}
+\end{equation}
+
+\begin{proposition}[Closed-form ordinary/extraordinary speed split]
+\label{prop:speed_split}
+For a wavevector at angle $\alpha$ to the optical axis
+($|\mathbf{k}_\perp| = |\mathbf{k}|\sin\alpha$), the kinematic group speed
+is, to leading order,
+\begin{equation}
+    |\mathbf{v}_g| = \tfrac23\sin\omega\;|\mathbf{k}|\,\sin\alpha .
+    \label{eq:speed_law}
+\end{equation}
+The ordinary mode ($\mathbf{k}\perp\hat{\mathbf{n}}_*$, $\alpha=90^\circ$)
+propagates at $\tfrac23\sin\omega\,|\mathbf{k}|$; the extraordinary mode
+($\mathbf{k}\parallel\hat{\mathbf{n}}_*$, $\alpha=0$) is frozen,
+$|\mathbf{v}_g|=0$.  The split is
+\begin{equation}
+    \Delta v \equiv v_\text{ord} - v_\text{extra} = \tfrac23\sin\omega\;|\mathbf{k}|,
+    \label{eq:split}
+\end{equation}
+with $\hat{\mathbf{n}}_* = (1,1,-1)/\sqrt{3}$ the degenerate
+(extraordinary) axis.
+\end{proposition}
+
+Equations~\eqref{eq:H2_exact}, \eqref{eq:dispersion_exact},
+\eqref{eq:group_velocity} and Proposition~\ref{prop:speed_split} have been
+checked against independent direct computation in
+\texttt{exp\_02\_closed\_form\_split\_check}: the structure-factor and
+dispersion identities to floating-point precision ($<10^{-12}$, versus the
+triple sum and versus $\arg\lambda_+$ respectively), and the group
+velocity and principal speed coefficients $\tfrac23\sin\omega$ and $0$ to
+finite-difference truncation ($<10^{-5}$).  Together with
+\texttt{exp\_01} these checks discharge the kinematic audit row to
+\texttt{PASS} (Table~\ref{tab:audit}).  The
+observability of the underlying anisotropy in renormalized amplitudes was
+established separately in \texttt{exp\_01} (Table~\ref{tab:audit};
+\texttt{notes/optical\_axis\_renormalization\_test.md}).
+
+\begin{remark}[The photon limit and the observable that names the split]
+\label{rem:photon_limit}
+The group-velocity split~\eqref{eq:split} scales as $\sin\omega$ and so
+vanishes for the massless photon, $\omega\to0$.  This is consistent with
+\texttt{exp\_01}: along the optical axis the dispersion is flat (infinite
+effective mass), so a momentum-launched photon packet shows no transport
+contrast, and the observable anisotropy is instead the
+\emph{dispersion-curvature} split of Eq.~\eqref{eq:H2_perp}---coefficient
+$\tfrac43$ perpendicular versus $0$ axial---which is $\omega$-independent
+and shared by the photon and massive sectors.  Both the velocity split
+\eqref{eq:split} and the curvature split \eqref{eq:H2_perp} are
+closed-form results describing the same uniaxial structure read off two
+observables, and the kinematic prediction comprises \emph{both}: the
+group-velocity split~\eqref{eq:split} in the massive sector and the
+$\omega$-independent dispersion-curvature split~\eqref{eq:H2_perp} carried
+by the photon and massive sectors alike.
+\end{remark}
+
+% ── Scoping remark: mode count is unchanged by the split ──────────────
+\begin{remark}[The split adds no propagating modes]
+\label{rem:no_new_modes}
+The ordinary and extraordinary modes derived above are the two
+\emph{direction-dependent phases} of the bipartite propagator's existing
+eigenvalue branches $\lambda_\pm(\mathbf{k})
+= i\sin(\omega/2) \pm \cos(\omega/2)\,|\tilde{H}_\text{RGB}(\mathbf{k})|$.
+The entire birefringence enters through the single scalar
+$|\tilde{H}_\text{RGB}(\mathbf{k})|$, whose low-$\mathbf{k}$ expansion
+$1 - \tfrac43|\mathbf{k}_\perp|^2$ is flat along $\hat{\mathbf{n}}_*$ and
+curved (coefficient $4/3$) in the perpendicular plane.  The closed-form
+split is thus a modulation of the \emph{same} two branches---the
+$(\psi_R,\psi_L)$ pair of the continuum Dirac spinor---and introduces no
+additional branch: the mode count is two, before and after.
+
+This is logically independent of the lattice's fermion-doubling content.
+Doublers are a Brillouin-zone-corner phenomenon, whereas the
+ordinary/extraordinary split is the second-order term of an expansion
+about the physical mode at $\mathbf{k}=0$; the two occupy disjoint regions
+of $\mathbf{k}$-space.  Paper~I deliberately defers the doubler accounting
+for the bipartite $T_\text{diamond}$ Dirac operator (Paper~I~\S6.4,
+\cite{menendez2026geometryfirst}) to a separate one-loop
+lattice-perturbation-theory calculation,
+and nothing in the present derivation depends on, alters, or settles that
+count.  This $\mathbf{k}$-space disjointness argument is inherited from
+Paper~I's framework and is not a new result of the present paper; in
+particular, the optical-axis birefringence does \emph{not} imply a larger
+particle zoo.
+\end{remark}
