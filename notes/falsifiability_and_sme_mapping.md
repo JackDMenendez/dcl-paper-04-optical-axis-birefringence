@@ -78,12 +78,15 @@ propagation direction), with **no** polarisation dependence at this order
 -- it is **nonbirefringent**. In Kostelecky--Mewes it therefore lives in
 the CPT-even, nonbirefringent, mass-dimension-6 photon sector: the
 coefficients **`c^(6)_(I)jm`** (25 real coefficients, `j = 0,2,4`,
-`|m|<=j`). [The genuine *polarisation* birefringence of the program is the
-**gauge-sector** channel (audit row STUB, Q eigenvalues {4,4,16}); that one
-would map to the *birefringent* `k^(6)_(E,B)jm` coefficients, which
-astrophysical polarimetry constrains ~25+ orders more tightly than
-dispersion -- a separate, much sharper handle. Flag for the gauge-sector
-work.]
+`|m|<=j`). [**SUPERSEDED guess, now resolved:** an earlier version of this
+note speculated the gauge-sector birefringence would map to the *birefringent*
+`k^(6)` coefficients and be "a much sharper handle." That was wrong. The
+gauge-sector anisotropy `Q` rides on the leading `F^2` term, so it is a
+*dimension-4* (`k_F`) effect, O(1), excluded by ~30-37 orders if observable
+-- which is why it is **not** an observable at all (it is `O_h`-averaged to
+isotropic Maxwell). It is a structural consequence the framework predicts
+you *cannot* see, not a sharper falsifier. See
+`notes/gauge_sector_structural_conclusion.md`.]
 
 - **Dimension 6, not 4.** The leading anisotropy is `O(k^2)` beyond the
   dim-4 kinetic term; the dim-4 directional term `(i/3)(1,1,-1).k` averages
@@ -220,17 +223,24 @@ version.
 A single anisotropic channel with a free `a` yields, on non-detection, only
 a tighter bound on `a`. The framework's **strongest** falsifiable claim is
 P9 (`subsec:p9_concordance`): the kinematic, gauge, gravitational, and
-inertial anisotropies **share one sky axis**. Five independent witnesses
-agreeing on a single direction is far harder to fake or to attribute to
-systematics than any one channel, and it does not soften under the `a`
-freedom -- the *direction* is parameter-free even though the *magnitude*
-is not.
+inertial anisotropies **share one sky axis**. In principle, multiple
+independent witnesses on one direction is harder to fake than any one
+channel.
 
-Implication: the decisive falsifiability does not come from the kinematic
-channel alone (now pinned exactly here) but from **concordance with at
-least the gauge sector** (audit row STUB, Q eigenvalues {4,4,16}) and
-ideally a third channel. The kinematic result is one exact witness; it is
-necessary but not sufficient for the strongest test.
+**Caveat (updated 2026-06-16):** the witnesses are *not* all independent
+observational channels, and the **gauge sector's status is itself OPEN**
+(not "provably unobservable" -- that earlier claim was retracted; the
+bipartite structure breaks `O_h` to a uniaxial subgroup, so there is no
+symmetry proof of isotropy -- see
+`notes/gauge_sector_structural_conclusion.md`). It shares the `(1,1,-1)`
+axis by a *structural identity* (same `M`/`Q` geometry), not by an
+independent measurement; whether it is *also* an observable (and whether
+that observable is the excluded dim-4 `O(1)` effect) awaits `exp_03`. So P9
+is "one axis, shared structurally, with the **kinematic** dispersion as the
+one *clean* frontier-testable observational channel" -- not "N independent
+observational witnesses." The concordance is real and parameter-free as a
+*consistency* statement, but it does not
+multiply the empirical falsifiability the way independent witnesses would.
 
 ## 6. Frame-fixing: the remaining physics gate
 
@@ -257,16 +267,26 @@ requires the frame identification. **Open.**
   alone: (i) `a` is free, so a null result bounds `a` (and only the
   *pattern* is unfalsifiable-by-tuning); (ii) the isotropic time-of-flight
   is the binding constraint while the distinctive *anisotropic* fingerprint
-  is currently ~5-6 orders weaker (§3.3); (iii) the decisive lever is P9
-  concordance, which needs the gauge sector (STUB); (iv) frame-fixing is
-  open; (v) the photon signature needed the §4 correction.
-- **Tactical read (for keeping Paper IV ahead of Paper III):** the
-  falsifiability bet is *sound but not yet cashed*. Justified to continue
-  Paper IV **through the gauge sector + P9 concordance**, because that is
-  where the parameter-free, hard-to-fake test actually lives. If the gauge
-  sector or frame-fixing proves intractable, the kinematic channel alone
-  does not deliver a decisive falsification and the Paper III deferral
-  should be revisited.
+  is currently ~5-6 orders weaker (§3.3); (iii) frame-fixing is open; (iv)
+  the photon signature needed the §4 correction.
+- **Gauge sector is OPEN, not a rescue and not a clean null (2026-06-16):**
+  the hoped-for "sharper gauge falsifier" (`k^(6)`) does not exist -- the
+  gauge anisotropy is dim-4 `k_F`. But the follow-on "provably unobservable"
+  claim was **retracted**: the bipartite structure breaks `O_h` to a
+  uniaxial subgroup, so there is no symmetry proof of isotropy. The gauge
+  anisotropy is genuinely uniaxial; whether it is unobservable, suppressed,
+  or the excluded dim-4 `O(1)` effect is **decided by `exp_03`** (full E+B
+  dynamics). So for now the **kinematic dim-6 dispersion is the one *clean*
+  frontier-testable channel**.
+- **Tactical read (for keeping Paper IV ahead of Paper III):** weaker than
+  the earlier draft hoped. The *clean* falsifiable content reduces to the
+  single kinematic channel (frontier-level, contingent on `a` near the top
+  of its window). The gauge sector is unresolved -- `exp_03` could make it a
+  second prediction, a non-observability result, *or* a tension. This
+  **weakens** (does not settle) the empirical case for prioritising Paper IV
+  over Paper III -- a fact for the tactical ledger; the kinematic channel
+  plus the clean by-product (the Paper I bound erratum) are real
+  deliverables regardless of the `exp_03` outcome.
 
 ## 8. Concrete next steps (in priority order)
 
@@ -278,11 +298,15 @@ requires the frame identification. **Open.**
    GRB 221009A, `E_QG2 > 7e11 GeV`), and reconcile the P7 "two arrival
    peaks" sentence with §4 (coordinate with Paper I -- this is an error in
    the published Paper I and should feed back into its errata / next rev).
-3. Gauge-sector channel (Q eigenvalues {4,4,16}) -> the second concordance
-   witness (audit row STUB); note it maps to the *birefringent* `k^(6)`
-   coefficients, constrained by polarimetry ~25+ orders more tightly than
-   dispersion -- potentially a far sharper falsifier than the kinematic
-   channel.
+3. **Gauge-sector channel -- OPEN, `exp_03`-decisive.** Not the sharper
+   `k^(6)` falsifier (it is dim-4 `k_F`); and *not* "provably unobservable"
+   either (that claim was retracted -- the bipartite structure breaks `O_h`
+   to a uniaxial subgroup, no symmetry proof of isotropy). The anisotropy is
+   genuinely uniaxial; `exp_03` (full E+B Peierls dynamics on core3d) must
+   decide whether it is unobservable, suppressed, or the excluded dim-4
+   `O(1)` effect (a real tension). See
+   `notes/gauge_sector_structural_conclusion.md`; audit row PART, P9 PART;
+   engine requirements `dcl-core/docs/design/04`.
 4. Targeted single-axis gamma-ray TOF analysis along a candidate n* (could
    beat the ~1e-14 GeV^-2 joint-fit anisotropic bound; §3.3) -- a concrete
    observational proposal for the paper.
