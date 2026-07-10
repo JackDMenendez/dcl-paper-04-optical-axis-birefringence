@@ -79,33 +79,65 @@ eigenvalues `{4,4,16}`, special axis `(1,1,-1)`, reproduced with
 
 ## 4. The new piece — the electric block
 
-The electric field is the temporal/tick-direction gauge sector: the hop's
-`external_potential` is "the temporal (`A_0`) gauge phase" (dcl-core
-`core3d/gauge.py:11-12`), and a uniform electric field along a direction `n̂`
-is a spatial ramp of that potential, `A_0(r) = − E · r`. There is **no
-`uniform_E_potential` helper yet** — it is a one-line ramp constructor,
-recommended to live experiment-side first (promote to `gauge.py` only if reused).
+**IMPLEMENTATION FINDING (2026-07-09, corrects the original plan below).**
+The electric sector does **not** have a clean Wilson-loop holonomy analogous to
+the magnetic one. The engine couples the two fields *asymmetrically*
+(`core3d/hop.py:8-16, 96-103`):
 
-The electric analog of `exp_04`'s spatial plaquette is a **temporal plaquette**:
-a loop that steps along an RGB link vector `V_a` in space, advances one tick,
-returns along `−V_a`, and steps back one tick. Its holonomy encodes the electric
-field projected on `V_a` (the object `F_{0i}` in continuum language). Summing the
-squared temporal-plaquette phases over the RGB link vectors, in exact analogy to
-`extract_Q`, gives the electric quadratic form `E · epsilon · E` and hence the
-permittivity tensor `epsilon`.
+- **Magnetic `B`** enters as a spatial **link phase** `exp(i A_mid · v)` — a true
+  U(1) link variable — so a closed spatial loop gives the exact holonomy `exp_04`
+  uses.
+- **Electric `E`** enters as an **on-site phase** `delta_phi = omega + V(x)`, where
+  a static spatially-varying `V(x) = −E·x` is the electric field. But `delta_phi`
+  drives the Dirac-like R↔L mixing rotation `cos(delta_phi/2)`, `sin(delta_phi/2)`
+  — it is **mass-like, not a U(1) link phase**. (Confirmed independently: a
+  *constant* `V` shifts `delta_phi` uniformly, i.e. it shifts the effective mass —
+  it is NOT a pure gauge and does change densities.) There is therefore **no
+  temporal Wilson loop** of the exp_04 form; the electric-block holonomy idea in
+  the original plan is withdrawn.
 
-**This temporal-plaquette construction is the one genuinely new estimator to
-build and validate** — everything else is reuse. Two implementation notes:
+So the electric block must be measured **dynamically**, and — to keep the
+electric and magnetic blocks on the *same normalization footing* (avoiding the
+density-vs-holonomy 2:1/4:1 conflation) — **both** sectors are measured with the
+**same** second-order token-density response estimator:
 
-- Unlike the magnetic plaquette (pure geometry of the spatial `A`), the temporal
-  plaquette involves the tick direction, so it is evaluated with the engine's
-  one-tick evolution under `external_potential` present, kept **A=1 token-exact**
-  (the integer-residual machinery must stay conserving with the temporal phase).
-- **Cross-check hypothesis (do not assume):** by the same RGB geometry the
-  electric block is expected to be uniaxial about `(1,1,-1)` as well, but with a
-  *different* eigenvalue pattern than the magnetic `{4,4,16}`. Whether the two
-  patterns cancel the leading birefringence is precisely the open question — it
-  is **not** obvious by inspection, which is why the screen is worth running.
+    d_rho(n_hat) = rho(+eps·n_hat) + rho(−eps·n_hat) − 2·rho(0),
+    s(n_hat)     = sqrt( <d_rho^2>_interior ) / eps^2,
+
+the symmetrised (field-squared) response of a centred reference packet, swept
+over orientations `n_hat`. `E` via an `external_potential` ramp, `B` via
+`uniform_B_potential`. The magnetic **holonomy** `{4,4,16}` is retained as a
+validated structural **anchor** (and plumbing check), not as the block that is
+combined with the electric response.
+
+**Implemented and run:** `src/experiments/exp_03a_gauge_cancellation_screen.py`
+(N=33, CPU, minutes). Results in §4a.
+
+### 4a. Results (exp_03a, 2026-07-09)
+
+- **Anchor:** magnetic holonomy `Q = {4,4,16}` reproduced EXACTLY
+  (`max|Q − Q_ref| = 1.8e-15`) — plumbing + method validated against `exp_04`.
+- **Both sectors are cleanly uniaxial** about `(1,1,-1)` (the two independent
+  perpendicular probe directions agree to `<0.2%`).
+- **Density response, axis : perpendicular ratio:**
+  - Magnetic: **9.14 — axis-ENHANCED** (response strongest for `B` along the axis).
+  - Electric: **0.68 — axis-SUPPRESSED** (response *weakest* for `E` along the axis).
+  - ⇒ **The electric and magnetic anisotropies have OPPOSITE sense along the
+    optical axis.** This is the qualitative signature one would want for a
+    cancellation, and it is a genuine, previously-uncomputed result.
+- Electric response confirmed quadratic in `|E|` (the leading `F^2` response).
+- **Caveat on the absolute ratios:** this density-response estimator is the
+  2:1-*family* observable, not the `{4,4,16}` action tensor; its absolute
+  magnitudes (9.14, 0.68) are estimator-specific and should not be read as action
+  coefficients. The robust, interpretation-independent content is: **both uniaxial,
+  opposite sense.**
+
+**What this does NOT yet settle:** the opposite-sense density result is
+*suggestive* of cancellation but is not the photon-dispersion verdict, because the
+density response is not the effective action that governs the photon speed. The
+action-level electric block (the true `epsilon`) still needs either Paper I's
+App. B derivation extended to the electric sector, or an action-level (spectral /
+`Tr ln T`) probe — see §7. That is the next step.
 
 ## 5. The decision criterion
 
