@@ -100,6 +100,27 @@ What is in place (v0.1-DRAFT):
   **`exp_03` is decisive, not confirmatory.** See
   `notes/gauge_sector_structural_conclusion.md`.
 
+- **GATING FACTOR -- electric-sector induced-action derivation** (2026-07-09).
+  The gauge-sector *verdict* is gated on deriving the **electric block** -- the
+  permittivity tensor $\varepsilon$, the temporal/$F_{0i}$ analog of Paper~I
+  App.~B's magnetic $\mathbf{Q}$-tensor $\{4,4,16\}$. **It exists in neither
+  Paper~I nor Paper~II** (Paper~II reuses only the magnetic $\mathbf{Q}$ for the
+  coupling ratio; confirmed 2026-07-09), and **no symmetry supplies it**: the
+  framework establishes only the spatial cubic group $O_h$, *not* the Lorentz
+  boosts that would fix $\varepsilon$ from $\mu^{-1}$. Without it the sign and
+  magnitude of the leading photon birefringence $\Delta v$ cannot be computed, so
+  the gauge audit row **cannot move past `PART`**. Screen `exp_03a` (2026-07-09)
+  measured the *density*-response proxy and found the electric and magnetic
+  anisotropies **opposite in sense** about $(1,1,-1)$ (suggestive of cancellation,
+  but density is not the action). This gating factor **does NOT gate a v1.0
+  deposit** (the kinematic channel is the falsifiable result, `PASS`), but it
+  **does gate**: (a) any gauge-sector prediction/tension claim, (b) P9 as a
+  multi-*observable* concordance, and (c) the tactical case that Paper~IV adds a
+  second falsifiable channel. Delivery options: extend Paper~I App.~B to the
+  electric sector (a theory derivation, likely a Paper~I revision / appendix), or
+  an action-level spectral ($\mathrm{Tr}\ln T$) probe. See
+  `notes/exp_03_R4_cancellation_screen_spec.md` §4a, §7.
+
 - **`dcl_core` pin bumped to v0.3.0** (2026-07-09): committed pin now lives
   in `virtual-env-requirements.txt` (was: no pin file; docstring said
   "0.2.2"). v0.3.0 (Zenodo doi:10.5281/zenodo.21272238) is additive over
