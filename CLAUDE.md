@@ -116,9 +116,11 @@ What is in place (v0.1-DRAFT):
   deposit** (the kinematic channel is the falsifiable result, `PASS`), but it
   **does gate**: (a) any gauge-sector prediction/tension claim, (b) P9 as a
   multi-*observable* concordance, and (c) the tactical case that Paper~IV adds a
-  second falsifiable channel. Delivery options: extend Paper~I App.~B to the
-  electric sector (a theory derivation, likely a Paper~I revision / appendix), or
-  an action-level spectral ($\mathrm{Tr}\ln T$) probe. See
+  second falsifiable channel. **Delivery (decided 2026-07-09): a SEPARATE
+  companion paper** in the series -- not a Paper~I appendix -- carrying the
+  electric-block derivation (method TBD: Paper~I App.~B's approach extended to the
+  electric/temporal sector, or an action-level spectral $\mathrm{Tr}\ln T$ probe).
+  Paper~IV's gauge verdict gates on that new paper. See
   `notes/exp_03_R4_cancellation_screen_spec.md` §4a, §7.
 
 - **`dcl_core` pin bumped to v0.3.0** (2026-07-09): committed pin now lives

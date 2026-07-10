@@ -153,6 +153,13 @@ electric and magnetic sectors or forces nonbirefringence; the electric block is
 genuinely new physics and the opposite-sense finding is a dynamical result, not a
 symmetry consequence.
 
+**Delivery decision (2026-07-09): a SEPARATE companion paper.** The electric-block
+derivation is being spun into its own paper in the series (not a Paper I appendix);
+Paper IV's gauge-sector verdict gates on it. Method within that paper is TBD --
+either Paper I App. B's approach extended to the electric/temporal sector, or an
+action-level spectral (`Tr ln T`) probe. The `exp_03a` screen and this spec become
+inputs to that new paper.
+
 ## 5. The decision criterion
 
 From `epsilon` (measured, §4) and `mu-inverse` (`Q`, §3), form the effective
