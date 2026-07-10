@@ -139,6 +139,20 @@ action-level electric block (the true `epsilon`) still needs either Paper I's
 App. B derivation extended to the electric sector, or an action-level (spectral /
 `Tr ln T`) probe — see §7. That is the next step.
 
+**No shortcut from Papers I/II (checked 2026-07-09).** Paper II
+(`dcl-paper-02-sm-derivation`) does **not** supply the electric block: it only
+*reuses* the magnetic Q-tensor `{4,4,16}` (inherited from Paper I App. B) for the
+coupling ratio `g_3^2/g_2^2 = 3/2` (spectator counting), and its induced-action
+note/code are purely spatial (`F_ij` basis; the `O_h` average is `F_ij F^ij`, not
+`F_μν F^μν`). Nor is there a **Lorentz-covariance shortcut** that would fix
+`epsilon` from `mu-inverse`: the framework establishes only the *spatial* cubic
+group `O_h` (emergent in the continuum), **not the boosts** — Paper II's own audit
+table notes the boost generators `K_a` are anti-Hermitian and not in the discrete
+centralizer. So there is no symmetry (neither `O_h` nor Lorentz) that ties the
+electric and magnetic sectors or forces nonbirefringence; the electric block is
+genuinely new physics and the opposite-sense finding is a dynamical result, not a
+symmetry consequence.
+
 ## 5. The decision criterion
 
 From `epsilon` (measured, §4) and `mu-inverse` (`Q`, §3), form the effective
