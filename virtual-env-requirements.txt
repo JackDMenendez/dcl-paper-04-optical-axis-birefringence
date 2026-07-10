@@ -1,0 +1,29 @@
+numpy
+matplotlib
+pytest
+
+# dcl_core (the framework engine) supplies both the `core3d` (integer-token,
+# exact A=1) and `core` (float-amplitude) engines used by exp_01/exp_02.
+#
+# Pinned to v0.3.0 (Zenodo doi:10.5281/zenodo.21272238; tag v0.3.0,
+# 2026-07-08).  v0.3.0 adds (a) the `dcl_core.calibration` boundary -- the
+# single home for physical-unit conversions (seconds/hz/joules/metres from
+# `tick_seconds` + CODATA constants); (b) the U(1) Peierls gauge coupling in
+# `core3d` (`uniform_B_potential`, vector-potential threading) that the
+# gauge-sector exp_03 will consume; and (c) a fused CuPy `hop_average` GPU
+# path.  It is additive over v0.2.x (api-stability verdict MINOR), so exp_01
+# results are unchanged.
+#
+# CALIBRATION DISCIPLINE: route any physical-unit conversion through
+# `dcl_core.calibration`; do NOT reintroduce ad-hoc unit constants in
+# experiment code.  (exp_01/exp_02 are pure lattice-unit and carry none; the
+# (ka)->physical mapping currently lives only as analysis in
+# notes/falsifiability_and_sme_mapping.md.  When exp_03 needs physical units
+# it must import them from `dcl_core.calibration`.)  The boundary carries
+# exactly one free debt (`tick_seconds`) and assumes the light-cone identity
+# a = c*tick_seconds; treat that as the v0.3.0 contract, not a local override.
+dcl_core @ git+https://github.com/JackDMenendez/dcl-core@v0.3.0
+
+# Add scipy / sympy / pandas as the paper's experiments develop -- keep this
+# file minimal so a fresh clone installs quickly.  The canonical Windows venv
+# (C:\Users\jackd\.venv-win) already carries dcl_core v0.3.0.

@@ -35,9 +35,12 @@ Run on BOTH dcl_core engines:
     enforce_unity_spinor renormalization -- an independent cross-check
     that the result is not an artefact of one A=1 scheme.
 
-Dependency: dcl_core >= 0.2.2 (run against 0.2.2).  The paper-only repo
-has no pinned venv yet; run with an interpreter that has dcl_core, e.g.
-the sibling investigation venv, until this repo's environment is set up.
+Dependency: dcl_core >= 0.3.0 (committed pin: virtual-env-requirements.txt;
+originally run 2026-06-12 against 0.2.2, results unchanged under the additive
+v0.3.0 release).  The canonical Windows venv (C:\\Users\\jackd\\.venv-win)
+carries dcl_core v0.3.0.  This experiment is pure lattice-unit (ticks, box
+cells, omega) and holds no physical-unit constants; any physical calibration
+belongs in dcl_core.calibration, not here.
 
 Usage:  python exp_01_optical_axis_isotropy.py [BOX] [NTICKS]
 Default BOX=129, NTICKS=1000 (~1-2 h wall-clock, float massive case the
