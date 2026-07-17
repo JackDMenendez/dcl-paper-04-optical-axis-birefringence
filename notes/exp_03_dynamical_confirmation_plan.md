@@ -199,6 +199,47 @@ is notoriously delicate to get right.
   proves too costly, IV can ship the null verdict + the A=1-survival feasibility (correct
   senses) and cite VIII for the block magnitudes, deferring the from-scratch tensor.
 
+## 4h. RESOLUTION (2026-07-17) -- VIII answered; deliverable re-scoped and DELIVERED
+
+VIII replied with a technical diagnosis + an author decision (handoffs
+`2026-07-17-paper08-to-paper04-ward-safe-answer`, `...-ward-open-decision`,
+VIII commits `237d690`, `039db72`):
+
+- **Diagnosis (confirmed both ways).** The divergence is the **intraband pole on the
+  exactly-flat optical axis**: along `d=(1,1,-1)/sqrt3` all three hops project equally
+  (`d.V_a=1/sqrt3`, D_3d), so the physical band is flat and `lam_p(k)-lam_p(k+/-q)=0`
+  on-axis. It is Ward-cancelled (`f-f=0` / diamagnetic seagull) and must be **dropped**
+  (no PV/eta; finite omega gaps the doubler). **IV verified this** (`scratchpad/
+  pt_extract.py`, `drop_intraband=True`): the divergence disappears, the result is
+  finite and grid-stable (ngrid 10/16/22). And the interband-only object is **uniaxial
+  about `(1,-1,0)`, NOT the optical axis** -- the *wrong* tensor -- reproducing VIII's
+  independent finding (their ratio ~9, IV's ~3; convention-dependent, but same wrong
+  axis). So the naive band sum is genuinely the wrong object (needs the orbital-
+  susceptibility / Berry-curvature + quantum-metric assembly).
+- **Author decision.** Leave the **single-object dynamical (Tr ln T / momentum-space
+  fermion-loop) tensor extraction OPEN** -- a candidate follow-on paper. It is
+  methodological completeness, not correctness: the geometric-holonomy and fermion-loop
+  methods are the *same* induced action and must agree, and the geometric one already
+  gives `{4,4,16}` (engine-verified). Not on the companion critical path.
+- **Endorsed framing = geometric STRUCTURE x scalar MAGNITUDE.** The anisotropic
+  `{4,4,16}`/`{1,4,4}` structure is the plaquette / temporal-plaquette holonomy off the
+  engine hop vectors (pole-free, exact, a genuine from-engine computation); the isotropic
+  scalar `1/g^2` is the deferred coupling (interband trace). IV's DYNAMICAL confirmations
+  are the **null split** (1.8e-15) and **A=1-survival** (correct senses).
+
+**DELIVERED** (`src/experiments/exp_03_geometric_blocks.py`, commit `d097658`, ALL PASS):
+both blocks from the engine -- `mu^-1={4,4,16}` (spatial plaquette holonomy, axis
+enhanced), `eps={1,4,4}` (temporal plaquette holonomy off `HopOperator.step`, axis
+suppressed, coupling fidelity 4e-19, omega-cancellation 7e-15); adjugate `mu^-1=adj(eps)`
+from the two engine blocks (5e-15); verdict via the Fresnel solver -- null split 1.55e-15,
+common-mode `v in [1,2]` single-domain factor 2, O_h average isotropic.
+
+**Honesty (per VIII's checklist):** the paper frames the tensor as
+geometric-structure x scalar-magnitude, presents null-split + A=1-survival as the
+dynamical confirmations, and states the single-object momentum-space fermion-loop tensor
+as an OPEN item. It does NOT claim a from-scratch dynamical tensor and does NOT present
+the naive band-sum result (the wrong `(1,-1,0)` object -- discarded).
+
 ## 5. Reconciliation with VIII (companion release)
 
 - IV cites VIII for the derivation + blocks; VIII cites IV for the dynamical
