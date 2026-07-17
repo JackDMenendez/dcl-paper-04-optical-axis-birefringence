@@ -1,10 +1,93 @@
-# The electric induced-action block: derivation plan
+# The electric induced-action block: derivation plan + result
 
-**Status:** DRAFT (plan; derivation not started)
+**Status:** DERIVED — analytic (2026-07-16). Method (a) succeeds; birefringence verdict
+= CANCELS **conditionally** (airtight given `eps=P`; `eps=P` itself is analytic-only,
+pending an engine cross-check — see "Outstanding" below). Referee-reviewed 2026-07-16.
 **Purpose:** Record the problem, the E/B asymmetry that forces new theory, the two
-candidate derivation methods, and the consistency anchor — so a focused session can start
-without re-deriving the context.
+candidate derivation methods, the consistency anchor, and now **the result** — so a
+focused session can start without re-deriving the context.
+**Verifier:** `src/utilities/electric_induced_action.py` (all checks PASS).
 **Cited by:** `paper/sections/audit_table.tex` (electric-block rows); `CLAUDE.md`.
+
+---
+
+## RESULT (2026-07-16) — method (a) succeeded
+
+Method (a) worked; the pessimistic prior in the "asymmetry" section below was too strong.
+The on-site phase advance `delta_phi = omega + V(x)` (dcl-core `PhaseOscillator`,
+`H = omega + V(x)`) **is itself the temporal link** (a site joined to itself at the next
+tick), so a **temporal plaquette** spanned by one hop vector `V_a` and the tick direction
+*does* close on the bipartite lattice. Its uniform-field holonomy is `(V_a . E) * a_t`
+(with a static uniform potential `V(x) = -E . x`, `V(x) - V(x+V_a) = E . V_a`), where `a_t`
+is the tick's temporal extent — **not unit weight**. There **is** an electric loop; it just
+uses one spatial direction, where the magnetic loop uses a pair.
+
+**Electric block (permittivity structure).** Summing the temporal-plaquette flux over the
+three hop directions:
+
+- `epsilon = a_t^2 * P`, with `P = sum_a V_a V_a^T = [[3,-1,1],[-1,3,1],[1,1,3]]`,
+- eigenvalues `{1, 4, 4}`, optical axis `(1,1,-1)` **SUPPRESSED** to 1 (perp plane at 4).
+
+This is the exact mirror of the magnetic `{4,4,16}` (axis **enhanced**; the magnetic
+plaquette instead carries the spatial area `~a^2`), and its axis-suppression sign
+reproduces Paper IV `exp_03a`. **The overall electric-vs-magnetic normalization carries an
+undetermined lattice-anisotropy factor `~(a_t/a^2)^2` and the open `1/g^2` prefactor** — it
+sets the common photon speed but, per the verdict, does not affect birefringence. We set
+`a_t = 1` to display the structure `P`.
+
+**Outstanding (the gap vs the magnetic anchor).** `Q_B` is *engine-verified*: dcl-core
+`exp_04` extracts it numerically from the actual Peierls phases (`max|Q-Q_I|=0`). `P` here
+is derived from the standard temporal-plaquette holonomy but has **no analogous engine-level
+extraction yet**, and it resolves Open Question #1 (does a gauge-covariant electric loop
+exist on the lattice?) by analogy with textbook LGT rather than by demonstrating the tick
+rule realizes it. The concrete step to close this — and move the electric-block/verdict rows
+to PASS — is the **mirror of `exp_04`**: read `P` off the engine's on-site `V(x)` coupling
+combined with the Peierls hop. This is a dcl-core experiment (likely a handoff).
+
+**Covariant completion — the adjugate theorem.** The two blocks are not independent. For
+*any* three hop vectors,
+
+    Q_B = sum_{a<b}(V_a x V_b)(V_a x V_b)^T = adj( sum_a V_a V_a^T ) = adj(P).
+
+The magnetic inverse-permeability tensor **is the adjugate of the electric permittivity
+tensor**: `mu^{-1} = adj(epsilon)`. (Proven symbolically for general vectors in the
+verifier — it is the identity `sum(V_a x V_b)(V_a x V_b)^T = adj(sum V_a V_a^T)`.)
+Consequently, for every principal axis `i`,
+
+    epsilon_i * (mu^{-1})_i = epsilon_i * (adj epsilon)_i = det(epsilon),
+
+so the **impedance product is isotropic** even though each block is anisotropic (opposite
+senses about the same axis).
+
+**Birefringence verdict — CANCELS (conditional; airtight given the identification).**
+IF the macroscopic response tensors are `(epsilon, mu^{-1}) = (P, Q_B)`, the photon
+dispersion `det(K mu^{-1} K + w^2 epsilon) = 0` factors (for general `k`) as a
+**double transverse root**
+
+    w^2 = k^T epsilon k     (both polarizations),
+
+so the polarization split is `Delta(w^2) proportional to |epsilon_a mu_a - epsilon_p mu_p|
+= |1*16 - 4*4| = 0`. **Gauge-sector vacuum birefringence cancels.** The split formula
+depends only on the *anisotropy ratios* (fixed by geometry via the adjugate relation) and
+not on the overall block scales, so the verdict is **invariant under independent rescaling
+of `epsilon` and `mu^{-1}`** — immune to the undetermined `a_t` / `1/g^2` factors — and
+holds for any hop vectors. (Referee-checked: the perfect-square factorization holds for a
+general symmetric `epsilon` with `mu^{-1} = adj(epsilon)`; it does not even require the two
+blocks to share eigenvectors.) This **conditional** is the load-bearing theorem. What is
+*not* yet earned is the **unconditional** physical verdict, because it rides on `epsilon=P`
+(analytic-only; see Outstanding above).
+
+**Caveat — a LARGE effect, foregrounded (referee point E).** The shared dispersion
+`w^2 = k^T epsilon k` is direction-dependent: `v^2(k)` ranges over `epsilon`'s eigenvalues
+`[1,4]` — an **order-unity (factor ~2 in speed) directional anisotropy of the vacuum `c`**,
+affecting both polarizations equally. This is a speed anisotropy, *not* birefringence, but
+it is not small. Note the tension: the standard `O_h` average that would remove it
+(`Tr(P)/3 . I` and `Tr(Q_B)/3 . I` are both isotropic) also makes the birefringence
+cancellation **trivial**; the non-trivial, averaging-independent cancellation lives at the
+un-averaged operator level, where this speed anisotropy is also present. So the result must
+**not** be sold as a clean "positive null consistent with polarimetry" — the same order
+predicts an order-unity directional `c`-anisotropy that itself needs an isotropy-restoration
+story. That story is a separate open question, out of scope for the birefringence verdict.
 
 ---
 
@@ -78,13 +161,25 @@ equations are provably identical to what the verification script computed. The m
 already does this (`write_latex_fragments()` -> `generated/magnetic_Q.tex`); the electric
 results follow the same route. See `CLAUDE.md` "SymPy-generated equations".
 
-## Open questions
+## Open questions — status
 
-1. Does a gauge-invariant electric loop exist on the bipartite lattice, or is the electric
-   response irreducibly on-site (method (a) degenerates -> method (b))?
-2. Is the effective `(epsilon, mu^{-1})` isotropic after `O_h` averaging, and does the
-   residual operator-level anisotropy sit on the same `(1,1,-1)` axis as the magnetic block?
-3. Does the axis contrast **cancel** in the photon action (not just the density)?
+1. **Does a gauge-invariant electric loop exist?** YES, analytically — the on-site phase
+   advance is the temporal link; the temporal plaquette (one hop `V_a` + tick) closes.
+   Method (a) did not degenerate; no need for method (b). **But** this is resolved by
+   analogy with textbook LGT; the *engine-level* confirmation that the tick rule realizes it
+   as a gauge-covariant temporal link (the mirror of `exp_04`) is still **outstanding** (see
+   above). So: resolved in principle, not yet engine-verified.
+2. **Does the residual anisotropy sit on the same `(1,1,-1)` axis as the magnetic block?**
+   YES — `epsilon = P` and `mu^{-1} = Q_B` commute (share the eigenbasis): common axis
+   `(1,1,-1)`, both isotropic (degenerate) in the perpendicular plane. **Still open:** the
+   `O_h`-averaged isotropy of the *common photon speed* — the factor-~2 directional
+   `c`-anisotropy (caveat above) needs its own isotropy-restoration story. Separate from the
+   birefringence verdict.
+3. **Does the axis contrast cancel in the photon action (not just the density)?** YES
+   (conditional on `epsilon=P`). The photon dispersion has a double transverse root; the
+   polarization split vanishes exactly via the adjugate relation. This is the paper's
+   verdict — earned as a conditional theorem, pending the engine cross-check for the
+   unconditional form.
 
 ## Pointers
 

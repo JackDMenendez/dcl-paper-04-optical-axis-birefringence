@@ -1,21 +1,85 @@
-"""Electric induced-action block -- derivation + magnetic consistency anchor.
+"""Electric induced-action block -- derivation, magnetic anchor, and the
+gauge-sector birefringence verdict.
 
 Paper VIII of the A=1 Discrete Causal Lattice series.
 
-This script has two jobs:
+Result (derived + symbolically verified here)
+---------------------------------------------
+The lattice couples the two fields on different footings, and this is the whole
+point:
 
-1. ANCHOR (PASS today): reproduce and verify the *magnetic* induced-action
-   Q-tensor from Paper I Appendix B --
-   Q IS the O(B^2) coefficient of the bipartite-plaquette Wilson-loop action,
-   with eigenvalues {4, 4, 16} and optical axis (1, 1, -1). This is the
-   consistency check every electric-block derivation step must not break.
+* MAGNETIC ``B`` IS a spatial link phase (Peierls). A closed *spatial* plaquette
+  spanned by two hop vectors ``V_a, V_b`` has flux ``(V_a x V_b) . B``, so the
+  induced O(B^2) action is
+      density_B = sum_{a<b} ((V_a x V_b) . B)^2 = B^T Q_B B,
+  reproducing Paper I App. B: ``Q_B`` eigenvalues ``{4, 4, 16}``, optical axis
+  ``(1,1,-1)`` ENHANCED (16). This is the inherited anchor.
 
-2. ELECTRIC BLOCK (STUB): derive the electric permittivity `epsilon` and the
-   covariant (epsilon, mu^-1) completion. The magnetic field enters as a
-   spatial link phase (clean holonomy -> Q), but the electric field enters as
-   an on-site, mass-like phase advance delta_phi = omega + V(x) -- there IS no
-   electric Wilson-loop analog, so this block is genuinely new theory. See
-   notes/electric_block_derivation.md for the two candidate methods.
+* ELECTRIC ``E`` IS an on-site, mass-like phase advance
+  ``delta_phi(x) = omega + V(x)`` (implemented in dcl-core ``PhaseOscillator``,
+  ``H = omega + V(x)``). That on-site advance IS a *temporal* link (a site joined
+  to itself at the next tick), so a *temporal* plaquette spanned by ONE hop
+  vector ``V_a`` and the tick direction closes on the bipartite lattice. Its
+  uniform-field holonomy is ``(V_a . E) * a_t`` (with a uniform static potential
+  ``V(x) = -E . x``, ``V(x) - V(x + V_a) = E . V_a``), where ``a_t`` IS the tick's
+  temporal extent -- NOT unit weight. Hence the induced O(E^2) action is
+      density_E = sum_a ((V_a . E) a_t)^2 = a_t^2 * E^T P E,  P = sum_a V_a V_a^T,
+  giving the STRUCTURE ``P`` with eigenvalues ``{1, 4, 4}``, optical axis
+  ``(1,1,-1)`` SUPPRESSED (1). This is the mirror of the magnetic block (whose
+  spatial plaquette instead carries the area ``~a^2``), and is the new content of
+  the paper. Its axis-suppression sign matches Paper IV ``exp_03a`` (the static
+  E+B screen). The overall electric-vs-magnetic normalization thus carries an
+  undetermined lattice-anisotropy factor ``~(a_t/a^2)^2`` and the open ``1/g^2``
+  prefactor; the code sets ``a_t = 1`` to display the STRUCTURE ``P``. Per the
+  verdict below this factor is immaterial to birefringence (it only renormalizes
+  the common photon speed), but it is real and is NOT fixed here.
+
+  OUTSTANDING (the gap vs the magnetic anchor): ``Q_B`` is engine-verified --
+  dcl-core ``exp_04`` extracts it numerically from the actual Peierls phases
+  (``max|Q-Q_I|=0``). ``P`` here is derived from the standard temporal-plaquette
+  holonomy but has NO analogous engine-level extraction yet. The mirror of
+  ``exp_04`` -- read ``P`` off the engine's on-site ``V(x)`` coupling combined
+  with the Peierls hop -- is the concrete step that would move the electric-block
+  and verdict rows to PASS. Until then this block is analytic (PART), not
+  engine-confirmed.
+
+* COVARIANT COMPLETION. The two blocks are not independent: for any three hop
+  vectors,
+      Q_B = sum_{a<b}(V_a x V_b)(V_a x V_b)^T = adj( sum_a V_a V_a^T ) = adj(P).
+  The magnetic tensor IS the adjugate of the electric tensor. So identifying the
+  macroscopic response tensors as ``eps = P`` (permittivity) and
+  ``mu^{-1} = Q_B = adj(P)`` (inverse permeability), every principal axis obeys
+      eps_i * (mu^{-1})_i = eps_i * (adj eps)_i = det(eps),
+  i.e. the impedance product is ISOTROPIC even though eps and mu^{-1} are each
+  anisotropic (with opposite senses about the same axis).
+
+* BIREFRINGENCE VERDICT (conditional -- airtight given the identification).
+  IF the macroscopic response tensors are ``(eps, mu^{-1}) = (P, Q_B)``, then the
+  photon dispersion ``det(K mu^{-1} K + w^2 eps) = 0`` factors as
+  ``det(eps) * w^2 * (w^2 - k^T eps k)^2`` -- a DOUBLE transverse root for every
+  propagation direction (proven for a general symmetric ``eps`` with
+  ``mu^{-1} = adj(eps)``; it does NOT even require eps, mu^{-1} to share
+  eigenvectors). Both polarizations share ``w^2 = k^T eps k``, so the split is
+      Delta(w^2) proportional to |eps_a (mu^{-1})_a - eps_p (mu^{-1})_p| = 0.
+  Gauge-sector vacuum birefringence CANCELS. Because the cancellation follows
+  from the adjugate relation, it is invariant under INDEPENDENT rescaling of eps
+  and mu^{-1} -- immune to the undetermined a_t / 1/g^2 factors -- and holds for
+  any hop vectors. This CONDITIONAL is the load-bearing theorem.
+
+  What is NOT yet earned is the UNCONDITIONAL physical verdict, because it rides
+  on ``eps = P``, which is analytic-only (no engine cross-check; see above).
+
+* HONEST CAVEAT -- a LARGE effect the verdict does not address. The shared
+  dispersion ``w^2 = k^T eps k`` is direction-dependent: ``v^2(k)`` ranges over
+  eps's eigenvalues ``[1, 4]`` -- an order-unity (factor ~2 in speed) directional
+  anisotropy of the vacuum ``c``, affecting BOTH polarizations equally. That is a
+  speed anisotropy, NOT birefringence -- but it is not small, and the standard
+  ``O_h``-average that would remove it (``Tr(P)/3 . I``, ``Tr(Q_B)/3 . I`` are both
+  isotropic) also makes the birefringence cancellation TRIVIAL. The non-trivial,
+  averaging-independent cancellation lives at the un-averaged operator level,
+  where this speed anisotropy is also present. See
+  notes/electric_block_derivation.md; this is a separate isotropy-restoration
+  question and must not be sold as a clean polarimetry null.
 
 Documentation convention: comments say what each object IS in the theory.
 Run: python -u src/utilities/electric_induced_action.py
@@ -35,84 +99,268 @@ GENERATED_TEX_DIR = os.path.normpath(
     os.path.join(_HERE, "..", "..", "paper", "sections", "generated")
 )
 
-# --- Magnetic induced-action Q-tensor (Paper I App. B) -----------------------
-# Q IS the coefficient matrix of the induced magnetic action
-#   1 - Re W_ab = F^T Q F   (bipartite plaquette holonomy, uniform field).
-# Inherited value (reproduced exactly by dcl-core exp_04, max|Q - Paper_I_Q|=0).
+# --- The spatial hop vectors (RGB sublattice directions) ---------------------
+# These IS the three primitive hop directions of the A=1 bipartite octahedral
+# lattice; the CMY partners are their negatives (V V^T is insensitive to sign,
+# so only the three are needed to build the induced-action tensors).
+V1 = sp.Matrix([1, 1, 1])
+V2 = sp.Matrix([1, -1, -1])
+V3 = sp.Matrix([-1, 1, -1])
+V_HOPS = [V1, V2, V3]
+
+# The optical axis IS the common eigenvector distinguished by both blocks.
+OPTICAL_AXIS = sp.Matrix([1, 1, -1])
+
+# Inherited magnetic anchor (Paper I App. B; dcl-core exp_04, max|Q-Q_I|=0).
 Q_MAGNETIC = sp.Matrix([
     [8,  4, -4],
     [4,  8, -4],
     [-4, -4, 8],
 ])
-
-# The optical axis IS the eigenvector with the enhanced eigenvalue.
-OPTICAL_AXIS = sp.Matrix([1, 1, -1])
-EXPECTED_EIGENVALUES = {sp.Integer(4): 2, sp.Integer(16): 1}  # value: multiplicity
+EXPECTED_MAG_EIGS = {sp.Integer(4): 2, sp.Integer(16): 1}   # value: multiplicity
+EXPECTED_ELE_EIGS = {sp.Integer(1): 1, sp.Integer(4): 2}    # electric mirror
 
 
-def verify_magnetic_anchor() -> bool:
-    """PASS iff Q reproduces {4,4,16} and the (1,1,-1) axis carries eigenvalue 16."""
-    eigs = Q_MAGNETIC.eigenvals()  # {value: multiplicity}
-    eig_ok = eigs == EXPECTED_EIGENVALUES
-    # Q . (1,1,-1) IS 16 . (1,1,-1)  -> axis is the enhanced eigenvector.
-    axis_ok = sp.simplify(Q_MAGNETIC * OPTICAL_AXIS - 16 * OPTICAL_AXIS) == sp.zeros(3, 1)
-    trace_ok = sp.trace(Q_MAGNETIC) == 24  # 4 + 4 + 16
-    return bool(eig_ok and axis_ok and trace_ok)
+def _cross(a: sp.Matrix, b: sp.Matrix) -> sp.Matrix:
+    """Vector cross product ``a x b`` (the spatial-plaquette area vector)."""
+    return sp.Matrix([
+        a[1] * b[2] - a[2] * b[1],
+        a[2] * b[0] - a[0] * b[2],
+        a[0] * b[1] - a[1] * b[0],
+    ])
 
 
-def derive_electric_block():
-    """Derive the electric permittivity block. STUB -- new theory.
+def _outer(v: sp.Matrix) -> sp.Matrix:
+    """Outer product ``v v^T`` (a rank-1 quadratic form)."""
+    return v * v.T
 
-    Method (a): extend Paper I App. B's plaquette approach to the electric /
-    temporal-plaquette sector. Method (b): action-level spectral (Tr ln T)
-    probe. The obstruction to overcome: E is on-site (no spatial loop), so a
-    gauge-invariant electric holonomy may not exist -- part (a)'s first task is
-    to establish whether it does. See notes/electric_block_derivation.md.
-    """
-    raise NotImplementedError(
-        "Electric induced-action block not yet derived (Paper VIII STUB). "
-        "See notes/electric_block_derivation.md for methods (a) and (b)."
+
+# --- Magnetic block: derived from first principles (the anchor) --------------
+def derive_magnetic_Q() -> sp.Matrix:
+    """``Q_B = sum_{a<b} (V_a x V_b)(V_a x V_b)^T`` -- the O(B^2) induced-action
+    coefficient. Its flux ``(V_a x V_b) . B`` IS the spatial-plaquette holonomy
+    for a uniform field (Paper I App. B; dcl-core exp_04)."""
+    pairs = [(0, 1), (0, 2), (1, 2)]
+    Q = sp.zeros(3, 3)
+    for a, b in pairs:
+        Q += _outer(_cross(V_HOPS[a], V_HOPS[b]))
+    return Q
+
+
+# --- Electric block: the new derivation --------------------------------------
+def derive_electric_block() -> sp.Matrix:
+    """``P = sum_a V_a V_a^T`` -- the O(E^2) induced-action coefficient.
+
+    The electric field enters on-site as ``delta_phi = omega + V(x)``; that
+    on-site phase advance IS the temporal link. The temporal plaquette spanned
+    by one hop ``V_a`` and the tick direction closes on the bipartite lattice,
+    and for a uniform field its holonomy IS ``(V_a . E) * a_t`` (with a uniform
+    static potential ``V(x) = -E . x`` one has ``V(x) - V(x + V_a) = E . V_a``);
+    ``a_t`` (the tick's temporal extent) is set to 1 here to expose the STRUCTURE.
+    Summed over the three hop directions this gives the permittivity STRUCTURE
+    ``eps = P`` (up to the a_t^2 and 1/g^2 factors). Eigenvalues ``{1, 4, 4}``:
+    optical axis ``(1,1,-1)`` SUPPRESSED to 1, the perpendicular plane at 4
+    (mirror of the magnetic ``{4, 4, 16}``).
+
+    STATUS: analytic (PART). Unlike the magnetic ``Q_B`` (engine-verified by
+    dcl-core ``exp_04``), ``P`` has no engine-level extraction yet -- that mirror
+    experiment is the gap between here and PASS."""
+    P = sp.zeros(3, 3)
+    for v in V_HOPS:
+        P += _outer(v)
+    return P
+
+
+# --- Covariant completion: the adjugate theorem ------------------------------
+def adjugate_relation() -> tuple[bool, sp.Expr]:
+    """Verify ``Q_B = adj(P)`` (magnetic block IS the adjugate of the electric
+    block), the structural fact behind covariant completion and the null
+    birefringence verdict. Returns ``(holds, det P)``."""
+    P = derive_electric_block()
+    Q = derive_magnetic_Q()
+    holds = sp.simplify(Q - P.adjugate()) == sp.zeros(3, 3)
+    return bool(holds), P.det()
+
+
+def adjugate_is_general() -> bool:
+    """The adjugate relation holds for ANY three hop vectors (not just the
+    octahedral ones): ``sum_{a<b}(A_a x A_b)(A_a x A_b)^T = adj(sum_a A_a A_a^T)``.
+    This is why the birefringence cancellation is structural, not lattice-tuned."""
+    a = sp.Matrix(sp.symbols("a0:3", real=True))
+    b = sp.Matrix(sp.symbols("b0:3", real=True))
+    c = sp.Matrix(sp.symbols("c0:3", real=True))
+    Vg = [a, b, c]
+    Pg = _outer(a) + _outer(b) + _outer(c)
+    Qg = sp.zeros(3, 3)
+    for i, j in [(0, 1), (0, 2), (1, 2)]:
+        Qg += _outer(_cross(Vg[i], Vg[j]))
+    return sp.simplify(Qg - Pg.adjugate()) == sp.zeros(3, 3)
+
+
+# --- Birefringence verdict: photon dispersion --------------------------------
+def _cross_matrix(k: sp.Matrix) -> sp.Matrix:
+    """``[k]_x`` such that ``[k]_x v = k x v`` -- the curl operator for a plane
+    wave with wavevector ``k``."""
+    return sp.Matrix([
+        [0, -k[2], k[1]],
+        [k[2], 0, -k[0]],
+        [-k[1], k[0], 0],
+    ])
+
+
+def birefringence_split() -> sp.Expr:
+    """The polarization splitting of ``w^2`` for a uniaxial ``(eps, mu^{-1})``
+    pair sharing the optical axis. Returns ``Delta(w^2)`` as a function of the
+    principal values and propagation angle ``theta``; it IS proportional to
+    ``|eps_a mu_a^{-1} - eps_p mu_p^{-1}|`` and so vanishes exactly when the
+    axial and perpendicular impedance products agree (the adjugate condition)."""
+    ea, ep, na, np_, th, w2 = sp.symbols(
+        "e_a e_p n_a n_p theta w2", real=True, positive=True
     )
+    eps = sp.diag(ea, ep, ep)          # electric block in principal basis (axis first)
+    nu = sp.diag(na, np_, np_)         # magnetic block mu^{-1} in the same basis
+    k = sp.Matrix([sp.cos(th), sp.sin(th), 0])   # WLOG in the axis-perp plane
+    K = _cross_matrix(k)
+    transverse = sp.factor(((K * nu * K + w2 * eps).det()) / w2)  # drop longitudinal
+    roots = sp.solve(sp.Eq(transverse, 0), w2)
+    return sp.simplify(roots[0] - roots[1]) if len(roots) == 2 else sp.Integer(0)
 
 
+def _principal_values(M: sp.Matrix) -> tuple[sp.Expr, sp.Expr]:
+    """Return ``(axial, perpendicular)`` eigenvalues of a block that is uniaxial
+    about ``OPTICAL_AXIS`` -- the axial one is read off the axis, the
+    (degenerate) perpendicular one from the remaining trace."""
+    axial = (M * OPTICAL_AXIS)[0] / OPTICAL_AXIS[0]
+    perp = (M.trace() - axial) / 2
+    return sp.simplify(axial), sp.simplify(perp)
+
+
+def verdict_no_birefringence() -> bool:
+    """PASS iff the derived blocks satisfy the exact cancellation condition
+    ``eps_a * mu_a^{-1} = eps_p * mu_p^{-1}`` -- i.e. the split formula
+    ``birefringence_split`` evaluates to zero at the lattice principal values."""
+    ea, ep = _principal_values(derive_electric_block())   # (1, 4)
+    na, np_ = _principal_values(derive_magnetic_Q())      # (16, 4)
+    return bool(sp.simplify(ea * na - ep * np_) == 0)
+
+
+def photon_dispersion_double_root() -> tuple[bool, sp.Expr]:
+    """Confirm the general-``k`` dispersion is a double transverse root (no
+    birefringence). Returns ``(is_double_root, w^2(k))`` where ``w^2 = k^T P k``
+    is the shared dispersion of both polarizations."""
+    kx, ky, kz, w2 = sp.symbols("kx ky kz w2", real=True)
+    k = sp.Matrix([kx, ky, kz])
+    K = _cross_matrix(k)
+    P = derive_electric_block()
+    Q = derive_magnetic_Q()
+    det = sp.expand((K * Q * K + w2 * P).det())
+    # det = C * w2 * (w2 - k^T P k)^2  when the two transverse roots coincide.
+    shared = sp.expand((k.T * P * k)[0])
+    C = sp.Poly(det, w2).coeff_monomial(w2 ** 3)   # leading (out-of-scope) prefactor
+    is_double = sp.expand(det - C * w2 * (w2 - shared) ** 2) == 0
+    return bool(is_double), shared
+
+
+# --- Anchor gate -------------------------------------------------------------
+def verify_magnetic_anchor() -> bool:
+    """PASS iff the first-principles ``Q_B`` equals the inherited anchor and
+    carries ``{4,4,16}`` with the ``(1,1,-1)`` axis at eigenvalue 16."""
+    Q = derive_magnetic_Q()
+    matches_inherited = sp.simplify(Q - Q_MAGNETIC) == sp.zeros(3, 3)
+    eig_ok = Q.eigenvals() == EXPECTED_MAG_EIGS
+    axis_ok = sp.simplify(Q * OPTICAL_AXIS - 16 * OPTICAL_AXIS) == sp.zeros(3, 1)
+    return bool(matches_inherited and eig_ok and axis_ok)
+
+
+def verify_electric_block() -> bool:
+    """PASS iff ``P`` carries ``{1,4,4}`` with the ``(1,1,-1)`` axis SUPPRESSED
+    to eigenvalue 1 (the mirror of the magnetic anchor)."""
+    P = derive_electric_block()
+    eig_ok = P.eigenvals() == EXPECTED_ELE_EIGS
+    axis_ok = sp.simplify(P * OPTICAL_AXIS - 1 * OPTICAL_AXIS) == sp.zeros(3, 1)
+    return bool(eig_ok and axis_ok)
+
+
+# --- Paper equations, generated (never hand-transcribed) ---------------------
 def write_latex_fragments() -> list[str]:
     """Emit derived equations as LaTeX fragments for the paper to ``\\input``.
 
-    The paper's equations are GENERATED from these verified SymPy expressions
-    (via ``sympy.latex``), never hand-transcribed -- so prose cannot drift from
-    the math. This is the working exemplar of the CLAUDE.md convention; the
-    electric block gets its own fragment here once derived.
-    """
+    Generated via ``sympy.latex`` from the verified expressions, so the paper's
+    equations cannot drift from the math. See CLAUDE.md "SymPy-generated
+    equations"."""
     os.makedirs(GENERATED_TEX_DIR, exist_ok=True)
+    P = derive_electric_block()
+    Q = derive_magnetic_Q()
     written: list[str] = []
 
-    # Magnetic induced-action tensor Q (the anchor), emitted as a bmatrix.
-    frag = os.path.join(GENERATED_TEX_DIR, "magnetic_Q.tex")
-    with open(frag, "w", encoding="utf-8") as fh:
-        fh.write("% AUTO-GENERATED by src/utilities/electric_induced_action.py -- do not edit.\n")
-        fh.write("Q = " + sp.latex(Q_MAGNETIC, mat_delim="[") + "\n")
-    written.append(frag)
+    def _emit(name: str, body: str) -> None:
+        path = os.path.join(GENERATED_TEX_DIR, name)
+        with open(path, "w", encoding="utf-8") as fh:
+            fh.write("% AUTO-GENERATED by src/utilities/electric_induced_action.py"
+                     " -- do not edit.\n")
+            fh.write(body + "\n")
+        written.append(path)
 
-    # TODO(electric block): once derived, emit epsilon and the covariant
-    # (epsilon, mu^-1) form here with sp.latex(...), same pattern.
+    _emit("magnetic_Q.tex", "Q_B = " + sp.latex(Q, mat_delim="["))
+    _emit("electric_P.tex", r"\varepsilon = P = " + sp.latex(P, mat_delim="["))
+    _emit("adjugate_relation.tex",
+          r"\mu^{-1} = Q_B = \operatorname{adj}(P) = \operatorname{adj}(\varepsilon)")
+    _emit("birefringence_condition.tex",
+          r"\Delta(\omega^2) \;\propto\; \bigl|\varepsilon_a\,\mu^{-1}_a"
+          r" - \varepsilon_p\,\mu^{-1}_p\bigr| = |\det\varepsilon - \det\varepsilon| = 0")
     return written
 
 
 def main() -> None:
     print("Paper VIII -- Electric Induced-Action Block")
-    print("=" * 52)
+    print("=" * 60)
 
     anchor = verify_magnetic_anchor()
-    print(f"[ANCHOR ] magnetic Q-tensor {{4,4,16}}, axis (1,1,-1): "
-          f"{'PASS' if anchor else 'FAIL'}")
+    print(f"[ANCHOR  ] magnetic Q_B from first principles = {{4,4,16}}, "
+          f"axis (1,1,-1) ENHANCED (16): {'PASS' if anchor else 'FAIL'}")
     if not anchor:
-        raise SystemExit("Magnetic anchor FAILED -- fix before touching the electric block.")
+        raise SystemExit("Magnetic anchor FAILED -- fix before the electric block.")
+    print(f"           Q_B = {derive_magnetic_Q().tolist()}")
+
+    electric = verify_electric_block()
+    P = derive_electric_block()
+    print(f"[ELECTRIC] permittivity P from temporal plaquette = {{1,4,4}}, "
+          f"axis (1,1,-1) SUPPRESSED (1): {'PASS' if electric else 'FAIL'}")
+    print(f"           P = {P.tolist()}   (matches exp_03a axis-suppression sign)")
+
+    holds, detP = adjugate_relation()
+    general = adjugate_is_general()
+    print(f"[COVARIANT] mu^-1 = Q_B = adj(P): {'PASS' if holds else 'FAIL'} "
+          f"(det P = {detP}); holds for ANY hop vectors: "
+          f"{'PASS' if general else 'FAIL'}")
+
+    is_double, shared = photon_dispersion_double_root()
+    split = birefringence_split()
+    cancels = verdict_no_birefringence()
+    ea, ep = _principal_values(derive_electric_block())
+    na, np_ = _principal_values(derive_magnetic_Q())
+    print(f"[VERDICT ] CONDITIONAL on (eps,mu^-1)=(P,Q_B): dispersion is a DOUBLE "
+          f"transverse root w^2 = k^T P k: {'PASS' if is_double else 'FAIL'}")
+    print(f"           shared w^2(k) = {shared}")
+    print(f"           split Delta(w^2) proportional to (eps_a mu_a - eps_p mu_p) "
+          f"= ({ea}*{na} - {ep}*{np_}) = {ea * na - ep * np_}")
+    print(f"           => birefringence CANCELS (prefactor-independent): "
+          f"{'PASS' if cancels else 'FAIL'}")
+    print(f"           v^2(k) in [{ea}, {ep}]: common-mode speed anisotropy "
+          f"remains (NOT birefringence; see notes).")
+    print("           Unconditional verdict pending engine extraction of eps=P "
+          "(mirror of exp_04).")
 
     for path in write_latex_fragments():
-        print(f"[LATEX  ] generated {os.path.relpath(path, os.path.join(_HERE, '..', '..'))}")
+        print(f"[LATEX   ] generated "
+              f"{os.path.relpath(path, os.path.join(_HERE, '..', '..'))}")
 
-    print("[ELECTRIC] permittivity block: STUB (not yet derived)")
-    print("           -> notes/electric_block_derivation.md (methods a/b)")
+    ok = anchor and electric and holds and general and is_double and cancels
+    print("=" * 60)
+    print(f"CONDITIONAL CHECKS: {'ALL PASS' if ok else 'CHECK FAILED'}  "
+          f"(analytic; electric block PART pending engine cross-check)")
+    if not ok:
+        raise SystemExit("A derivation check failed.")
 
 
 if __name__ == "__main__":

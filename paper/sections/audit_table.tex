@@ -56,25 +56,36 @@ Magnetic induced-action tensor $Q=\{4,4,16\}$, axis $(1,1,-1)$
     & \texttt{PASS} \\
 
 % ── Electric block (the new derivation) ─────────────────────────────
-Electric induced-action block (permittivity $\varepsilon$)
-    & On-site (mass-like) electric coupling; no Wilson-loop analogue --- derived directly
+Electric induced-action block (permittivity $\varepsilon = P = \sum_a V_a V_a^{\!\top}$,
+eigenvalues $\{1,4,4\}$, axis $(1,1,-1)$ suppressed)
+    & On-site coupling $\delta\phi=\omega+V(x)$ IS a temporal link; the temporal
+      plaquette (one hop $V_a$ + tick) closes, holonomy $(V_a\!\cdot\!E)\,a_t$
     & Isotropic $\varepsilon$ after $O_h$ averaging (target)
-    & Derivation not started (\texttt{notes/electric\_block\_derivation.md}, methods a/b)
-    & \texttt{STUB} \\
+    & Analytic + symbolic (\texttt{electric\_induced\_action.py}); axis-suppression sign
+      matches Paper~IV \texttt{exp\_03a}. \emph{Gap:} no engine-level extraction yet
+      (the mirror of dcl-core \texttt{exp\_04}); $a_t$/$1/g^2$ normalization not fixed
+    & \texttt{PART} \\
 
 % ── Covariant completion ────────────────────────────────────────────
-Covariant completion: effective $(\varepsilon,\mu^{-1})$
-    & Combine electric and magnetic sectors into one covariant form
+Covariant completion: $\mu^{-1} = Q_B = \operatorname{adj}(\varepsilon)$
+    & Magnetic block IS the adjugate of the electric block:
+      $\sum_{a<b}(V_a\!\times\!V_b)^{\otimes 2}=\operatorname{adj}(\sum_a V_a^{\otimes 2})$
     & Lorentz-covariant $F_{\mu\nu}F^{\mu\nu}$ in the continuum
-    & Pending the electric block above
-    & \texttt{STUB} \\
+    & Adjugate identity proven for general hop vectors (\texttt{electric\_induced\_action.py}).
+      \emph{Gap:} relative $\varepsilon$:$\mu^{-1}$ normalization ($a_t$, $1/g^2$) pending
+    & \texttt{PART} \\
 
 % ── Downstream verdict (gates Paper IV) ─────────────────────────────
-Gauge-sector birefringence verdict about $(1,1,-1)$
-    & Does the axis contrast in the photon action cancel or persist?
-    & Absence of vacuum birefringence (if it cancels)
-    & Downstream of the covariant completion; gates Paper~IV (\#18/\#17/\#19)
-    & \texttt{STUB} \\
+Gauge-sector birefringence verdict about $(1,1,-1)$: \emph{cancels} (conditional)
+    & Since $\mu^{-1}=\operatorname{adj}(\varepsilon)$, the dispersion
+      $\det(K\mu^{-1}K+\omega^2\varepsilon)$ is a double transverse root
+      $\omega^2=k^{\!\top}\!\varepsilon k$; split $\propto|1\!\cdot\!16-4\!\cdot\!4|=0$
+    & Absence of vacuum birefringence (prefactor-independent)
+    & Conditional theorem proven + numeric ($2\times10^4$ random $k$, split $<10^{-14}$);
+      gates Paper~IV (\#18/\#17/\#19). \emph{Gaps:} unconditional form needs $\varepsilon=P$
+      engine-verified; a factor-$\sim$2 common-mode speed anisotropy remains (isotropy
+      restoration open)
+    & \texttt{PART} \\
 
 \hline
 \end{longtable}
