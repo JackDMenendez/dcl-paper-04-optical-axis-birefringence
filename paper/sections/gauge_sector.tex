@@ -144,6 +144,18 @@ $\operatorname{adj}(M)$, so $Q_B = \operatorname{adj}(M)^{\!\top}\operatorname{a
 vector components in \texttt{src/utilities/electric\_induced\_action.py}.
 \end{proof}
 
+Theorem~\ref{thm:adjugate} is general---it holds for any three hop vectors, not just
+the octahedral ones. The A=1 lattice is the special case:
+
+\begin{corollary}[The lattice blocks]
+\label{cor:lattice_blocks}
+For the hop set $\mathbf{V}_1=(1,1,1)$, $\mathbf{V}_2=(1,-1,-1)$,
+$\mathbf{V}_3=(-1,1,-1)$, the electric form of Eq.~\eqref{eq:electric_P} has
+eigenvalues $\{1,4,4\}$ and the magnetic form of Eq.~\eqref{eq:magnetic_Q} has
+eigenvalues $\{16,4,4\} = \operatorname{adj}$, uniaxial about $(1,1,-1)$ in opposite
+senses (axis suppressed for $\boldsymbol{\varepsilon}$, enhanced for $Q_B$).
+\end{corollary}
+
 The physically relevant statement is the \emph{proportional} closure
 $\boldsymbol{\mu}^{-1} = \gamma\,\operatorname{adj}(\boldsymbol{\varepsilon})$ for a
 positive scalar $\gamma$: the electric and magnetic sectors may carry different
@@ -159,22 +171,23 @@ $\varepsilon_a\mu^{-1}_a = 1\cdot16 = 16 = 4\cdot4 = \varepsilon_p\mu^{-1}_p$.
 \subsection{The birefringence verdict}
 \label{subsec:birefringence}
 
-Isotropic impedance is exactly the condition that removes vacuum birefringence. For
-a plane wave of unit direction $\hat{\mathbf{k}}$ in a medium
-$(\boldsymbol{\varepsilon},\boldsymbol{\mu}^{-1})$, Maxwell's equations give
-$\det\bigl(K\,\boldsymbol{\mu}^{-1}K + \omega^2\boldsymbol{\varepsilon}\bigr) = 0$
-with $K = [\hat{\mathbf{k}}]_\times$. With $\boldsymbol{\mu}^{-1} =
-\gamma\operatorname{adj}(\boldsymbol{\varepsilon})$ this determinant factorizes---for
-a \emph{general} symmetric $\boldsymbol{\varepsilon}$ and general direction, requiring
-no shared eigenvectors---as
+Isotropic impedance is exactly the condition that removes vacuum birefringence, and
+it upgrades to a theorem.
+
+\begin{theorem}[Doubled transverse root; no gauge-sector birefringence]
+\label{thm:doubled_root}
+For a plane wave of unit direction $\hat{\mathbf{k}}$ in a medium with
+$\boldsymbol{\mu}^{-1} = \gamma\operatorname{adj}(\boldsymbol{\varepsilon})$, the
+Fresnel determinant $\det\bigl(K\,\boldsymbol{\mu}^{-1}K + \omega^2
+\boldsymbol{\varepsilon}\bigr)$, $K = [\hat{\mathbf{k}}]_\times$, factorizes---for a
+\emph{general} symmetric $\boldsymbol{\varepsilon}$ and general direction, with no
+shared eigenvectors required---as
 \begin{equation}
     \label{eq:dispersion}
     \input{sections/generated/dispersion_factorization}
 \end{equation}
-(the general prefactor is $\det\boldsymbol{\varepsilon}$; the value $16$ is that
-determinant for the lattice blocks, not a universal constant). The $\omega^2=0$ root
-is the longitudinal mode; the physical root is the \emph{doubled} transverse root, so
-both polarizations share the single dispersion
+The transverse root is \emph{doubled}, so both polarizations share the single
+dispersion
 \begin{equation}
     \label{eq:shared_dispersion}
     \input{sections/generated/shared_dispersion}
@@ -184,7 +197,13 @@ and the polarization split vanishes identically,
     \label{eq:null_split}
     \input{sections/generated/birefringence_condition}
 \end{equation}
-Gauge-sector vacuum birefringence \emph{cancels}. Because the split depends only on
+Gauge-sector vacuum birefringence cancels.
+\end{theorem}
+
+The general prefactor is $\det\boldsymbol{\varepsilon}$ (the value $16$ is that
+determinant for the lattice blocks, not a universal constant), and the $\omega^2=0$
+root dropped above is the unphysical longitudinal mode. Because the split depends
+only on
 the anisotropy ratios---fixed by the geometry through Theorem~\ref{thm:adjugate}---and
 not on the overall block scales, the cancellation is invariant under independent
 rescaling of $\boldsymbol{\varepsilon}$ and $\boldsymbol{\mu}^{-1}$: it survives the
