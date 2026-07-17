@@ -384,8 +384,10 @@ def write_latex_fragments() -> list[str]:
           r"\Delta(\omega^2) \;\propto\; \bigl|\varepsilon_a\,\mu^{-1}_a"
           r" - \varepsilon_p\,\mu^{-1}_p\bigr| = |\det\varepsilon - \det\varepsilon| = 0")
 
-    # Dispersion factorization -- emit the VERIFIED factored form (checked equal
-    # to the raw determinant here, so the displayed equation cannot drift).
+    # Dispersion factorization -- emit the GENERAL factored form (prefactor is
+    # det(epsilon), NOT the lattice value 16; reviewer 2026-07-17). The numeric
+    # factorization with P.det()=16 is checked here so the displayed equation
+    # cannot drift, but the DISPLAYED prefactor is the general symbol det(eps).
     kx, ky, kz, w2 = sp.symbols("kx ky kz w2", real=True)
     kvec = sp.Matrix([kx, ky, kz])
     K = _cross_matrix(kvec)
@@ -393,10 +395,12 @@ def write_latex_fragments() -> list[str]:
     shared = sp.expand((kvec.T * P * kvec)[0])
     factored = sp.factor(P.det()) * w2 * (w2 - shared) ** 2
     assert sp.expand(det - factored) == 0, "dispersion factorization drifted"
+    assert sp.det(P) == 16, "lattice det(eps) should be 16"
     _emit("dispersion_factorization.tex",
           r"\det\!\bigl(K\,\mu^{-1}K + \omega^2\varepsilon\bigr) = "
-          + sp.latex(sp.det(P)) + r"\,\omega^2\,\bigl(\omega^2 - k^{\!\top}\!"
-          r"\varepsilon\,k\bigr)^2")
+          r"\det(\varepsilon)\,\omega^2\,\bigl(\omega^2 - k^{\!\top}\!"
+          r"\varepsilon\,k\bigr)^2 \qquad\bigl(\det\varepsilon = 16"
+          r"\text{ for the lattice blocks}\bigr)")
     _emit("shared_dispersion.tex",
           r"\omega^2 = k^{\!\top}\!\varepsilon\,k = " + sp.latex(shared))
 

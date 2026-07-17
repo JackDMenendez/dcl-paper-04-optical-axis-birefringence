@@ -11,6 +11,21 @@
 
 \label{sec:kinematic_channel}
 
+A terminological caution frames this section. The effect below is a uniaxial
+\emph{directional dispersion anisotropy}: it contrasts propagation along
+$\hat{\mathbf{n}}_*$ with propagation across it. It is \emph{not} birefringence in
+the optical sense---two polarization eigenmodes with different speeds at one fixed
+wavevector---and we reserve that word for the gauge sector
+(Sec.~\ref{sec:gauge_sector}). The two branches $\lambda_\pm(\mathbf{k})$ below are
+the eigenvalue branches of the spinor transfer operator (the paired
+positive/negative-frequency spinor modes), not two optical polarizations. A second
+caution concerns interpretation: the transfer operator is \emph{non-unitary} away
+from the axis (Sec.~\ref{subsec:speed_split}, $|\lambda_\pm|^2<1$), so identifying
+the eigenphase gradient with a physical group velocity is a reading that the A=1
+normalization must license rather than one that follows automatically. What is
+rigorous throughout is the exact axial--transverse anisotropy of the structure-factor
+magnitude; the group-velocity and photon readings are flagged where they exceed it.
+
 The kinematic channel inherits Paper~I's single-tick spinor
 propagator~\cite{menendez2026geometryfirst}
 \begin{equation}
@@ -97,26 +112,46 @@ which, using Eq.~\eqref{eq:H2_perp}, reduces at small $\mathbf{k}$ to
     \label{eq:vg_small_k}
 \end{equation}
 
-\begin{proposition}[Closed-form ordinary/extraordinary speed split]
+\begin{proposition}[Axial--transverse group-velocity contrast]
 \label{prop:speed_split}
 For a wavevector at angle $\alpha$ to the optical axis
 ($|\mathbf{k}_\perp| = |\mathbf{k}|\sin\alpha$), the kinematic group speed
-is, to leading order,
+(read from the eigenphase, subject to the interpretation caveat below) is, to
+leading order,
 \begin{equation}
     |\mathbf{v}_g| = \tfrac23\sin\omega\;|\mathbf{k}|\,\sin\alpha .
     \label{eq:speed_law}
 \end{equation}
-The ordinary mode ($\mathbf{k}\perp\hat{\mathbf{n}}_*$, $\alpha=90^\circ$)
-propagates at $\tfrac23\sin\omega\,|\mathbf{k}|$; the extraordinary mode
-($\mathbf{k}\parallel\hat{\mathbf{n}}_*$, $\alpha=0$) is frozen,
-$|\mathbf{v}_g|=0$.  The split is
+The transverse direction ($\mathbf{k}\perp\hat{\mathbf{n}}_*$, $\alpha=90^\circ$)
+carries the maximal group speed $\tfrac23\sin\omega\,|\mathbf{k}|$; the axial
+direction ($\mathbf{k}\parallel\hat{\mathbf{n}}_*$, $\alpha=0$) is frozen,
+$|\mathbf{v}_g|=0$.  The axial--transverse contrast is
 \begin{equation}
-    \Delta v \equiv v_\text{ord} - v_\text{extra} = \tfrac23\sin\omega\;|\mathbf{k}|,
+    \Delta v \equiv v_\perp - v_\parallel = \tfrac23\sin\omega\;|\mathbf{k}|,
     \label{eq:split}
 \end{equation}
-with $\hat{\mathbf{n}}_* = (1,1,-1)/\sqrt{3}$ the degenerate
-(extraordinary) axis.
+with $\hat{\mathbf{n}}_* = (1,1,-1)/\sqrt{3}$ the frozen (axial) direction.
+This is a contrast between two propagation \emph{directions}, not a
+polarization split at fixed $\mathbf{k}$.
 \end{proposition}
+
+\begin{remark}[Non-unitarity and what the eigenphase licenses]
+\label{rem:nonunitary}
+Away from the axis the transfer operator is not unitary:
+$|\lambda_\pm|^2 = \sin^2(\omega/2) + \cos^2(\omega/2)\,|\tilde H_\text{RGB}|^2 < 1$,
+so each eigenvalue carries amplitude renormalization as well as phase. Identifying
+$\nabla_{\mathbf{k}}\theta$ with a physical group velocity is therefore not automatic:
+it requires deriving wave-packet motion for this evolution including the momentum
+dependence of $|\lambda|$, or showing that the per-tick A=1 renormalization---which
+rescales $|\lambda|$ to unity at each step---converts $T(\mathbf{k})$ into a unitary
+physical propagator whose eigenphase is the energy. Pending that argument, the
+conservative statement of Eqs.~\eqref{eq:H2_perp}--\eqref{eq:split} is that the
+structure-factor magnitude $|\tilde H_\text{RGB}(\mathbf{k})|$ has an exact
+axial--transverse anisotropy; that it is an anisotropy of physical \emph{transport}
+is corroborated observationally by \texttt{exp\_01} (the isotropic pulse flattens
+perpendicular to $\hat{\mathbf{n}}_*$ under the full renormalized dynamics), which is
+the sense in which the reading is used here.
+\end{remark}
 
 Equations~\eqref{eq:H2_exact}, \eqref{eq:dispersion_exact},
 \eqref{eq:group_velocity} and Proposition~\ref{prop:speed_split} have been
@@ -132,22 +167,29 @@ observability of the underlying anisotropy in renormalized amplitudes was
 established separately in \texttt{exp\_01} (Table~\ref{tab:audit};
 \texttt{notes/optical\_axis\_renormalization\_test.md}).
 
-\begin{remark}[The photon limit and the observable that names the split]
+\begin{remark}[The massless limit: what survives, and what it is not yet]
 \label{rem:photon_limit}
-The group-velocity split~\eqref{eq:split} scales as $\sin\omega$ and so
-vanishes for the massless photon, $\omega\to0$.  This is consistent with
-\texttt{exp\_01}: along the optical axis the dispersion is flat (infinite
-effective mass), so a momentum-launched photon packet shows no transport
-contrast, and the observable anisotropy is instead the
-\emph{dispersion-curvature} split of Eq.~\eqref{eq:H2_perp}---coefficient
-$\tfrac43$ perpendicular versus $0$ axial---which is $\omega$-independent
-and shared by the photon and massive sectors.  Both the velocity split
-\eqref{eq:split} and the curvature split \eqref{eq:H2_perp} are
-closed-form results describing the same uniaxial structure read off two
-observables, and the kinematic prediction comprises \emph{both}: the
-group-velocity split~\eqref{eq:split} in the massive sector and the
-$\omega$-independent dispersion-curvature split~\eqref{eq:H2_perp} carried
-by the photon and massive sectors alike.
+The group-velocity contrast~\eqref{eq:split} scales as $\sin\omega$ and so
+vanishes as $\omega\to0$. The limit is in fact subtle and must be stated
+carefully. At $\omega=0$ the eigenvalues are $\lambda_\pm = \pm|\tilde
+H_\text{RGB}(\mathbf{k})|$, purely real, so the eigen\emph{phase} is
+momentum-independent and the eigenphase group velocity is zero for
+\emph{every} direction. What survives is the axial--transverse anisotropy of the
+eigenvalue \emph{magnitude} $|\tilde H_\text{RGB}|$, Eq.~\eqref{eq:H2_perp}. That
+magnitude curvature is, as it stands, an attenuation or filtering curvature of the
+transfer operator; turning it into a photon \emph{energy} dispersion requires the
+additional physical argument of Remark~\ref{rem:nonunitary} (how the A=1
+normalization builds a unitary propagator whose eigenphase is the energy). Until
+that argument is supplied, the conservative massless claim is the exact
+axial--transverse anisotropy of the structure factor, not a demonstrated photon
+dispersion-curvature split. Relatedly, the massless limit of a spinor propagator is
+in the first instance a massless \emph{spinor} mode; identifying the two-component
+mode with a photon---its helicity content, gauge character, and representation---is a
+separate step this paper does not carry out. The robust, framework-internal content
+of this section is the closed-form uniaxial anisotropy of $|\tilde H_\text{RGB}|$
+about $\hat{\mathbf{n}}_*$ and its survival under A=1 renormalization
+(\texttt{exp\_01}); the massive-sector transport reading~\eqref{eq:split} is its
+clearest observable instance.
 \end{remark}
 
 % ── Scoping remark: mode count is unchanged by the split ──────────────

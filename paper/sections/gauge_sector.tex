@@ -1,219 +1,279 @@
-% gauge_sector.tex
-% The gauge-sector channel: the induced Maxwell action's two anisotropic blocks
-% (permittivity eps=P={1,4,4}, inverse permeability mu^-1=Q_B={4,4,16}), the
-% adjugate relation, the null birefringence verdict, and the (separate) common-mode
-% vacuum-speed anisotropy.
+% gauge_sector.tex -- the gauge-sector channel (merged from Paper VIII's
+% electric-block derivation + Paper IV's from-engine verification).
 %
-% STATUS (audit_table.tex is authority):
-%   birefringence verdict (cancels) -> PASS  (null split; engine blocks + solver)
-%   common-mode vacuum-speed anisotropy -> PART  (single-domain factor ~2 vs O_h)
-% Framing: geometric STRUCTURE (from-engine holonomy) x scalar MAGNITUDE (deferred
-% 1/g^2). The single-object dynamical (Tr ln T) tensor extraction is a STATED OPEN
-% item (see the remark at the end). Derivation + adjugate theorem: Paper~VIII
-% \cite{menendez2026electricblock}. Engine extraction + verdict: exp_03_geometric_blocks,
-% exp_03_dispersion_core; notes/exp_03_dynamical_confirmation_plan.md.
+% Load-bearing matrices are \input from sections/generated/*.tex, emitted by
+% src/utilities/electric_induced_action.py via sympy.latex() (provably identical
+% to the verifier). Do not hand-edit those fragments.
+%
+% Backs the gauge-sector audit rows (Table~\ref{tab:audit}); verified by
+% src/utilities/electric_induced_action.py (symbolic), exp_04_electric_
+% permittivity_extraction.py (engine read-off of eps), exp_03_geometric_blocks.py
+% (both blocks + verdict), exp_03_dispersion_core.py (Fresnel solver).
+%
+% Review-corrected 2026-07-17: the plaquette forms are GEOMETRIC CANDIDATE
+% response blocks (bare geometric plaquette actions), NOT a proven dynamical
+% induced action; det(eps) prefactor (not 16); proportional closure gamma*adj(eps);
+% exact adjugate does NOT survive O_h averaging; "constitutive closure" not
+% "covariant completion"; the word "birefringence" is reserved for this section.
 
 \label{sec:gauge_sector}
 
-The same bipartite geometry that fixes the kinematic optical axis also fixes a
-\emph{second} anisotropy, in the gauge sector.  Integrating the matter tokens out
-of the A=1 dynamics in a background electromagnetic field induces an effective
-Maxwell action whose energy density is the anisotropic quadratic form
+Where the kinematic channel (Sec.~\ref{sec:kinematic_channel}) lives in the matter
+propagator, the gauge channel lives in the vacuum's response to a background
+electromagnetic field. It is here, and only here, that the paper speaks of
+\emph{birefringence} in its literal optical sense: two transverse polarizations
+of one propagation vector, and whether their speeds split. The lattice couples the
+two static fields on different footings. A magnetic field enters as a \emph{spatial}
+link phase---the hop along a lattice direction $\mathbf{V}_a$ picks up the Peierls
+phase $\exp(i\,\mathbf{A}\!\cdot\!\mathbf{V}_a)$, so a closed spatial plaquette
+carries a gauge-invariant Wilson holonomy. An electric field enters instead as an
+\emph{on-site} phase advance $\delta\phi(\mathbf{x}) = \omega + V(\mathbf{x})$, the
+temporal potential $A_0$ added to the rest phase, with no spatial link. From these
+two couplings we build two quadratic field forms, show they are bound by an exact
+algebraic identity, and read off its consequence for polarization.
+
+A caveat frames everything below. The two forms are the natural \emph{geometric}
+(plaquette) quadratic forms the hop set supplies; we call them a permittivity
+$\boldsymbol{\varepsilon}$ and an inverse permeability $\boldsymbol{\mu}^{-1}$
+because they play those roles in the constitutive relation, but establishing them
+as the \emph{dynamical} induced action---the second-order response obtained by
+integrating the matter tokens out---is a separate step we do not complete here (it
+is the stated open item of Sec.~\ref{subsec:gauge_scope}). What is rigorous is the
+algebra of the two geometric forms and the polarization verdict it forces; that
+verdict is prefactor-independent, so it survives whatever fixes the blocks' overall
+normalization.
+
+\subsection{The magnetic form (anchor)}
+\label{subsec:magnetic_anchor}
+
+A spatial plaquette spanned by two hop directions $\mathbf{V}_a,\mathbf{V}_b$ has,
+for a uniform field, holonomy $(\mathbf{V}_a\!\times\!\mathbf{V}_b)\!\cdot\!\mathbf{B}$;
+summing the squared holonomy over the three independent bipartite plaquettes gives
+the $O(B^2)$ form
+$\text{density}_B = \sum_{a<b}\bigl((\mathbf{V}_a\!\times\!\mathbf{V}_b)\!\cdot\!
+\mathbf{B}\bigr)^2 = \mathbf{B}^{\!\top} Q_B\,\mathbf{B}$, with
 \begin{equation}
-    u = \tfrac12\bigl(\mathbf{E}^{T}\boldsymbol{\varepsilon}\,\mathbf{E}
-        + \mathbf{B}^{T}\boldsymbol{\mu}^{-1}\mathbf{B}\bigr),
-    \label{eq:induced_action}
+    \label{eq:magnetic_Q}
+    \input{sections/generated/magnetic_Q}
 \end{equation}
-with a permittivity tensor $\boldsymbol{\varepsilon}$ and an inverse-permeability
-tensor $\boldsymbol{\mu}^{-1}$ that are \emph{not} isotropic.  Both are uniaxial
-about the same optical axis $\hat{\mathbf{n}}_* = (1,1,-1)/\sqrt3$ that governs the
-kinematic channel (Sec.~\ref{sec:kinematic_channel}).  We report the two tensors as
-they are read directly off the engine's hop geometry, establish that the induced
-birefringence \emph{cancels}, and separate that (settled) null result from the
-distinct---and open---question of the common-mode vacuum speed.  The overall scale
-of Eq.~\eqref{eq:induced_action} carries the one undetermined coupling $1/g^2$ that
-Paper~I leaves open; throughout, we display anisotropic \emph{structure} and treat
-that isotropic \emph{magnitude} as deferred.  The analytic derivation of the blocks
-and of the cancellation theorem is the companion Paper~VIII
-\cite{menendez2026electricblock}; the present section is the independent from-engine
-confirmation.
+whose eigenvalues are $\{4,4,16\}$: the optical axis $(1,1,-1)$ is \emph{enhanced}
+(eigenvalue $16$), the perpendicular plane doubly degenerate at $4$. This is the
+Paper~I Appendix~B tensor~\cite{menendez2026geometryfirst}, reproduced from the
+engine's Peierls links by \texttt{dcl-core}'s \texttt{exp\_04}~\cite{dclcore} and
+again here (\texttt{exp\_03\_geometric\_blocks}) to machine precision; it is the
+exact consistency anchor throughout (Table~\ref{tab:audit}).
 
-\subsection{The two blocks from the hop geometry}
-\label{subsec:blocks}
+\subsection{The electric form}
+\label{subsec:electric_block}
 
-Write the three RGB hop vectors as $\mathbf{V}_1=(1,1,1)$, $\mathbf{V}_2=(1,-1,-1)$,
-$\mathbf{V}_3=(-1,1,-1)$ (as in Sec.~\ref{sec:kinematic_channel}).  The two blocks
-are the two natural quadratic forms these vectors build:
+The on-site advance $\delta\phi = \omega + V(\mathbf{x})$ is itself a \emph{temporal}
+link---a site joined to itself at the next tick---so a temporal plaquette spanned by
+one hop direction $\mathbf{V}_a$ and the tick direction closes on the lattice. For a
+uniform static field $V(\mathbf{x}) = -\mathbf{E}\!\cdot\!\mathbf{x}$ its holonomy is
+the on-site phase difference along the hop,
 \begin{equation}
-    \boldsymbol{\varepsilon} = P = \sum_{a} \mathbf{V}_a\mathbf{V}_a^{T},
-    \qquad
-    \boldsymbol{\mu}^{-1} = Q_B
-        = \sum_{a<b} (\mathbf{V}_a\times\mathbf{V}_b)(\mathbf{V}_a\times\mathbf{V}_b)^{T}.
-    \label{eq:blocks_def}
+    \label{eq:temporal_holonomy}
+    \Theta_a(\mathbf{x}) = \delta\phi(\mathbf{x}) - \delta\phi(\mathbf{x}+\mathbf{V}_a)
+        = V(\mathbf{x}) - V(\mathbf{x}+\mathbf{V}_a)
+        = (\mathbf{V}_a\!\cdot\!\mathbf{E})\,a_t,
 \end{equation}
-The electric block sums the hop vectors themselves; the magnetic block sums their
-oriented \emph{plaquette} areas $\mathbf{V}_a\times\mathbf{V}_b$.  Explicitly,
+the rest phase cancelling around the loop ($a_t$ is the tick's temporal extent).
+Where the magnetic loop needs two spatial directions and a cross product, the
+electric loop needs one. Summing the squared holonomy over the three hop directions
+gives $\text{density}_E = \sum_a\Theta_a^2 = a_t^2\,\mathbf{E}^{\!\top}
+\boldsymbol{\varepsilon}\,\mathbf{E}$, with
 \begin{equation}
-    \boldsymbol{\varepsilon} = \begin{pmatrix} 3&-1&1\\-1&3&1\\1&1&3 \end{pmatrix},
-    \quad \text{eig}\{1,4,4\};
-    \qquad
-    \boldsymbol{\mu}^{-1} = \begin{pmatrix} 8&4&-4\\4&8&-4\\-4&-4&8 \end{pmatrix},
-    \quad \text{eig}\{4,4,16\}.
-    \label{eq:blocks_explicit}
+    \label{eq:electric_P}
+    \input{sections/generated/electric_P}
 \end{equation}
-Both share the eigenvector $\hat{\mathbf{n}}_*=(1,1,-1)/\sqrt3$, but with opposite
-sense: the optical axis is the \emph{suppressed} ($\varepsilon=1$) direction of the
-permittivity and the \emph{enhanced} ($\mu^{-1}=16$) direction of the inverse
-permeability.  The origin of the axis is geometric: $\hat{\mathbf{n}}_*$ is the one
-cube body-diagonal \emph{absent} from the hop set $\{\mathbf{V}_a\}$, so the hop set
-breaks the cubic group $O_h$ to the trigonal $D_{3d}$ about $\hat{\mathbf{n}}_*$
-\cite{menendez2026electricblock}.
+eigenvalues $\{1,4,4\}$: the same axis is now \emph{suppressed} (eigenvalue $1$),
+the perpendicular plane again at $4$. The electric form is the mirror of the
+magnetic one---axis suppressed where the magnetic axis is enhanced---and its sense
+matches Paper~IV's static screen \texttt{exp\_03a}.
 
-Each block is read off the running engine, not asserted.  The magnetic block is the
-spatial plaquette holonomy of a uniform field: with the Peierls link phase
-$\exp(i\,\tfrac12(\mathbf{A}(\mathbf{x})+\mathbf{A}(\mathbf{x}-\mathbf{V}))\cdot\mathbf{V})$
-threaded through the hop, the smallest closed loop spanned by $\mathbf{V}_a,\mathbf{V}_b$
-carries flux $(\mathbf{V}_a\times\mathbf{V}_b)\cdot\mathbf{B}$, and summing its square
-over the RGB planes reproduces $Q_B$ (the dcl-core \texttt{exp\_04} route).  The
-electric block has no purely spatial holonomy---the field enters the tick rule
-\emph{on-site}, through $\delta\phi(\mathbf{x}) = \omega + V(\mathbf{x})$ with
-$V=-\mathbf{E}\cdot\mathbf{x}$---so it is read from the \emph{temporal} plaquette:
-seeding a uniform real state and taking one real step recovers
-$\delta\phi = \omega + V$ from $\mathrm{Im}\,\psi_R^{\text{new}}/\psi_R
-= \sin(\delta\phi/2)$, and the loop
-$\Theta_a(\mathbf{x}) = \delta\phi(\mathbf{x}) - \delta\phi(\mathbf{x}+\mathbf{V}_a)
-= \mathbf{V}_a\cdot\mathbf{E}$ (the mass term $\omega$ cancels around the loop)
-gives $\sum_a\Theta_a^2 = \mathbf{E}^{T}P\,\mathbf{E}$
-\cite{menendez2026electricblock}.  The experiment
-\texttt{exp\_03\_geometric\_blocks} performs both extractions from one engine and
-recovers Eq.~\eqref{eq:blocks_explicit} with the optical axis in the expected
-(suppressed/enhanced) sense; the on-site coupling reproduces $\omega+V$ to
-$4\times10^{-19}$ (unit tick weight), and the extracted $P$ is independent of
-$\omega$ to $7\times10^{-15}$ (the mass cancels), so the number genuinely exercises
-\texttt{HopOperator.step}.
+This form is read off the engine's actual tick evolution, not merely posited.
+Seeding a uniform real probe state and taking one step of the hop operator, the
+on-site term $i\sin(\delta\phi/2)\,\psi_R$ is purely imaginary while the kinetic hop
+is purely real, so $\operatorname{Im}(\psi_R^{\text{new}})/\psi_R = \sin(\delta\phi/2)$
+recovers $\delta\phi = \omega + V(\mathbf{x})$ from the step output (to $10^{-19}$);
+$\boldsymbol{\varepsilon}$ is extracted from that recovered phase
+(\texttt{exp\_04\_electric\_permittivity\_extraction}), with the tick weight
+$a_t=1$ measured, not assumed.
 
-\subsection{The covariant relation and the null birefringence verdict}
-\label{subsec:verdict}
+\begin{remark}[What the read-off establishes, and what it does not]
+\label{rem:vertex_not_action}
+Recovering $\delta\phi = \omega + V$ from one \texttt{HopOperator.step} validates the
+field--matter \emph{vertex} (the coupling in the tick rule), not the quadratic
+effective action $\Gamma^{(2)}[\mathbf{E}]$. A general $D_{3d}$-invariant quadratic
+form has \emph{two} independent coefficients (an axial and a transverse one), so the
+$1{:}4$ eigenvalue ratio is a property of the equal-weight single-hop plaquette sum,
+\emph{not} something $D_{3d}$ symmetry forces; cross-plaquette terms could reweight
+it. To promote $\boldsymbol{\varepsilon}$ from ``geometric candidate for the electric
+response block'' to ``the induced permittivity'' one needs the effective-action
+Hessian $\varepsilon_{ij} \propto \partial^2\Gamma[\mathbf{A}]/\partial E_i\,\partial
+E_j\big|_{\mathbf{A}=0}$ with $\Gamma[\mathbf{A}] = -\log\det T[\mathbf{A}]$, or a
+directly measured second-order response. That step is deferred
+(Sec.~\ref{subsec:gauge_scope}); the same caveat touches the magnetic form
+(Eq.~\eqref{eq:magnetic_Q}), which is a prescribed geometric plaquette action rather
+than an effective-action Hessian.
+\end{remark}
 
-The two blocks are not independent.  For \emph{any} three vectors, the sum of
-squared plaquette areas is the adjugate of the sum of squared vectors,
+\subsection{The constitutive closure}
+\label{subsec:constitutive_closure}
+
+The two geometric forms are not independent. Written through the hop-vector matrix
+$M = [\mathbf{V}_1\ \mathbf{V}_2\ \mathbf{V}_3]$, the electric form is the Gram
+matrix $\boldsymbol{\varepsilon} = \sum_a\mathbf{V}_a\mathbf{V}_a^{\!\top} =
+MM^{\!\top}$, and the magnetic form is the Gram matrix of the pairwise cross
+products, which is exactly its adjugate.
+
+\begin{theorem}[Adjugate relation]
+\label{thm:adjugate}
+For any three spatial hop vectors, the magnetic form is the adjugate of the electric
+one, $Q_B = \operatorname{adj}(\boldsymbol{\varepsilon})$:
 \begin{equation}
-    Q_B = \sum_{a<b}(\mathbf{V}_a\times\mathbf{V}_b)(\mathbf{V}_a\times\mathbf{V}_b)^{T}
-        = \operatorname{adj}\!\Bigl(\sum_a\mathbf{V}_a\mathbf{V}_a^{T}\Bigr)
-        = \operatorname{adj}(P),
     \label{eq:adjugate}
+    \input{sections/generated/adjugate_relation}
 \end{equation}
-so $\boldsymbol{\mu}^{-1} = \operatorname{adj}(\boldsymbol{\varepsilon})$ is a
-structural identity, not a coincidence of the octahedral lattice
-\cite{menendez2026electricblock}.  The two engine-extracted blocks satisfy it: they
-commute to $4\times10^{-15}$ and $\operatorname{adj}(\boldsymbol{\varepsilon})$
-matches $\boldsymbol{\mu}^{-1}$ to $5\times10^{-15}$
-(\texttt{exp\_03\_geometric\_blocks}).  Equation~\eqref{eq:adjugate} is exactly the
-condition that removes the birefringence.
+\end{theorem}
+\begin{proof}
+The cross products $\mathbf{V}_a\!\times\!\mathbf{V}_b$ are the rows of
+$\operatorname{adj}(M)$, so $Q_B = \operatorname{adj}(M)^{\!\top}\operatorname{adj}(M)
+= \operatorname{adj}(M^{\!\top})\operatorname{adj}(M) = \operatorname{adj}(MM^{\!\top})
+= \operatorname{adj}(\boldsymbol{\varepsilon})$. Verified symbolically for general
+vector components in \texttt{src/utilities/electric\_induced\_action.py}.
+\end{proof}
 
-\begin{proposition}[Null gauge-sector birefringence]
-\label{prop:null_split}
-For a medium with $\boldsymbol{\mu}^{-1} = \operatorname{adj}(\boldsymbol{\varepsilon})$,
-the photon dispersion factorizes as
+The physically relevant statement is the \emph{proportional} closure
+$\boldsymbol{\mu}^{-1} = \gamma\,\operatorname{adj}(\boldsymbol{\varepsilon})$ for a
+positive scalar $\gamma$: the electric and magnetic sectors may carry different
+overall normalizations (Sec.~\ref{subsec:gauge_scope}), and the exact equality
+$\gamma=1$ is the special case realized by the raw lattice forms. Either way, the
+adjugate carries each eigenvalue of $\boldsymbol{\varepsilon}$ to the product of the
+other two, so every principal direction obeys $\varepsilon_i\,(\mu^{-1})_i =
+\gamma\det\boldsymbol{\varepsilon}$: the impedance product is \emph{isotropic} even
+though $\boldsymbol{\varepsilon}$ and $\boldsymbol{\mu}^{-1}$ are each anisotropic,
+in opposite senses about $(1,1,-1)$. For the lattice values,
+$\varepsilon_a\mu^{-1}_a = 1\cdot16 = 16 = 4\cdot4 = \varepsilon_p\mu^{-1}_p$.
+
+\subsection{The birefringence verdict}
+\label{subsec:birefringence}
+
+Isotropic impedance is exactly the condition that removes vacuum birefringence. For
+a plane wave of unit direction $\hat{\mathbf{k}}$ in a medium
+$(\boldsymbol{\varepsilon},\boldsymbol{\mu}^{-1})$, Maxwell's equations give
+$\det\bigl(K\,\boldsymbol{\mu}^{-1}K + \omega^2\boldsymbol{\varepsilon}\bigr) = 0$
+with $K = [\hat{\mathbf{k}}]_\times$. With $\boldsymbol{\mu}^{-1} =
+\gamma\operatorname{adj}(\boldsymbol{\varepsilon})$ this determinant factorizes---for
+a \emph{general} symmetric $\boldsymbol{\varepsilon}$ and general direction, requiring
+no shared eigenvectors---as
 \begin{equation}
-    \det\!\bigl(K\,\boldsymbol{\mu}^{-1}K + \omega^2\boldsymbol{\varepsilon}\bigr)
-    = \det(\boldsymbol{\varepsilon})\,\omega^2\,
-      \bigl(\omega^2 - \mathbf{k}^{T}\boldsymbol{\varepsilon}\,\mathbf{k}\bigr)^2 ,
-    \qquad K = [\hat{\mathbf{k}}]_\times ,
-    \label{eq:dispersion_factored}
+    \label{eq:dispersion}
+    \input{sections/generated/dispersion_factorization}
 \end{equation}
-a \emph{double} transverse root for every propagation direction.  Both
-polarizations share $\omega^2 = \mathbf{k}^{T}\boldsymbol{\varepsilon}\,\mathbf{k}$,
-so the split
-$\Delta(\omega^2)\propto |\varepsilon_a\mu^{-1}_a - \varepsilon_p\mu^{-1}_p|
-= |\det\boldsymbol{\varepsilon}-\det\boldsymbol{\varepsilon}| = 0$
-vanishes.  The cancellation is invariant under independent rescaling of
-$\boldsymbol{\varepsilon}$ and $\boldsymbol{\mu}^{-1}$, hence immune to the deferred
-$1/g^2$, and holds for any hop vectors \textup{\cite{menendez2026electricblock}}.
-\end{proposition}
+(the general prefactor is $\det\boldsymbol{\varepsilon}$; the value $16$ is that
+determinant for the lattice blocks, not a universal constant). The $\omega^2=0$ root
+is the longitudinal mode; the physical root is the \emph{doubled} transverse root, so
+both polarizations share the single dispersion
+\begin{equation}
+    \label{eq:shared_dispersion}
+    \input{sections/generated/shared_dispersion}
+\end{equation}
+and the polarization split vanishes identically,
+\begin{equation}
+    \label{eq:null_split}
+    \input{sections/generated/birefringence_condition}
+\end{equation}
+Gauge-sector vacuum birefringence \emph{cancels}. Because the split depends only on
+the anisotropy ratios---fixed by the geometry through Theorem~\ref{thm:adjugate}---and
+not on the overall block scales, the cancellation is invariant under independent
+rescaling of $\boldsymbol{\varepsilon}$ and $\boldsymbol{\mu}^{-1}$: it survives the
+proportional closure for any $\gamma$, and holds for any hop vectors. This is the one
+gauge-sector result that is unconditional given the blocks. An engine-level and a
+purely numerical check corroborate it: \texttt{exp\_03\_geometric\_blocks} extracts
+both blocks from the engine, confirms $\boldsymbol{\mu}^{-1} =
+\operatorname{adj}(\boldsymbol{\varepsilon})$ from them to $5\times10^{-15}$, and the
+Fresnel solver (\texttt{exp\_03\_dispersion\_core}) returns $\max|v_+-v_-| =
+1.6\times10^{-15}$ over $2000$ directions, while a deliberately detuned control
+(breaking the adjugate relation) returns a split of $0.5$. This is an independent
+code-path verification of the theorem---a separate implementation, but within the
+same framework and engine---not an independent physical measurement.
 
-Feeding the two \emph{engine-extracted} blocks of Eq.~\eqref{eq:blocks_explicit}
-into the plane-wave dispersion of Proposition~\ref{prop:null_split} confirms this
-numerically: the experiment \texttt{exp\_03\_dispersion\_core} solves the
-generalized eigenproblem $-K\boldsymbol{\mu}^{-1}K\,\mathbf{E}
-= v^2\boldsymbol{\varepsilon}\,\mathbf{E}$ and finds the two transverse speeds equal
-to $\max|v_+-v_-| = 1.6\times10^{-15}$ over $2000$ directions, while a deliberately
-detuned control (breaking Eq.~\eqref{eq:adjugate}) returns a split of $0.5$---so the
-null is a genuine cancellation, not an insensitive estimator.  This discharges the
-gauge-sector \emph{birefringence} audit row to \texttt{PASS}
-(Table~\ref{tab:audit}).  Independently, the same operator anisotropy \emph{survives}
-the A=1 token renormalization: driving the engine's full multi-tick dynamics with a
-background field, the induced second-order response is uniaxial about
-$\hat{\mathbf{n}}_*$ with the correct opposite senses ($\mathbf{B}$ axis-enhanced,
-$\mathbf{E}$ axis-suppressed), so the cancellation is a property of the renormalized
-observables, not only of the tree-level operator.
-
-\subsection{The common-mode vacuum speed}
+\subsection{The common-mode speed anisotropy}
 \label{subsec:common_mode}
 
-The null split does \emph{not} make the gauge sector isotropic.  The shared
-dispersion of Proposition~\ref{prop:null_split},
-$\omega^2 = \mathbf{k}^{T}\boldsymbol{\varepsilon}\,\mathbf{k}$, is
-direction-dependent: the common-mode phase speed
-$v^2(\hat{\mathbf{k}}) = \hat{\mathbf{k}}^{T}\boldsymbol{\varepsilon}\,\hat{\mathbf{k}}$
-ranges over the eigenvalues of $\boldsymbol{\varepsilon}$, i.e.\ $v^2\in[1,4]$---a
-factor-$\sim2$ anisotropy of the vacuum speed about $\hat{\mathbf{n}}_*$, affecting
-\emph{both} polarizations equally.  The dispersion solver on the engine blocks
-returns $v\in[1.00,2.00]$ for a single lattice.  This is a speed anisotropy, not
-birefringence, and its observational status is genuinely open.
+The null split does not make the sector isotropic. The shared dispersion
+$\omega^2 = \mathbf{k}^{\!\top}\boldsymbol{\varepsilon}\,\mathbf{k}$ is
+direction-dependent: the common phase speed $v^2(\hat{\mathbf{k}}) =
+\hat{\mathbf{k}}^{\!\top}\boldsymbol{\varepsilon}\,\hat{\mathbf{k}}$ ranges over the
+eigenvalues of $\boldsymbol{\varepsilon}$, $v^2\in[1,4]$---a factor-$\sim2$ anisotropy
+of the vacuum speed about $(1,1,-1)$, shared by both polarizations. This is a
+\emph{common-mode} speed anisotropy, not birefringence, and it is not small; the
+engine blocks give $v\in[1.00,2.00]$.
 
 \begin{remark}[Single domain versus $O_h$ restoration]
 \label{rem:oh_restoration}
-The factor-$\sim2$ anisotropy is the response of a \emph{single} trigonal domain.
-Averaging the blocks over the four ways of choosing three of the four cube
-body-diagonals as hop directions gives
-$\langle\boldsymbol{\varepsilon}\rangle = 3\mathbb{I}$ and
-$\langle\boldsymbol{\mu}^{-1}\rangle = 8\mathbb{I}$, restoring $O_h$ and removing the
-anisotropy entirely (\texttt{exp\_03\_geometric\_blocks}: residual $10^{-16}$).  But
-the physical lattice has \emph{one fixed} hop set---its optical axis is a specific
-body-diagonal---so this four-domain average is a fictitious ensemble the lattice does
-not realize, and there is no dynamical mechanism that performs it.  Whether the
-common-mode anisotropy is therefore a real prediction (single domain) or is washed
-out (restored) is the isotropy-restoration question this paper leaves at
-\texttt{PART}; it is shared with the companion Paper~VIII
-\cite{menendez2026electricblock} and is distinct from the null birefringence, which
-holds in \emph{every} domain via Eq.~\eqref{eq:adjugate} regardless of the answer.
+The anisotropy is the response of a single trigonal domain. Averaging the two blocks
+over the four ways of choosing three of the four cube body-diagonals as hop
+directions restores full cubic symmetry,
+\begin{equation}
+    \label{eq:oh_average}
+    \input{sections/generated/oh_average}
+\end{equation}
+so the $O_h$-restored medium is isotropic. Note, however, that the \emph{exact}
+adjugate identity does \emph{not} survive this average: $\operatorname{adj}(3\mathbb{I})
+= 9\mathbb{I} \neq 8\mathbb{I}$, so $\langle\boldsymbol{\mu}^{-1}\rangle =
+\tfrac89\operatorname{adj}(\langle\boldsymbol{\varepsilon}\rangle)$---it is the
+\emph{proportional} closure ($\gamma=\tfrac89$) that survives. The averaged medium is
+non-birefringent because it is \emph{isotropic}, not because the exact adjugate
+relation persists. The physical lattice, though, has one fixed hop set---its optical
+axis is a specific body-diagonal---so the four-domain average is a fictitious ensemble
+it does not realize, and there is no dynamical mechanism that performs it. Whether the
+common-mode anisotropy is therefore a real prediction (single domain, factor $\sim2$)
+or washed out (restored, isotropic) is undecided; it is a question about vacuum
+structure, distinct from the polarization verdict, which cancels in \emph{every}
+domain regardless.
 \end{remark}
 
-\subsection{Scope: structure, magnitude, and the deferred dynamical tensor}
+The optical axis itself is geometric: as \emph{axes} the three hop directions are
+three of the four cube body-diagonals, and $(1,1,-1)$ is the fourth---the one the hop
+set omits. Selecting three of four diagonals breaks $O_h$ to the trigonal $D_{3d}$
+about the omitted diagonal, and a $D_{3d}$-invariant quadratic form is uniaxial,
+which is why both blocks come out $\{\text{axis};4,4\}$.
+
+\subsection{Scope: structure, normalization, and the open dynamical tensor}
 \label{subsec:gauge_scope}
 
-The results above are the anisotropic \emph{structure} of the induced action
-(Eq.~\eqref{eq:blocks_explicit}), computed from the engine hop geometry, together
-with the exact cancellation it implies.  The isotropic \emph{magnitude}---the single
-scalar $1/g^2$ multiplying Eq.~\eqref{eq:induced_action}---is the coupling Paper~I
-leaves undetermined and is not a prediction of the vacuum speed here.  Because the
-birefringence verdict is prefactor-independent (Proposition~\ref{prop:null_split}),
-that omission does not weaken it.
+Three items are deferred rather than concealed. First, \emph{normalization}: a single
+common factor (a one-loop $1/g^2$) multiplying both parts of the action cancels from
+the source-free equations of motion and so does \emph{not} set the photon speed; the
+speed is set by the \emph{relative} electric/magnetic normalization---the tick-weight
+and the temporal-versus-spatial lattice scales---which is the scalar $\gamma$ of the
+proportional closure and is left undetermined. Because the birefringence verdict is
+rescaling-invariant, this does not weaken it, but it means the sector fixes
+anisotropic \emph{structure}, not the absolute vacuum speed.
 
-\begin{remark}[The dynamical tensor extraction is a stated open item]
-\label{rem:trlnt_open}
-The blocks of Eq.~\eqref{eq:blocks_def} are obtained from the hop \emph{geometry}
-(the plaquette holonomies), which is the tree-level induced action and is exact at
-any lattice size.  One can also ask for the tensors as a genuinely \emph{dynamical},
-momentum-space fermion-loop sum---the second-order response of the physical band of
-the one-period transfer operator $T(\mathbf{k})$ summed over the Brillouin zone
-($\operatorname{Tr}\ln T$).  We do not carry that computation out here, and we do not
-claim it.  A naive band sum is not merely hard but Ward-\emph{divergent}: along the
-optical axis the physical band is exactly flat (all three hops project equally onto
-$\hat{\mathbf{n}}_*$, the $D_{3d}$ symmetry), so the intraband denominator
-$\lambda(\mathbf{k})-\lambda(\mathbf{k}\pm\mathbf{q})$ vanishes and the
-occupation-cancelled (diamagnetic) seagull must be subtracted for a finite answer;
-once regularized, the naive current--current object returns the \emph{wrong} tensor
-(uniaxial about $(1,-1,0)$, not the optical axis), and the correct assembly is the
-orbital-susceptibility (Berry-curvature plus quantum-metric) combination.  This
-divergence and its wrong-axis outcome were diagnosed in Paper~VIII
-\cite{menendez2026electricblock} and reproduced here in an exploratory band-sum
-probe; the geometric route of Sec.~\ref{subsec:blocks} sidesteps them entirely.
-Since the geometric and fermion-loop routes
-compute the \emph{same} induced action and must agree---and the geometric route
-already yields Eq.~\eqref{eq:blocks_explicit}---the dynamical extraction is a matter
-of methodological completeness, not of deciding the verdict, and is deferred to
-follow-on work.  As with the kinematic doubler accounting
-(Remark~\ref{rem:no_new_modes}), nothing in the birefringence verdict depends on it.
-\end{remark}
+Second, the \emph{dynamical} induced action. The blocks above are bare geometric
+plaquette forms; a genuinely matter-integrated effective action is a loop-level
+object, and demonstrating that integrating out the tokens reproduces
+Eqs.~\eqref{eq:magnetic_Q}--\eqref{eq:electric_P}---with these weights and no
+cross-plaquette terms---is the content of Remark~\ref{rem:vertex_not_action}. The
+route is the second-order response of the physical band of the one-period transfer
+operator $T(\mathbf{k})$ summed over the Brillouin zone ($\operatorname{Tr}\ln T$). We
+do not carry it out and do not claim it. A naive band sum is Ward-divergent along the
+optical axis (the physical band is exactly flat there, so the intraband denominator
+$\lambda(\mathbf{k})-\lambda(\mathbf{k}\pm\mathbf{q})$ vanishes); once the
+occupation-cancelled diamagnetic term is subtracted, the naive current--current object
+returns the \emph{wrong} tensor (uniaxial about $(1,-1,0)$), and the correct assembly
+is the orbital-susceptibility (Berry-curvature plus quantum-metric) combination. This
+single-object dynamical extraction is a stated open item, deferred to follow-on work.
+Since the geometric and effective-action routes must compute the same induced action,
+and the geometric route already gives Eqs.~\eqref{eq:magnetic_Q}--\eqref{eq:electric_P},
+finishing it is a matter of methodological completeness, not of deciding the verdict.
+
+The status of the three claims is therefore distinct (Table~\ref{tab:audit}): the null
+polarization split, \emph{conditional} on the blocks, is settled; the derivation of the
+blocks as the actual dynamical effective action is partial; and the common-mode
+isotropy is open. Naming the word once more, for precision: the sector predicts the
+\emph{absence} of gauge-sector vacuum birefringence about $(1,1,-1)$, together with a
+common-mode speed anisotropy whose reality turns on the vacuum-structure question above.
