@@ -138,6 +138,45 @@ to PM if ever wanted).
   `dcl_core.calibration` (per the v0.3.0 discipline); the lattice-unit verdict
   carries none.
 
+## 4g. Extractor build status (2026-07-16) -- prescription adopted; doubler is the obstacle
+
+VIII answered the vacuum-prescription question (handoff
+`2026-07-16-paper08-to-paper04-trlnT-prescription-answer`, VIII commit `454dca7`):
+**sum the 2nd-order field-induced eigenphase shift of the PHYSICAL band of `T(k)`
+only (unit BZ weight)** -- the eigenvalue continued from `lambda = 1+i*omega` at
+`k=0`; the doubler gives *minus* the action; both bands together are trivial
+(`det T = -sin^2(delta_phi/2)`, field-fixed except on-site `V`). Structure match
+to `{4,4,16}`/`{1,4,4}` (after normalizing the deferred `1/g^2`) is the bar; the
+null split (1.8e-15) is the sharper scale-free verdict. Reconcile bar + engine-
+limitation framing accepted by VIII.
+
+**Built (scratchpad `ladder_extract.py`):** the momentum-ladder extractor -- per
+`k`, a 6x6 one-period operator on the `{k-q, k, k+q}` x `(R,L)` ladder (field as a
+`k->k+/-q` coupling, exact to O(field^2)); central physical eigenphase; BZ sum.
+Foundations validated: real-space `T` spectrum matches Bloch to 5e-15; free
+physical/doubler identification confirmed.
+
+**OBSTACLE (the genuine research core):** the naive finite-difference + eigenvector-
+tracking BZ sum is **unstable** and does NOT yet reproduce `{4,4,16}` (magnetic
+anchor gives large, sign-wrong, k-grid-sensitive values). Root cause = the lattice
+**fermion doubler**: where the structure factor `S_RGB(k) -> 0` (BZ corners) the
+physical band and the doubler become near-degenerate (`|lam| ~ sin(omega/2)` both),
+the field mixes them, and mis-tracked points -- where the doubler's *opposite-sign*
+(minus-the-action) contribution is grabbed -- produce enormous spurious terms that
+swamp the sum. Dropping near-degenerate `k` did not cure it.
+
+**Path forward (choose):**
+- **(i) Analytic 2nd-order perturbation theory / band-difference.** Replace finite-
+  difference tracking with the closed-form 2nd-order eigenphase shift, or use VIII's
+  offered equivalent `(1/2)(phys - doubler)` band-difference: since
+  `ln lam_phys + ln lam_doubler = ln det T` is field-known,
+  `d(ln lam_phys) = (1/2) d(ln lam_phys - ln lam_doubler) + (1/2) d(ln det)`, and the
+  band-difference / discriminant is a smooth, tracking-free function of the matrix
+  entries (singular only exactly at the doubler coincidence). Far more robust.
+- **(ii) Consult VIII on the doubler treatment.** VIII proved the physical band gives
+  the holonomy analytically -- their derivation implicitly regularizes the doubler
+  (or works where it is gapped). A pointer to how avoids re-deriving it numerically.
+
 ## 5. Reconciliation with VIII (companion release)
 
 - IV cites VIII for the derivation + blocks; VIII cites IV for the dynamical
