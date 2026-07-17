@@ -1,67 +1,69 @@
 % introduction.tex
-% EXEMPLAR section showing the patterns used throughout the template:
-%   - top comment header naming the section and (where applicable) the
-%     experiments / derivations it depends on
-%   - \label{sec:...} immediately after the section start in main.tex
-%   - subsection labels of the form \label{subsec:...}
-%   - cross-references via \ref{} / \autoref{}
-%   - figure include via \input{...} of a figure-fragment file
-%   - bibliography citations with \cite{key}
-%   - audit-table reference to Table~\ref{tab:audit}
-%
-% Replace the prose with your own; keep the labelling and cross-reference
-% conventions.
+% Orientation for Paper IV: the lattice as a birefringent medium with a
+% geometry-fixed optical axis; the two channels (kinematic + gauge); the
+% companion structure with Paper VIII; scope. The audit table is included in
+% the Scope subsection so the reader meets it before any status-dependent claim.
 
 \label{sec:introduction}
 
-\placeholder{One- or two-paragraph orientation: what problem the paper
-addresses, why existing approaches fall short, and what the paper's
-contribution is. The introduction should be readable without the reader
-having internalised any framework-specific notation yet.}
+A crystal is birefringent when its atomic lattice singles out an axis, so that the
+speed of light depends on direction and polarization. The A=1 discrete causal
+lattice of Paper~I~\cite{menendez2026geometryfirst} is birefringent for the same
+reason, but the ``crystal'' is spacetime itself. Its bipartite hop set---the three
+RGB vectors $\mathbf{V}_1=(1,1,1)$, $\mathbf{V}_2=(1,-1,-1)$,
+$\mathbf{V}_3=(-1,1,-1)$ and their CMY negatives---uses three of the four cube
+body-diagonals and leaves the fourth, $\hat{\mathbf{n}}_* = (1,1,-1)/\sqrt3$, out.
+That single omission breaks the cubic point group $O_h$ to the trigonal $D_{3d}$
+about $\hat{\mathbf{n}}_*$ and fixes an optical axis geometrically, with no new
+postulate. The optical-axis birefringence is one of the series' standing
+predictions; this paper works it to closed form.
+
+The effect appears in two sectors, and they share the \emph{same} axis. The
+\emph{kinematic} channel (Sec.~\ref{sec:kinematic_channel}) follows from Paper~I's
+single-tick spinor propagator: the entire wavevector dependence passes through one
+scalar structure factor whose modulus is flat along $\hat{\mathbf{n}}_*$ and curved
+perpendicular to it, giving a closed-form ordinary/extraordinary speed split. This
+is the falsifiable, direction-fixed dispersion prediction the paper contributes, and
+its observability---that the anisotropy survives the per-tick A=1 renormalization
+into observable amplitudes---is established numerically. The \emph{gauge} channel
+(Sec.~\ref{sec:gauge_sector}) is the response of the vacuum: integrating the matter
+tokens out of the dynamics in a background electromagnetic field induces an
+anisotropic Maxwell action whose permittivity $\boldsymbol{\varepsilon}$ and
+inverse permeability $\boldsymbol{\mu}^{-1}$ are again uniaxial about
+$\hat{\mathbf{n}}_*$. Here the outcome is the opposite of a new signal: the two
+tensors obey the adjugate relation $\boldsymbol{\mu}^{-1} =
+\operatorname{adj}(\boldsymbol{\varepsilon})$, which forces the two photon
+polarizations to share a dispersion, so the gauge-sector vacuum \emph{birefringence
+cancels}. What remains is a common-mode speed anisotropy---a direction-dependent
+vacuum speed affecting both polarizations equally---whose observational status is
+left open. That the two sectors inherit one axis from one geometry is the paper's
+multi-channel concordance.
+
+The gauge-sector story is developed analytically in the companion
+Paper~VIII~\cite{menendez2026electricblock}, which derives the two blocks, proves the
+adjugate cancellation theorem, and settles the electric sector that neither Paper~I
+nor Paper~II supplied. The present paper is the independent, from-engine confirmation:
+both blocks are read off the running lattice's hop holonomies, the cancellation is
+verified numerically on those engine-extracted tensors, and the two papers are
+intended as a back-to-back pair.
 
 \subsection{Scope}
 \label{subsec:scope}
 
-\placeholder{What is in scope for this paper, and what is explicitly
-deferred to companion papers or follow-on work. Reference the audit
-table (Table~\ref{tab:audit}) if you maintain one --- it is the
-canonical answer to ``has this claim been verified yet?''}
+In scope, and derived here: the closed-form kinematic speed split
+(Sec.~\ref{sec:kinematic_channel}, \texttt{PASS}); the from-engine extraction of the
+gauge-sector blocks and the null birefringence verdict
+(Sec.~\ref{sec:gauge_sector}, \texttt{PASS}); and the structural axis-sharing of the
+two channels. Explicitly deferred: the isotropic overall scale of the induced action
+(the coupling $1/g^2$ Paper~I leaves open), so the gauge sector fixes anisotropic
+\emph{structure} but not the absolute vacuum speed; the observational status of the
+common-mode speed anisotropy (the single-domain-versus-$O_h$-restoration question,
+\texttt{PART}); and the single-object \emph{dynamical} ($\operatorname{Tr}\ln T$)
+extraction of the induced-action tensor, which is a stated open item
+(Remark~\ref{rem:trlnt_open}). The quantitative falsifiability of the kinematic
+prediction---its magnitude against current astrophysical bounds and its mapping onto
+the Standard-Model Extension---is analyzed in the accompanying notes rather than
+claimed in the prose. The audit table (Table~\ref{tab:audit}) is the canonical record
+of which claims are \texttt{PASS}, \texttt{PART}, \texttt{STUB}, or \texttt{FAIL}.
 
-%% The audit table is included here so the reader meets it before any
-%% claim that depends on a status entry.  Move it elsewhere (e.g. into
-%% a "Predictions" section) if that fits the paper better.  Delete this
-%% \input if you are not maintaining an audit table.
 \input{sections/audit_table}
-
-\subsection{A Worked Cross-Reference Example}
-\label{subsec:cross_ref_example}
-
-A statement supported by an external citation looks like this~\cite{example2024}.
-A statement supported by an in-paper derivation looks like this
-(see~\autoref{subsec:scope}).  An equation that is referenced
-elsewhere is given a label:
-%
-\begin{equation}
-    \label{eq:example_identity}
-    e^{i\pi} + 1 = 0.
-\end{equation}
-%
-Equation~\eqref{eq:example_identity} is referenced by label, not by
-hard-coded number.
-
-\subsection{A Worked Figure-Include Example}
-\label{subsec:figure_example}
-
-Figures live in \texttt{paper/figures/} (or in the repo-root
-\texttt{figures/} directory if the figure is shared with experiments).
-The standard pattern is to keep the \verb|\includegraphics| line and the
-caption in a small fragment file under \texttt{paper/figures/}, then
-\verb|\input| that fragment from inside a \verb|figure| environment
-here.  See \texttt{paper/figures/example\_figure.tex} for the template;
-once you replace the placeholder with a real figure, uncomment the
-include block below.
-
-% \begin{figure}[H]
-%     \centering
-%     \input{figures/example_figure}
-% \end{figure}
