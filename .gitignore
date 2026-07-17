@@ -51,3 +51,12 @@ coverage.xml
 .DS_Store
 Thumbs.db
 .vsisolation/
+
+# Stray in-place LaTeX build artifacts (canonical build goes to build/ via make)
+paper/*.pdf
+paper/*.log
+paper/*.toc
+paper/*.bbl
+paper/*.blg
+paper/*.fls
+paper/*.fdb_latexmk
