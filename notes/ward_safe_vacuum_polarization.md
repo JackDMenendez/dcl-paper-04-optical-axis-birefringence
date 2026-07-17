@@ -1,10 +1,26 @@
 # Ward-safe form of the induced-action vacuum polarization
 
 **Status:** diagnosis complete (2026-07-17); full band-sum reproduction of `{4,4,16}`
-NOT achieved (honest -- see below). **Verifier:** `src/utilities/ward_safe_diagnosis.py`
-(all checks PASS). **Triggered by:** handoff
-`2026-07-16-paper04-to-paper08-ward-safe-vacuum-polarization`.
+NOT achieved (honest -- see below). **DECISION (author, 2026-07-17): this is a formally
+OPEN item, deliberately left open -- candidate for a follow-on paper.** VIII does NOT claim
+a single-object dynamical (momentum-space fermion-loop) extraction of the induced-action
+tensor; VIII's tensor is the geometric holonomy (method (a), engine-verified via `exp_01`).
+**Verifier:** `src/utilities/ward_safe_diagnosis.py` (all checks PASS). **Triggered by:**
+handoff `2026-07-16-paper04-to-paper08-ward-safe-vacuum-polarization`.
 **Related:** [[trlnT_prescription]], [[speed_anisotropy_and_isotropy_restoration]].
+
+## Decision (2026-07-17) -- leave open, be honest
+
+The single-object momentum-space extraction of the induced-action TENSOR is left **open on
+purpose**. Rationale: it is a *methodological completeness* question, not a correctness one
+-- methods (a) geometric-holonomy and (b) fermion-loop are the same induced action and must
+agree, and (a) already gives `{4,4,16}` (engine-verified). So finishing (b) would confirm a
+known answer, not decide anything. It is not on the companion critical path (the null split
+`1.8e-15` and A=1-survival stand independently). A follow-on paper may address the correct
+orbital-susceptibility (Berry-curvature + quantum-metric) assembly. Until then, both VIII
+and IV frame the tensor as **geometric structure x scalar magnitude**, never as a from-
+scratch single-object dynamical extraction (see the honesty checklist in the reply handoff
+`2026-07-17-paper08-to-paper04-ward-open-decision`).
 
 ---
 

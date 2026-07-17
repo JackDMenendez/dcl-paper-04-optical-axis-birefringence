@@ -83,6 +83,16 @@ needs no new engine work (the electric `external_potential` coupling already exi
 only tidy-up would be upstreaming a `uniform_E_potential` sibling into `core3d.gauge` (a
 5-line helper, currently local to `exp_01`) -- optional, not blocking.
 
+**Known OPEN item (deliberate; author decision 2026-07-17).** The single-object dynamical
+(momentum-space fermion-loop) extraction of the induced-action TENSOR is left open --
+candidate for a follow-on paper. It is methodological completeness, NOT correctness: methods
+(a) geometric-holonomy and (b) `Tr ln T` are the same induced action and must agree, and (a)
+already gives `{4,4,16}` (engine-verified). VIII therefore frames the tensor as **geometric
+structure x scalar magnitude** and does NOT claim a from-scratch dynamical tensor extraction.
+See `notes/ward_safe_vacuum_polarization.md` (diagnosis: the naive band sum diverges on the
+flat optical axis; Ward-cancelled) and `notes/trlnT_prescription.md`. Do not let a future
+session mistake this for an unfinished task -- it is a scoped, honest open question.
+
 **Next concrete action:** the derivation + engine cross-check are done. Remaining:
 (1) the paper body is still scaffold placeholders -- write the derivation section
 (hand-written prose `\input`-ing the generated fragments); (2) the factor-~2 common-mode
