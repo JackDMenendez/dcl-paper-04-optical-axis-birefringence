@@ -85,8 +85,10 @@ of `epsilon` and `mu^{-1}`** — immune to the undetermined `a_t` / `1/g^2` fact
 holds for any hop vectors. (Referee-checked: the perfect-square factorization holds for a
 general symmetric `epsilon` with `mu^{-1} = adj(epsilon)`; it does not even require the two
 blocks to share eigenvectors.) This **conditional** is the load-bearing theorem. What is
-*not* yet earned is the **unconditional** physical verdict, because it rides on `epsilon=P`
-(analytic-only; see Outstanding above).
+*not* yet earned is the **unconditional** physical verdict — not because of `epsilon=P`
+(now engine-confirmed by `exp_01`), but because of the isotropy-restoration question for the
+common-mode speed anisotropy (caveat below) and Paper IV's full E+B dispersion
+classification at large N.
 
 **Caveat — a LARGE effect, foregrounded (referee point E).** The shared dispersion
 `w^2 = k^T epsilon k` is direction-dependent: `v^2(k)` ranges over `epsilon`'s eigenvalues

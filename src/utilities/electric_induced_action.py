@@ -66,8 +66,10 @@ point:
   and mu^{-1} -- immune to the undetermined a_t / 1/g^2 factors -- and holds for
   any hop vectors. This CONDITIONAL is the load-bearing theorem.
 
-  What is NOT yet earned is the UNCONDITIONAL physical verdict, because it rides
-  on ``eps = P``, which is analytic-only (no engine cross-check; see above).
+  What is NOT yet earned is the UNCONDITIONAL physical verdict -- not because of
+  ``eps = P`` (now engine-confirmed by exp_01) but because of the isotropy-
+  restoration question for the common-mode speed anisotropy (below) and Paper IV's
+  full E+B dispersion classification at large N.
 
 * HONEST CAVEAT -- a LARGE effect the verdict does not address. The shared
   dispersion ``w^2 = k^T eps k`` is direction-dependent: ``v^2(k)`` ranges over

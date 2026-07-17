@@ -117,7 +117,8 @@ they are bound by an exact algebraic identity.
 \begin{proof}
     Arrange the hop vectors as the columns of a $3\times3$ matrix $M$. Then
     $\varepsilon=\sum_a V_a V_a^{\!\top}=M M^{\!\top}$, while the cross products
-    $V_a\!\times\!V_b$ are the columns of $\operatorname{adj}(M)$, so
+    $V_a\!\times\!V_b$ are the rows of $\operatorname{adj}(M)$ (the columns of
+    $\operatorname{adj}(M)^{\!\top}$), so
     $Q_B=\sum_{a<b}(V_a\!\times\!V_b)(V_a\!\times\!V_b)^{\!\top}
     =\operatorname{adj}(M)^{\!\top}\!\operatorname{adj}(M)
     =\operatorname{adj}(M^{\!\top})\operatorname{adj}(M)
