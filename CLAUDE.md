@@ -11,6 +11,44 @@ new conversation can continue work without the full chat history.
 
 ## CURRENT STATUS (2026-07-09) -- v0.1-DRAFT
 
+> **UPDATE 2026-07-17 (b) -- PAPER VIII MERGED IN; RETITLED; EXTERNAL REVIEW
+> RESOLVED.** Per user + PM (handoff `2026-07-17-execute-iv-viii-merge-into-paper04`,
+> consumed), Paper~VIII (electric induced-action block) is **merged into this paper**
+> and this repo is the home (slug unchanged). VIII folded in via `git subtree`
+> (history preserved, merge commit `bdc7bf3`); its SymPy derivation scripts +
+> generated fragments now live in `src/utilities/` + `paper/sections/generated/`
+> (`exp_04_electric_permittivity_extraction.py` is VIII's engine eps read-off);
+> VIII's derivation absorbed into the unified `paper/sections/gauge_sector.tex`;
+> `paper08/` scaffolding removed; `dcl-paper-08` archived read-only (tombstone).
+> Board: #23 closed as merged-into-#13; #13 retitled.
+> **Retitle:** *Optical-Axis Anisotropy on the A=1 Discrete Causal Lattice: Kinematic
+> Dispersion and the Gauge-Sector Birefringence Cancellation.*
+> **External review (2026-07-17, `2026-07-17-paper04-paper08-external-review`)
+> corrections applied:** (1) "birefringence" is now RESERVED FOR THE GAUGE SECTOR --
+> the kinematic channel is **directional dispersion anisotropy** (Prop.\ renamed
+> "axial--transverse group-velocity contrast"); the non-unitary transfer operator
+> means the eigenphase$\to$group-velocity reading needs the A=1 normalization
+> argument, at $\omega=0$ the surviving curvature is of the eigenvalue MAGNITUDE
+> (attenuation, not proven photon dispersion), and the massless-spinor$\to$photon
+> identification is NOT claimed. (2) Gauge blocks are **geometric candidates**
+> (vertex verified via `HopOperator.step`, NOT the quadratic effective action
+> $\Gamma^{(2)}$; a $D_{3d}$ form has TWO free coefficients so the 1:4 ratio is not
+> symmetry-forced); dispersion prefactor is $\det\varepsilon$ (not 16); proportional
+> closure $\mu^{-1}=\gamma\,\mathrm{adj}(\varepsilon)$; the EXACT adjugate fails
+> $O_h$ averaging ($\mathrm{adj}(3I)=9I\neq8I$); "constitutive closure" not
+> "covariant completion"; a common $1/g^2$ does NOT set the photon speed (relative
+> normalization does). (3) Audit table is now a **three-way split**: null
+> polarization split (conditional on the blocks) = PASS; blocks as the dynamical
+> effective action = PART; common-mode/$O_h$ isotropy = PART. (4) "independent
+> confirmation" softened to "independent code-path verification" (same
+> framework/engine). **Affirmed anchor kept:** $Q_B=\mathrm{adj}(P)$, $P=MM^T$,
+> doubled transverse root (reviewer independently recomputed). Builds clean
+> (pdflatex+bibtex, 17 pp); claim-auditor faithful. **Reviewer verdict was
+> working-draft; the paper is revised per review but NOT yet submission-ready**
+> (external literature + the deeper physics items -- the group-velocity/photon
+> derivation and the dynamical $\mathrm{Tr}\ln T$ tensor -- remain). See memory
+> `paper-viii-merged-into-paper-iv.md`.
+
 > **UPDATE 2026-07-17 -- GAUGE BIREFRINGENCE VERDICT = PASS (null split);
 > tensor = geometry x scalar; dynamical Tr ln T tensor is a stated OPEN item.**
 > After the exp_03 build + two VIII exchanges (handoffs
