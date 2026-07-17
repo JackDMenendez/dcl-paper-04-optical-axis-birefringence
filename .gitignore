@@ -54,3 +54,14 @@ coverage.xml
 # OS junk
 .DS_Store
 Thumbs.db
+.vsisolation/
+
+# LaTeX build artifacts (paper is built with pdflatex + bibtex; outputs are
+# regenerated, generated/ fragments are committed but PDF/aux are not)
+paper/main.pdf
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.toc

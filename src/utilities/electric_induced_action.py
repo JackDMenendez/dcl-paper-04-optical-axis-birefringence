@@ -329,6 +329,22 @@ def write_latex_fragments() -> list[str]:
     _emit("birefringence_condition.tex",
           r"\Delta(\omega^2) \;\propto\; \bigl|\varepsilon_a\,\mu^{-1}_a"
           r" - \varepsilon_p\,\mu^{-1}_p\bigr| = |\det\varepsilon - \det\varepsilon| = 0")
+
+    # Dispersion factorization -- emit the VERIFIED factored form (checked equal
+    # to the raw determinant here, so the displayed equation cannot drift).
+    kx, ky, kz, w2 = sp.symbols("kx ky kz w2", real=True)
+    kvec = sp.Matrix([kx, ky, kz])
+    K = _cross_matrix(kvec)
+    det = sp.expand((K * Q * K + w2 * P).det())
+    shared = sp.expand((kvec.T * P * kvec)[0])
+    factored = sp.factor(P.det()) * w2 * (w2 - shared) ** 2
+    assert sp.expand(det - factored) == 0, "dispersion factorization drifted"
+    _emit("dispersion_factorization.tex",
+          r"\det\!\bigl(K\,\mu^{-1}K + \omega^2\varepsilon\bigr) = "
+          + sp.latex(sp.det(P)) + r"\,\omega^2\,\bigl(\omega^2 - k^{\!\top}\!"
+          r"\varepsilon\,k\bigr)^2")
+    _emit("shared_dispersion.tex",
+          r"\omega^2 = k^{\!\top}\!\varepsilon\,k = " + sp.latex(shared))
     return written
 
 
