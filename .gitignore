@@ -65,3 +65,5 @@ paper/*.blg
 paper/*.log
 paper/*.out
 paper/*.toc
+# Out-of-tree build directory for the compiled PDF (untracked)
+paper/build/
