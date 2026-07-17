@@ -91,12 +91,32 @@ to PM if ever wanted).
 
 ## 4. Build steps
 
-- **4a. Convergent dynamical estimator.** Replace the fixed-`nticks` phase readout
-  with a **phase-rate** (per-tick accumulation) fit, or a fixed-physical-time
-  observable, so the extracted axis:perp ratio converges to a
-  `nticks`-independent tensor. Validate: magnetic sector must converge to the
-  `{4,4,16}` structure (axis:perp of the quadratic form) as the **anchor**; only
-  then trust the electric `{1,4,4}`.
+- **4a. Convergent dynamical estimator.** *(FINDING 2026-07-16 -- the hard part.)*
+  Three real-space readouts were prototyped and **none converges** to the clean
+  tensor: (i) wavepacket local-phase 2nd-order response, (ii) return-overlap
+  `arg<psi_0|psi_N>` per tick, (iii) uniform-state interior RMS phase. All show
+  the correct **qualitative** structure (uniaxial about `(1,1,-1)`; B
+  axis-enhanced, E axis-suppressed; opposite senses -> the anisotropy survives
+  A=1) but the axis:perp **ratio drifts with `nticks`** (e.g. B: 4.1->7.8->11.9).
+  **Root cause:** along the optical axis the free dispersion is FLAT
+  (`|H_RGB|=1`), so axis-aligned phases accumulate coherently (secular growth)
+  while perpendicular modes spread/dephase -- the real-space phase response
+  **conflates the induced action with the free dispersion + gauge/boundary
+  structure**. VIII's static read-off sidesteps this (single step, no
+  propagation); the *dynamical* clean tensor needs the **k-resolved route**:
+  build the perturbed Bloch transfer operator `T(k; A)` (the validated `T(k)` +
+  the field as a `k -> k+/-q` coupling), extract the **per-mode second-order
+  eigenphase shift**, and **subtract the free part** mode-by-mode before the BZ
+  average -> the vacuum-polarization tensor `Pi_00(q->0) -> eps`,
+  `Pi_ij -> mu^-1`. Anchor: this route must reproduce `{4,4,16}` magnetically
+  before the electric `{1,4,4}` is trusted.
+  - **EMBEDDED PHYSICS DECISION (owner):** the BZ mode sum needs a **vacuum /
+    mode-filling prescription** (which band(s) of the 2-band non-unitary `T(k)`
+    constitute the "sea" whose phase is summed). Paper I's induced action came
+    out *geometric* (holonomy, no explicit sea sum), so the prescription must be
+    chosen to reproduce that -- this is a theory choice, not a numerics knob, and
+    should be settled (possibly with the VIII session) before the extractor is
+    trusted. See open question in the checkpoint.
 - **4b. Engine-extracted blocks.** From the converged estimator, build
   `(eps, mu^-1)` in the principal basis; confirm eigenvalues `{1,4,4}`/`{4,4,16}`,
   axis `(1,1,-1)`, and the **adjugate relation `mu^-1 = adj(eps)`** from the two
