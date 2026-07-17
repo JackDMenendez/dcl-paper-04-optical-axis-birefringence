@@ -203,3 +203,8 @@ See `release_notes/README.md`. Summary: CI green -> update `CITATION.cff` -> dra
   action is the 2nd-order eigenphase shift of the PHYSICAL band of `T(k)` only (both-band
   `Tr ln T` is trivial since `det T = -sin^2(dphi/2)` is structure-factor-independent).
   Verifier: `src/utilities/trlnT_prescription.py`.
+- `notes/ward_safe_vacuum_polarization.md` -- follow-up for Paper IV: their band-sum
+  divergence is the intraband pole on the flat optical axis (Ward-cancelled, `f-f=0`); take
+  the STRUCTURE from the geometric holonomy, the scalar `1/g^2` from the interband trace at
+  finite `omega`. `{4,4,16}` NOT reproduced from a naive band sum (honest).
+  Verifier: `src/utilities/ward_safe_diagnosis.py`.
