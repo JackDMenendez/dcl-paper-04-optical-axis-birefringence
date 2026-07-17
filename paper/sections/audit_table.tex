@@ -79,19 +79,39 @@ Covariant completion: $\mu^{-1} = Q_B = \operatorname{adj}(\varepsilon)$
       immaterial to the verdict below
     & \texttt{PASS} \\
 
-% ── Downstream verdict (gates Paper IV) ─────────────────────────────
-Gauge-sector birefringence verdict about $(1,1,-1)$: \emph{cancels} (conditional)
+% ── Downstream verdict (confirmed by Paper IV) ──────────────────────
+Gauge-sector vacuum birefringence about $(1,1,-1)$: \emph{cancels}
     & Since $\mu^{-1}=\operatorname{adj}(\varepsilon)$, the dispersion
       $\det(K\mu^{-1}K+\omega^2\varepsilon)$ is a double transverse root
       $\omega^2=k^{\!\top}\!\varepsilon k$; split $\propto|1\!\cdot\!16-4\!\cdot\!4|=0$
     & Absence of vacuum birefringence (prefactor-independent)
-    & Conditional theorem proven + numeric ($2\times10^4$ random $k$, split $<10^{-14}$);
-      $\varepsilon=P$ engine-verified (\texttt{exp\_01}); cancellation holds per-domain
-      \emph{and} under the $O_h$ average $\langle\varepsilon\rangle{=}3I,\langle\mu^{-1}
-      \rangle{=}8I$, so it is decoupled from the speed anisotropy. Gates Paper~IV. \emph{Remaining:}
-      the vacuum-structure question (single trigonal domain vs $O_h$-restored) and Paper~IV's
-      full $E{+}B$ large-$N$ dispersion classification
+    & Theorem proven + numeric ($2\times10^4$ random $k$, split $<10^{-14}$);
+      $\varepsilon=P$ engine-verified (\texttt{exp\_01}). \textbf{Independently confirmed by the
+      companion Paper~IV}~\cite{PaperIV}: from-engine blocks matching to $\sim10^{-15}$ and its
+      own dispersion solver returning null split $1.6\times10^{-15}$
+    & \texttt{PASS} \\
+
+% ── Common-mode speed anisotropy (the separate open row) ────────────
+Vacuum speed isotropy / $O_h$ restoration about $(1,1,-1)$
+    & Shared photon speed $v^2(\hat k)=\hat k^{\!\top}\!\varepsilon\hat k\in[1,4]$: a
+      factor-$\sim$2 \emph{common-mode} anisotropy (not birefringence), decoupled from the
+      cancellation above
+    & Isotropic $c$ if the vacuum $O_h$-restores
+    & \texttt{exp\_01} + Paper~IV: single trigonal domain gives $v\in[1,2]$; the $O_h$
+      4-domain average is isotropic but a \emph{fictitious ensemble} the fixed lattice does
+      not realize. Isotropy-restoration undecided --- a candidate follow-on question
     & \texttt{PART} \\
+
+% ── Method (b) / dynamical tensor (stated open item) ────────────────
+Single-object dynamical (momentum-space $\mathrm{Tr}\ln T$) tensor extraction
+    & Physical-band eigenphase sum of the vacuum polarization; anisotropic structure via the
+      Ward-safe orbital-susceptibility assembly
+    & Must reproduce the geometric $\{4,4,16\}$ (methods agree)
+    & Prescription derived (physical band; \texttt{trlnT\_prescription.py}) and the naive
+      band-sum divergence diagnosed (\texttt{ward\_safe\_diagnosis.py}); the correct
+      Ward-safe tensor assembly is \emph{open} --- deferred to a possible follow-on paper.
+      Not on the companion critical path
+    & \texttt{STUB} \\
 
 \hline
 \end{longtable}

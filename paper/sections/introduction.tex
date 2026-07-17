@@ -1,67 +1,60 @@
 % introduction.tex
-% EXEMPLAR section showing the patterns used throughout the template:
-%   - top comment header naming the section and (where applicable) the
-%     experiments / derivations it depends on
-%   - \label{sec:...} immediately after the section start in main.tex
-%   - subsection labels of the form \label{subsec:...}
-%   - cross-references via \ref{} / \autoref{}
-%   - figure include via \input{...} of a figure-fragment file
-%   - bibliography citations with \cite{key}
-%   - audit-table reference to Table~\ref{tab:audit}
-%
-% Replace the prose with your own; keep the labelling and cross-reference
-% conventions.
 
 \label{sec:introduction}
 
-\placeholder{One- or two-paragraph orientation: what problem the paper
-addresses, why existing approaches fall short, and what the paper's
-contribution is. The introduction should be readable without the reader
-having internalised any framework-specific notation yet.}
+A discrete lattice that is meant to reproduce electromagnetism must, at low
+energy, induce the Maxwell action---and it must do so for \emph{both} field
+sectors on the same footing. On the A=1 Discrete Causal Lattice the magnetic
+sector is settled: a background magnetic field enters the tick rule as a spatial
+link phase (the Peierls substitution), a closed spatial plaquette carries a
+gauge-invariant Wilson-loop holonomy, and its $O(B^2)$ induced action is the
+tensor $Q_B$ with eigenvalues $\{4,4,16\}$ and optical axis $(1,1,-1)$ (Paper~I,
+Appendix~B~\cite{PaperI}), reproduced from the engine's own link phases by
+dcl-core \texttt{exp\_04}. The electric sector is not settled, and cannot be read
+off the same way: an electric field enters the tick rule as an \emph{on-site},
+mass-like phase advance $\delta\phi(x)=\omega+V(x)$, with no spatial link and so,
+at first sight, no loop to extract a holonomy from. The corresponding electric
+action block---the permittivity $\varepsilon$---is therefore absent from Paper~I
+and from the Standard-Model derivation of Paper~II~\cite{PaperII}, and, because the
+framework establishes only the spatial point group $O_h$ and not the Lorentz
+boosts, there is no symmetry route that would fix $\varepsilon$ from the known
+magnetic $\mu^{-1}$. The electric block must be derived directly; that is the task
+of this paper.
+
+The stake is concrete. The companion Paper~IV~\cite{PaperIV} asks whether the
+lattice vacuum is birefringent about its optical axis $(1,1,-1)$---a binary,
+near-falsifying question---and that verdict cannot be computed without the
+covariant $(\varepsilon,\mu^{-1})$ pair. We supply it. We show that the on-site
+phase advance is itself a \emph{temporal} link, so a temporal plaquette closes and
+yields $\varepsilon=\sum_a V_a V_a^{\!\top}$ (eigenvalues $\{1,4,4\}$, the same
+axis now \emph{suppressed}); that the magnetic block is the exact \emph{adjugate}
+of the electric one, $\mu^{-1}=\operatorname{adj}(\varepsilon)$; and that this
+adjugate relation forces the photon dispersion to a doubled transverse root, so
+gauge-sector vacuum birefringence \emph{cancels}. The permittivity is not merely
+posited: it is read directly off the engine's tick evolution, and the whole result
+is confirmed independently by Paper~IV from an implementation of its own.
 
 \subsection{Scope}
 \label{subsec:scope}
 
-\placeholder{What is in scope for this paper, and what is explicitly
-deferred to companion papers or follow-on work. Reference the audit
-table (Table~\ref{tab:audit}) if you maintain one --- it is the
-canonical answer to ``has this claim been verified yet?''}
+This is a symbolic-derivation paper: every load-bearing claim is backed by a
+runnable script whose printed output the audit table cites, and the derived
+equations are generated from those verified expressions rather than transcribed.
+In scope are the electric block, the covariant completion, and the birefringence
+verdict. Two matters are deferred and stated plainly rather than hidden. First,
+the shared photon speed is direction-dependent at the un-averaged (single-domain)
+level---a \emph{common-mode} anisotropy that is not birefringence and whose
+restoration to isotropy is a separate, undecided question. Second, the A=1 engine
+carries only \emph{static} background fields; there is no dynamical gauge field and
+hence no literal propagating photon to clock, so ``dispersion'' here means the
+Fresnel analysis of the induced $(\varepsilon,\mu^{-1})$ tensors, and the
+independent numerical content is the survival of the induced-action anisotropy
+under the tick rule together with that dispersion verdict. The overall
+one-loop coupling $1/g^2$ (the induced-action magnitude) is inherited as open from
+Paper~I; it is immaterial to the birefringence verdict, which depends only on the
+anisotropy \emph{ratios}.
 
-%% The audit table is included here so the reader meets it before any
-%% claim that depends on a status entry.  Move it elsewhere (e.g. into
-%% a "Predictions" section) if that fits the paper better.  Delete this
-%% \input if you are not maintaining an audit table.
+Table~\ref{tab:audit} is the canonical record of which claims are
+\texttt{PASS}/\texttt{PART}/\texttt{STUB}; the prose does not exceed it.
+
 \input{sections/audit_table}
-
-\subsection{A Worked Cross-Reference Example}
-\label{subsec:cross_ref_example}
-
-A statement supported by an external citation looks like this~\cite{example2024}.
-A statement supported by an in-paper derivation looks like this
-(see~\autoref{subsec:scope}).  An equation that is referenced
-elsewhere is given a label:
-%
-\begin{equation}
-    \label{eq:example_identity}
-    e^{i\pi} + 1 = 0.
-\end{equation}
-%
-Equation~\eqref{eq:example_identity} is referenced by label, not by
-hard-coded number.
-
-\subsection{A Worked Figure-Include Example}
-\label{subsec:figure_example}
-
-Figures live in \texttt{paper/figures/} (or in the repo-root
-\texttt{figures/} directory if the figure is shared with experiments).
-The standard pattern is to keep the \verb|\includegraphics| line and the
-caption in a small fragment file under \texttt{paper/figures/}, then
-\verb|\input| that fragment from inside a \verb|figure| environment
-here.  See \texttt{paper/figures/example\_figure.tex} for the template;
-once you replace the placeholder with a real figure, uncomment the
-include block below.
-
-% \begin{figure}[H]
-%     \centering
-%     \input{figures/example_figure}
-% \end{figure}

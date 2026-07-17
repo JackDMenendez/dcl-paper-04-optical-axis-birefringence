@@ -8,7 +8,7 @@ new conversation can continue work without the full chat history.
 
 ---
 
-## CURRENT STATUS (2026-07-16) -- v0.1-DRAFT (derivation done, analytic; PART)
+## CURRENT STATUS (2026-07-17) -- verdict PASS; assembling for the joint release with Paper IV
 
 **Headline result (analytic; referee-reviewed 2026-07-16).** Method (a) succeeded. The
 electric block is `epsilon = P = sum_a V_a V_a^T`, eigenvalues `{1,4,4}`, optical axis
@@ -72,9 +72,11 @@ not a verdict.
 - **(b)** an action-level spectral (`Tr ln T`) probe.
 
 **Audit rows:** magnetic anchor `PASS`; electric block and covariant `(epsilon, mu^{-1})`
-completion now `PASS` (analytic + symbolic + **engine-extracted**, `exp_01`); birefringence
-verdict `PART` (conditional proven + `eps=P` engine-verified; unconditional pends the speed
-anisotropy + Paper IV large-N). Upgraded from all-`STUB` on 2026-07-16.
+completion `PASS` (analytic + symbolic + **engine-extracted**, `exp_01`); birefringence
+verdict **`PASS` (2026-07-17)** -- **independently confirmed by the companion Paper IV**
+(from-engine blocks ~1e-15, IV's own solver null split 1.6e-15). Separate rows: vacuum
+speed isotropy / `O_h` restoration `PART`; single-object dynamical (`Tr ln T`) tensor `STUB`
+(open follow-on). Upgraded from all-`STUB` on 2026-07-16.
 
 **Verification code lives in THIS paper, importing dcl-core as the engine** (not in
 dcl-core): `src/experiments/exp_01_...` imports `dcl_core.core3d` and reads `P` off the
@@ -135,7 +137,9 @@ derivation, a binary physical consequence.
 | Magnetic induced-action `Q`-tensor `{4,4,16}` (anchor) | PASS | Paper I App. B / dcl-core `exp_04`; `max\|Q - Paper_I_Q\| = 0`; re-derived here |
 | Electric induced-action block `epsilon = P = {1,4,4}`, axis suppressed | PASS | analytic + symbolic + **read off `HopOperator.step`** (`exp_01`): `delta_phi=omega+V` recovered to 1e-19, `omega` cancels in loop, `a_t=1` verified; matches `exp_03a` sign |
 | Covariant completion `mu^{-1} = Q_B = adj(epsilon)` | PASS | adjugate identity proven for general vectors; `exp_01` confirms `P`,`Q_B` commute + reciprocal from one engine. Relative `eps`:`mu^{-1}` scale (`a_t`,`1/g^2`) reported not fixed |
-| Gauge-sector birefringence verdict: **cancels** (conditional) | PART | double-root theorem + 2e4-`k` numeric; `eps=P` engine-verified (`exp_01`); gates Paper IV #18/#17/#19. Remaining: residual factor-~2 speed anisotropy (isotropy restoration) + Paper IV large-N dispersion |
+| Gauge-sector vacuum birefringence: **cancels** | PASS | double-root theorem + 2e4-`k` numeric + `eps=P` engine-verified (`exp_01`); **independently confirmed by companion Paper IV** (from-engine blocks ~1e-15, its own solver null split 1.6e-15) |
+| Vacuum speed isotropy / `O_h` restoration | PART | common-mode `v^2 in [1,4]` (single trigonal domain, factor ~2); `O_h` 4-domain average isotropic but a fictitious ensemble the fixed lattice doesn't realize; isotropy-restoration undecided |
+| Single-object dynamical (`Tr ln T`) tensor extraction | STUB | prescription derived (physical band) + naive-band-sum divergence diagnosed (Ward); correct orbital-susceptibility assembly OPEN, deferred to a possible follow-on. Not on companion critical path |
 
 Mirror of `paper/sections/audit_table.tex` -- update both together. The claim-auditor
 agent treats `audit_table.tex` as the authority.
