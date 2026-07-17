@@ -11,6 +11,28 @@ new conversation can continue work without the full chat history.
 
 ## CURRENT STATUS (2026-07-09) -- v0.1-DRAFT
 
+> **UPDATE 2026-07-16 -- electric-block GATE RESOLVED; VIII+IV are now
+> COMPANION papers.** Paper VIII (`dcl-paper-08-electric-induced-action`)
+> has DELIVERED the electric induced-action derivation that the gauge verdict
+> was gated on (handoff `2026-07-16-paper08-paper04-companion-publication`,
+> consumed this session). Results: electric block
+> $\varepsilon = P$ (eigenvalues $\{1,4,4\}$, axis $(1,1,-1)$ suppressed;
+> matrix $[[3,-1,1],[-1,3,1],[1,1,3]]$), magnetic block
+> $\mu^{-1}=\operatorname{adj}(\varepsilon)$ (eigenvalues $\{4,4,16\}$;
+> matrix $[[8,4,-4],[4,8,-4],[-4,-4,8]]$), and the gauge-sector vacuum
+> **birefringence CANCELS analytically** (doubled transverse root,
+> prefactor-independent, every trigonal domain + $O_h$ average). The
+> cancellation is **proven decoupled** from the vacuum *speed* anisotropy --
+> keep the two in SEPARATE audit rows. **Plan (PM/author 2026-07-16):**
+> publish VIII+IV as companion papers, cross-cited; **IV's remaining job is
+> the large-$N$ NUMERICAL confirmation** (`exp_03`) of the null polarization
+> split, which lifts VIII's verdict row PART$\to$PASS. IV must confirm its own
+> $(\varepsilon,\mu^{-1})$ MATCH VIII's blocks -- a mismatch is a red flag to
+> reconcile before publishing. This **supersedes** the 2026-07-09 "Paper IV
+> v1.0 HELD until the gauge verdict exists" ruling (now a joint release).
+> Gauge/P9 audit rows stay `PART` until `exp_03` lands. See memory
+> `paper08-electric-block-delivered.md`.
+
 **Resuming? Read the ⏳ WAITING ON block below.** Kinematic channel is
 `PASS` (done). **Gauge sector is `PART`:** its **operator-level structure is
 now EXACT and DONE** -- the induced $\mathbf{Q}$-tensor (eigenvalues
