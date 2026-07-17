@@ -11,6 +11,31 @@ new conversation can continue work without the full chat history.
 
 ## CURRENT STATUS (2026-07-09) -- v0.1-DRAFT
 
+> **UPDATE 2026-07-17 -- GAUGE BIREFRINGENCE VERDICT = PASS (null split);
+> tensor = geometry x scalar; dynamical Tr ln T tensor is a stated OPEN item.**
+> After the exp_03 build + two VIII exchanges (handoffs
+> `2026-07-17-paper08-to-paper04-ward-safe-answer` / `-ward-open-decision`,
+> consumed): IV extracts BOTH induced-action blocks from the engine GEOMETRY
+> (`src/experiments/exp_03_geometric_blocks.py`, ALL PASS) --
+> $\mu^{-1}=Q_B=\{4,4,16\}$ (spatial plaquette holonomy), $\varepsilon=P=\{1,4,4\}$
+> (temporal plaquette holonomy off `HopOperator.step`, fidelity 4e-19), adjugate
+> $\mu^{-1}=\mathrm{adj}(\varepsilon)$ confirmed (5e-15). The Fresnel solver on the
+> engine blocks gives the **null polarization split** ($\max|v_+-v_-|=1.6\times10^{-15}$;
+> detuned control 0.5) -> **gauge birefringence CANCELS (audit row PASS)**, and the
+> anisotropy **survives A=1** (dynamical, correct senses). Separate row: the
+> **common-mode vacuum speed** is direction-dependent ($v^2\in[1,4]$, single-domain
+> factor ~2; $O_h$ average is a fictitious ensemble) -> **PART** (isotropy-restoration
+> open). **Framing (author-endorsed): STRUCTURE (geometry, from-engine) x SCALAR
+> ($1/g^2$, deferred).** **STATED OPEN ITEM (do NOT claim; possible follow-on):** the
+> single-object DYNAMICAL ($\mathrm{Tr}\ln T$ / orbital-susceptibility) tensor
+> extraction -- a naive band sum is Ward-divergent (intraband pole on the flat
+> optical axis) and yields the WRONG object (uniaxial about $(1,-1,0)$); IV and VIII
+> independently confirmed. Do NOT present the naive band-sum tensor. Next: draft the
+> gauge section on this framing; on write-up landing file the return handoff so VIII
+> flips its verdict row PART->PASS for the joint release. See memory
+> `gauge-verdict-resolved-structure-times-scalar.md`,
+> `notes/exp_03_dynamical_confirmation_plan.md`.
+
 > **UPDATE 2026-07-16 -- electric-block GATE RESOLVED; VIII+IV are now
 > COMPANION papers.** Paper VIII (`dcl-paper-08-electric-induced-action`)
 > has DELIVERED the electric induced-action derivation that the gauge verdict
