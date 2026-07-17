@@ -1,0 +1,118 @@
+% ============================================================
+% audit_table.tex
+%
+% A "system audit" table mapping the paper's claims to the evidence
+% backing each one.  This is *the* canonical source of truth for which
+% claims are PASS / PART / STUB / FAIL --- prose elsewhere in the paper
+% should not contradict it.
+%
+% Status semantics (paste into the abstract or front-matter as well):
+%   PASS  -- derivation complete or experiment confirms the claim to
+%            stated precision.
+%   PART  -- mechanism demonstrated, full quantitative match pending;
+%            specific gaps documented in the evidence column.
+%   STUB  -- analytical result with no numerical confirmation yet,
+%            or planned experiment not yet run.
+%   FAIL  -- tested and disconfirmed.
+%
+% Use \texttt{} for code/experiment names and file paths inside cells.
+% Long cells are fine -- the column widths are tuned for prose.
+% ============================================================
+
+\label{tab:audit}
+
+{\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{0.95}
+\begin{longtable}{@{}p{2.6cm}p{3.8cm}p{3.2cm}p{4.4cm}p{1.0cm}@{}}
+\caption{\small System audit: paper claims mapped to supporting
+derivations and experiments.  Status semantics in the front-matter
+(\texttt{PASS} / \texttt{PART} / \texttt{STUB} / \texttt{FAIL}).}
+\label{tab:audit_caption} \\
+\hline
+\textbf{Claim} & \textbf{Mechanism} & \textbf{Continuum / formal limit} & \textbf{Evidence} & \textbf{Status} \\
+\hline
+\endfirsthead
+
+\multicolumn{5}{l}{\textit{(Table~\ref{tab:audit}, continued from previous page)}} \\
+\hline
+\textbf{Claim} & \textbf{Mechanism} & \textbf{Continuum / formal limit} & \textbf{Evidence} & \textbf{Status} \\
+\hline
+\endhead
+
+\hline
+\multicolumn{5}{r}{\textit{(continued on next page)}} \\
+\endfoot
+
+\hline
+\endlastfoot
+
+% ── Anchor row (inherited; must not break) ──────────────────────────
+Magnetic induced-action tensor $Q=\{4,4,16\}$, axis $(1,1,-1)$
+    & $O(B^2)$ coefficient of the bipartite-plaquette Wilson-loop action
+    & Isotropic Maxwell $\mu^{-1}$ after $O_h$ averaging
+    & Paper~I App.~B; dcl-core \texttt{exp\_04} ($\max|Q-Q_{\mathrm{I}}|=0$);
+      \texttt{src/utilities/electric\_induced\_action.py} anchor check
+    & \texttt{PASS} \\
+
+% ── Electric block (the new derivation) ─────────────────────────────
+Electric induced-action block (permittivity $\varepsilon = P = \sum_a V_a V_a^{\!\top}$,
+eigenvalues $\{1,4,4\}$, axis $(1,1,-1)$ suppressed)
+    & On-site coupling $\delta\phi=\omega+V(x)$ IS a temporal link; the temporal
+      plaquette (one hop $V_a$ + tick) closes, holonomy $(V_a\!\cdot\!E)\,a_t$
+    & Isotropic $\varepsilon$ after $O_h$ averaging (target)
+    & Analytic + symbolic (\texttt{electric\_induced\_action.py}) AND read off the engine's
+      real \texttt{HopOperator.step} output (\texttt{exp\_01}, mirror of dcl-core
+      \texttt{exp\_04}): $\delta\phi{=}\omega{+}V$ recovered to $10^{-19}$, $P{=}\{1,4,4\}$
+      axis suppressed (sign matches \texttt{exp\_03a}), $\omega$ cancels in the loop, tick
+      weight $a_t{=}1$ verified
+    & \texttt{PASS} \\
+
+% ── Covariant completion ────────────────────────────────────────────
+Covariant completion: $\mu^{-1} = Q_B = \operatorname{adj}(\varepsilon)$
+    & Magnetic block IS the adjugate of the electric block:
+      $\sum_{a<b}(V_a\!\times\!V_b)^{\otimes 2}=\operatorname{adj}(\sum_a V_a^{\otimes 2})$
+    & Lorentz-covariant $F_{\mu\nu}F^{\mu\nu}$ in the continuum
+    & Adjugate identity proven for general hop vectors; \texttt{exp\_01} confirms $P$, $Q_B$
+      from one engine \emph{commute} and are reciprocally ordered. \emph{Note:} the overall
+      relative $\varepsilon$:$\mu^{-1}$ scale ($a_t$, $1/g^2$) is reported, not fixed ---
+      immaterial to the verdict below
+    & \texttt{PASS} \\
+
+% ── Downstream verdict (confirmed by Paper IV) ──────────────────────
+Gauge-sector vacuum birefringence about $(1,1,-1)$: \emph{cancels}
+    & Since $\mu^{-1}=\operatorname{adj}(\varepsilon)$, the dispersion
+      $\det(K\mu^{-1}K+\omega^2\varepsilon)$ is a double transverse root
+      $\omega^2=k^{\!\top}\!\varepsilon k$; split $\propto|1\!\cdot\!16-4\!\cdot\!4|=0$
+    & Absence of vacuum birefringence (prefactor-independent)
+    & Theorem proven + numeric ($2\times10^4$ random $k$, split $<10^{-14}$);
+      $\varepsilon=P$ engine-verified (\texttt{exp\_01}). \textbf{Independently confirmed by the
+      companion Paper~IV}~\cite{PaperIV}: from-engine blocks matching to $\sim10^{-15}$ and its
+      own dispersion solver returning null split $1.6\times10^{-15}$
+    & \texttt{PASS} \\
+
+% ── Common-mode speed anisotropy (the separate open row) ────────────
+Vacuum speed isotropy / $O_h$ restoration about $(1,1,-1)$
+    & Shared photon speed $v^2(\hat k)=\hat k^{\!\top}\!\varepsilon\hat k\in[1,4]$: a
+      factor-$\sim$2 \emph{common-mode} anisotropy (not birefringence), decoupled from the
+      cancellation above
+    & Isotropic $c$ if the vacuum $O_h$-restores
+    & \texttt{exp\_01} + Paper~IV: single trigonal domain gives $v\in[1,2]$; the $O_h$
+      4-domain average is isotropic but a \emph{fictitious ensemble} the fixed lattice does
+      not realize. Isotropy-restoration undecided --- a candidate follow-on question
+    & \texttt{PART} \\
+
+% ── Method (b) / dynamical tensor (stated open item) ────────────────
+Single-object dynamical (momentum-space $\mathrm{Tr}\ln T$) tensor extraction
+    & Physical-band eigenphase sum of the vacuum polarization; anisotropic structure via the
+      Ward-safe orbital-susceptibility assembly
+    & Must reproduce the geometric $\{4,4,16\}$ (methods agree)
+    & Prescription derived (physical band; \texttt{trlnT\_prescription.py}) and the naive
+      band-sum divergence diagnosed (\texttt{ward\_safe\_diagnosis.py}); the correct
+      Ward-safe tensor assembly is \emph{open} --- deferred to a possible follow-on paper.
+      Not on the companion critical path
+    & \texttt{STUB} \\
+
+\hline
+\end{longtable}
+}
