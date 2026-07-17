@@ -1,6 +1,8 @@
 % kinematic_channel.tex
-% The kinematic birefringence channel: closed-form ordinary/extraordinary
-% speed split along the optical axis (1,1,-1).
+% The kinematic directional-dispersion channel: closed-form axial/transverse
+% group-speed contrast along the optical axis (1,1,-1).
+% NOTE (terminology, external review 2026-07-17): "birefringence" is reserved
+% for the gauge sector; this channel is directional dispersion anisotropy.
 %
 % STATUS: closed-form split DERIVED and numerically verified
 % (notes/closed_form_speed_split.md; exp_02). One framing decision remains
@@ -195,11 +197,11 @@ clearest observable instance.
 % ── Scoping remark: mode count is unchanged by the split ──────────────
 \begin{remark}[The split adds no propagating modes]
 \label{rem:no_new_modes}
-The ordinary and extraordinary modes derived above are the two
+The axial and transverse group speeds derived above are the two
 \emph{direction-dependent phases} of the bipartite propagator's existing
 eigenvalue branches $\lambda_\pm(\mathbf{k})
 = i\sin(\omega/2) \pm \cos(\omega/2)\,|\tilde{H}_\text{RGB}(\mathbf{k})|$.
-The entire birefringence enters through the single scalar
+The entire directional anisotropy enters through the single scalar
 $|\tilde{H}_\text{RGB}(\mathbf{k})|$, whose low-$\mathbf{k}$ expansion
 $1 - \tfrac43|\mathbf{k}_\perp|^2$ is flat along $\hat{\mathbf{n}}_*$ and
 curved (coefficient $4/3$) in the perpendicular plane.  The closed-form
@@ -209,7 +211,7 @@ additional branch: the mode count is two, before and after.
 
 This is logically independent of the lattice's fermion-doubling content.
 Doublers are a Brillouin-zone-corner phenomenon, whereas the
-ordinary/extraordinary split is the second-order term of an expansion
+axial--transverse split is the second-order term of an expansion
 about the physical mode at $\mathbf{k}=0$; the two occupy disjoint regions
 of $\mathbf{k}$-space.  Paper~I deliberately defers the doubler accounting
 for the bipartite $T_\text{diamond}$ Dirac operator (Paper~I~\S6.4,
@@ -218,23 +220,24 @@ lattice-perturbation-theory calculation,
 and nothing in the present derivation depends on, alters, or settles that
 count.  This $\mathbf{k}$-space disjointness argument is inherited from
 Paper~I's framework and is not a new result of the present paper; in
-particular, the optical-axis birefringence does \emph{not} imply a larger
+particular, the optical-axis dispersion anisotropy does \emph{not} imply a larger
 particle zoo.
 \end{remark}
 
-% ── Scoping remark: vacuum birefringence and packet spreading are the ──
+% ── Scoping remark: directional dispersion and packet spreading are the ──
 % ── same channel read two ways, not two new falsifiers.  Folds the ────
 % ── proposed post-v1 "Experiment 5" into this section per the program ─
 % ── decision (4 falsifiers + 1 demonstrator; Exp 5 is the demonstrator).
-\begin{remark}[Vacuum birefringence and wave-packet spreading restate this channel]
+\begin{remark}[Directional dispersion and wave-packet spreading restate this channel]
 \label{rem:spreading_same_channel}
 Two real-space signatures sometimes proposed as independent tests are, on
 this lattice, the \emph{same} kinematic anisotropy read through different
-observables and add no new claim. First, a polarization/direction-dependent
-propagation speed---``vacuum birefringence''---is precisely the
-ordinary/extraordinary split of Proposition~\ref{prop:speed_split} and
-Eq.~\eqref{eq:H2_perp}; it is this section's subject, not a separate
-prediction. Second, the anisotropic \emph{spreading} of an initially
+observables and add no new claim. First, a direction-dependent propagation
+speed---sometimes labeled ``vacuum birefringence'' in the literature---is, on
+this lattice, precisely the directional dispersion anisotropy of
+Proposition~\ref{prop:speed_split} and Eq.~\eqref{eq:H2_perp}, not a distinct
+fixed-$\mathbf{k}$ polarization split; it is this section's subject, not a
+separate prediction. Second, the anisotropic \emph{spreading} of an initially
 isotropic packet is the real-space dual of the group-velocity
 dispersion~\eqref{eq:group_velocity}---the same $\nabla_{\mathbf{k}}\theta$
 that Eq.~\eqref{eq:split} names---and is exactly the observable that
