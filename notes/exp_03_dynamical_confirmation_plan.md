@@ -165,17 +165,39 @@ the field mixes them, and mis-tracked points -- where the doubler's *opposite-si
 (minus-the-action) contribution is grabbed -- produce enormous spurious terms that
 swamp the sum. Dropping near-degenerate `k` did not cure it.
 
+**Attempt (i) DONE (2026-07-16) -- revealed the real obstacle is gauge invariance,
+not tracking.** Implemented the tracking-free analytic 2nd-order perturbation theory
+(`scratchpad/pt_extract.py`): per-k, the physical eigenvalue's 2nd-order shift from
+the `k->k+/-q` couplings using field-off left/right eigenvectors + explicit energy
+denominators, no finite differences. Result: STILL wrong -- large, **sign-wrong**
+(negative, not the positive `{16,4,4}`), and now **grid-divergent** (ngrid 16 hit
+~1e15 at a k-point near a degeneracy). Diagnosis: this is the classic
+**vacuum-polarization gauge-invariance problem**. The finite, positive `{4,4,16}`
+emerges only from an EXACT cancellation between the PARAMAGNETIC terms
+(inter/intraband, small denominators) and the DIAMAGNETIC ("seagull") diagonal
+2nd-order term, enforced by the Ward identity. Two things break the naive sum: (1)
+the **optical-axis dispersion flatness** drives the intraband denominator
+`lam_p(k) - lam_p(k+/-q) -> 0` (huge terms along the axis), and (2) the assembled
+diamagnetic term does not exactly cancel the paramagnetic one (sign + magnitude
+wrong, grid-divergent) -- a convention/completeness error in the seagull term that
+is notoriously delicate to get right.
+
 **Path forward (choose):**
-- **(i) Analytic 2nd-order perturbation theory / band-difference.** Replace finite-
-  difference tracking with the closed-form 2nd-order eigenphase shift, or use VIII's
-  offered equivalent `(1/2)(phys - doubler)` band-difference: since
-  `ln lam_phys + ln lam_doubler = ln det T` is field-known,
-  `d(ln lam_phys) = (1/2) d(ln lam_phys - ln lam_doubler) + (1/2) d(ln det)`, and the
-  band-difference / discriminant is a smooth, tracking-free function of the matrix
-  entries (singular only exactly at the doubler coincidence). Far more robust.
-- **(ii) Consult VIII on the doubler treatment.** VIII proved the physical band gives
-  the holonomy analytically -- their derivation implicitly regularizes the doubler
-  (or works where it is gapped). A pointer to how avoids re-deriving it numerically.
+- **(ii, now recommended) Get the exact regularized structure from VIII.** VIII PROVED
+  the physical band equals the holonomy `{4,4,16}` analytically -- so their derivation
+  already contains the gauge-invariant (Ward-safe) form of the paramagnetic+diamagnetic
+  combination, or works in a gauge/limit where the cancellation is manifest. A pointer
+  to that exact expression (or the seagull term's precise form) short-circuits a long,
+  error-prone rediscovery of the cancellation. File as a follow-up question to VIII.
+- **(iii) Ward-safe reformulation.** Build the current-current correlator in the
+  manifestly-conserving form (lattice Ward identity `q_mu Pi^{mu nu} = 0` imposed by
+  construction), so the diamagnetic term is defined as exactly the piece that cancels
+  the `q->0` paramagnetic divergence. Correct but a genuine multi-day lattice-field-
+  theory build.
+- **Scale-free fallback:** the null-split verdict (1.8e-15, from the dispersion solver on
+  VIII's proven blocks) is already independent and airtight; if the tensor extractor
+  proves too costly, IV can ship the null verdict + the A=1-survival feasibility (correct
+  senses) and cite VIII for the block magnitudes, deferring the from-scratch tensor.
 
 ## 5. Reconciliation with VIII (companion release)
 
