@@ -11,6 +11,31 @@ new conversation can continue work without the full chat history.
 
 ## CURRENT STATUS (2026-07-09) -- v0.1-DRAFT
 
+> **UPDATE 2026-07-18 -- FALSIFIABILITY SECTION ADDED (multi-channel map); the
+> birefringence null is now framed as a PASSED falsifiable prediction.** Executes the
+> author's "do both" decision (handoffs `2026-07-18-paper04-falsifiability-do-both-decision`
+> + `-birefringence-null-is-a-passed-falsifier`, consumed). New
+> `paper/sections/falsifiability.tex` (wired into `main.tex`): (1) **the birefringence
+> null is a PASSED falsifiable prediction** -- the framework FORBIDS optical-axis vacuum
+> birefringence (`thm:doubled_root`), it is tightly bounded + unobserved, and the same
+> datum EXCLUDES the CPT-odd (dim-5) birefringent LV rivals while corroborating the
+> CPT-even non-birefringent class. Do NOT call it "not a falsifier" / "consistency null"
+> (that was the earlier draft's error, corrected). Two guardrails: prospectively
+> non-discriminating; corroborated-AND-conditional on the blocks. (2) Multi-channel
+> falsifiability map (table): birefringence (passed) / kinematic massive dispersion
+> (PART, dim-6, Planck-suppressed, distinctive SIDEREAL signature + neutrinos) / omega=0
+> magnitude-filtering anisotropy (PART, real observable) / gauge-sector photon
+> common-mode dispersion (**OPEN, contingent** on the Tr ln T effective-action derivation
+> + O_h restoration, which may null it -- do NOT assert as a bound). (3) SME placement
+> (odd-dim CPT-odd birefringent / even-dim non-birefringent dispersive) verified vs
+> Kostelecky-Mewes; bib adds K-M 2009, LHAASO 2024, K-Russell tables. Intro + conclusion
+> + audit falsifiability row reframed to match; `notes/falsifiability_and_sme_mapping.md`
+> reconciled (the dim-6 PHOTON c^(6) mapping re-filed under the GAUGE channel, since the
+> omega=0 massless spinor limit does NOT disperse; kinematic = massive). **2.a (gauge
+> photon dispersion) is tracked FOLLOW-ON** (same effective-action + O_h program as the
+> VIII revision; board #17/#18/#19). Builds clean (make paper, 23 pp). See memory
+> `paper04-falsifiability-multichannel-map.md`.
+
 > **UPDATE 2026-07-17 (b) -- PAPER VIII MERGED IN; RETITLED; EXTERNAL REVIEW
 > RESOLVED.** Per user + PM (handoff `2026-07-17-execute-iv-viii-merge-into-paper04`,
 > consumed), Paper~VIII (electric induced-action block) is **merged into this paper**
