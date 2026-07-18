@@ -1,5 +1,31 @@
 # Falsifiability of the optical-axis birefringence: magnitude, SME mapping, and the tactical question
 
+> **RECONCILIATION UPDATE (2026-07-18) -- the omega=0 finding re-files the photon
+> mapping.** This note maps the *kinematic* channel onto the dim-6 nonbirefringent
+> *photon* sector `c^(6)_(I)jm`. That mapping assumed the kinematic channel supplies a
+> PHOTON dispersion. The A=1 normalization analysis (paper `sec:a1_normalization`,
+> `prop:massless_flat`) shows it does NOT: the massless (photon) limit of the spinor
+> propagator has a k-INDEPENDENT eigenphase (`arg lambda in {0,pi}`, `max|grad theta|=0`),
+> so it does not disperse. The correct split (author decision, handoffs
+> `2026-07-18-paper04-falsifiability-do-both-decision` + `-birefringence-null-is-a-passed-falsifier`):
+> - **Photon dim-6 dispersion (`c^(6)`, the LHAASO channel) belongs to the GAUGE sector**
+>   -- the induced U(1) photon's common-mode speed anisotropy `v^2=k^T eps k`. It is a
+>   CONTINGENT/OPEN channel, gated on the effective-action (`Tr ln T`) derivation of
+>   `eps,mu^-1` and the O_h-restoration computation (which may null it). Do NOT cite it as
+>   a bound in hand.
+> - **The KINEMATIC channel is a MASSIVE-sector directional dispersion** (omega!=0),
+>   plus the omega=0 magnitude/filtering anisotropy (`exp_01`). Its observational handle is
+>   the fixed-axis SIDEREAL signature (distinctive) and high-energy NEUTRINOS (the massive
+>   channel with a lever arm); the honest expectation is a bound far above Planck.
+> - **The birefringence null is a PASSED falsifiable prediction** (forbids a tightly-bounded
+>   observable; excludes the CPT-odd, dim-5 birefringent rivals; corroborates the CPT-even
+>   nonbirefringent class), not "not a falsifier". Guardrails: prospectively non-discriminating;
+>   corroborated-and-conditional on the blocks.
+> The SME citations below (Kostelecky-Mewes 2009; LHAASO 2024; Kostelecky-Russell tables)
+> are correct and now live in the paper bib; the dim-5-birefringent / dim-6-nonbirefringent
+> placement is verified. The paper's multi-channel map (`paper/sections/falsifiability.tex`)
+> is the current authority; this note is the evidence base, re-filed as above.
+
 **Status:** ANALYSIS (2026-06-16). Assesses whether the closed-form
 kinematic split (`notes/closed_form_speed_split.md`) yields a *practically*
 falsifiable result. **Blocking a tactical decision:** Paper III

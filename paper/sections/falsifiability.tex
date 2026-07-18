@@ -1,0 +1,134 @@
+% falsifiability.tex -- the multi-channel falsifiability map.
+%
+% Author decision (handoffs 2026-07-18-paper04-falsifiability-do-both-decision +
+% -birefringence-null-is-a-passed-falsifier): DO BOTH channels. 2.b (kinematic) is
+% concrete here; 2.a (gauge photon) is a contingent OPEN follow-on. Reframe the
+% birefringence null as a PASSED falsifiable prediction (not "not a falsifier"),
+% with two honesty guardrails. SME placement verified against Kostelecky--Mewes.
+%
+% Backs the falsifiability audit row (Table~\ref{tab:audit}).
+
+\label{sec:falsifiability}
+
+The program's motivation for this paper is falsifiability, and the optical axis is a
+parameter-free target. It is worth being precise about which of the framework's
+predictions actually test it, because the most common objection gets the logic
+backwards.
+
+\subsection{The birefringence null is a passed test, not an absence of content}
+\label{subsec:passed_null}
+
+Discrete-spacetime proposals are often dismissed on the grounds that ``there is no
+evidence of birefringence.'' A falsifiable prediction, however, is precisely one that
+\emph{forbids} an observable outcome. The framework forbids optical-axis vacuum
+birefringence---the doubled transverse root of Theorem~\ref{thm:doubled_root}---and
+vacuum birefringence is both directly observable and among the most tightly bounded
+quantities in physics. Its non-observation is therefore not silence; it is a risky
+prediction the framework has \emph{passed}.
+
+The test moreover \emph{discriminates}. In the Standard-Model Extension (SME)
+classification of Lorentz-violating photon
+operators~\cite{kosteleckymewes2009,kosteleckyrussell2011}, operators of odd mass
+dimension are CPT-odd and \emph{birefringent}; the leading Planck-suppressed such
+operator is dimension five, giving a helicity-dependent vacuum birefringence. Generic
+discrete, Lorentz-violating, and quantum-gravity models populate this sector, and it
+is exactly the astrophysical non-observation of vacuum birefringence that
+\emph{excludes} them. This framework instead sits in the CPT-even, non-birefringent
+sector: the induced photon action's adjugate closure (Theorem~\ref{thm:adjugate})
+cancels the polarization split, placing it with the even-dimension, dispersive-but-not-
+birefringent operators (the $c^{(6)}_{(I)jm}$ family). The same datum that refutes the
+birefringent rivals therefore \emph{corroborates} this one. The null is not luck; it is
+what the framework's operator class requires.
+
+Two guardrails keep this honest. \emph{(a) Retrospectively}, the null is a passed
+falsifiable prediction, and a strong one, because the natural alternatives fail the
+same test. \emph{(b) Prospectively}, a further non-detection of birefringence no longer
+\emph{discriminates} this framework from standard electrodynamics---so the
+forward-testable frontier is the dispersion channels below, not birefringence. And the
+cancellation is a theorem \emph{conditional} on the constitutive blocks
+(Sec.~\ref{sec:gauge_sector}); their derivation as the full dynamical vacuum response
+is itself an open item (Sec.~\ref{subsec:gauge_channel}). The statement is thus
+corroborated \emph{and} conditional---no more, and no less.
+
+\subsection{The falsifiable content is dispersion, and it splits by field}
+\label{subsec:falsifiability_map}
+
+Because birefringence is forbidden, the forward-testable content is the
+direction/energy-dependent dispersion, and the $\omega=0$ analysis of
+Sec.~\ref{subsec:a1_normalization} forces it to split into distinct channels living in
+distinct fields. We map them honestly, per channel:
+
+{\small
+\begin{center}
+\begin{tabular}{@{}p{3.5cm}p{1.9cm}p{3.6cm}p{3.4cm}@{}}
+\hline
+\textbf{Channel} & \textbf{Field} & \textbf{Effect} & \textbf{Status} \\
+\hline
+Optical-axis birefringence & gauge photon & polarization split & \emph{Forbidden}---passed falsifiable prediction (corroborated; conditional on the blocks) \\
+Kinematic massive dispersion & spinor (matter) & dim-6 directional dispersion; sidereal & Candidate falsifiable; real, bound $\gg$ Planck (\texttt{PART}) \\
+Kinematic massless anisotropy & spinor ($\omega=0$) & magnitude / filtering anisotropy & Real observable, testability open (\texttt{PART}) \\
+Gauge-sector photon dispersion & U(1) gauge & common-mode speed anisotropy & Open---derivation + $O_h$ pending; may be null (\texttt{OPEN}) \\
+\hline
+\end{tabular}
+\end{center}
+}
+
+\subsection{The kinematic channel (matter sector)}
+\label{subsec:kinematic_channel_falsif}
+
+The concrete falsifiable content of this paper is the massive-sector directional
+dispersion of Sec.~\ref{sec:kinematic_channel} ($\omega\neq0$). Its low-energy form
+$|\tilde H_\text{RGB}|^2 = 1 - \tfrac43|\mathbf{k}_\perp a|^2$ is a
+\emph{dimension-six}-scale anisotropy: the fractional effect is $\sim(E a/\hbar c)^2
+\sim (E/E_\text{Planck})^2$ if the lattice spacing is near Planckian. Two things must
+be said plainly about its reach.
+
+First, the \emph{magnitude} is small and the honest expectation is a bound, not a
+detection. Dimension-six suppression is the most suppressed Lorentz-violating case;
+even the strongest photon dimension-six time-of-flight bound---LHAASO's observation of
+GRB~221009A~\cite{lhaaso2024grb}, which for an isotropic quadratic dispersion implies a
+lattice spacing $a \lesssim 3\times10^{-28}$~m ($\sim\!10^{7}\,\ell_\text{Planck}$)---is
+weak in absolute terms, and massive particles forgo the cosmological baseline that gives
+photons their lever arm. A Planck-scale lattice sits some twenty orders below current
+reach; the correctly scoped claim is a limit far above the Planck scale, not a signal.
+
+Second, and more usefully, the distinctive handle is the \emph{signature}, not the
+magnitude. A lattice with a fixed spatial axis $\hat{\mathbf{n}}_*$ is anisotropic in a
+way no isotropic theory reproduces: as the Earth rotates, the laboratory frame sweeps
+through $\hat{\mathbf{n}}_*$, so the predicted effect \emph{modulates at the sidereal
+frequency}. In SME language this is the statement that the anisotropic coefficients
+($j\neq0$) are non-zero with a fixed, parameter-free angular pattern about
+$\hat{\mathbf{n}}_*$~\cite{kosteleckymewes2009}. A sidereal modulation with this
+specific pattern is a qualitatively distinctive target that an isotropic
+Lorentz-violating model cannot fake, even where the amplitude is small. The natural
+observational handles, stated with their caveats rather than as claims, are then: the
+sidereal modulation of high-energy propagation; high-energy astrophysical
+\emph{neutrinos} as the one massive channel that keeps a cosmological baseline; and the
+$\omega=0$ magnitude anisotropy---a direction-dependent \emph{filtering} of amplitudes
+(not an energy dispersion), the anisotropic spreading that \texttt{exp\_01} measures.
+
+\subsection{The gauge-sector photon channel (contingent)}
+\label{subsec:gauge_channel}
+
+The genuinely \emph{photonic} dispersion---the object an astrophysical dimension-six
+photon bound ($c^{(6)}_{(I)jm}$;
+\cite{kosteleckymewes2009,lhaaso2024grb}) directly constrains---is \emph{not} delivered
+by the $\omega\to0$ limit of the spinor propagator, which does not disperse
+(Prop.~\ref{prop:massless_flat}). On this lattice the photon is the induced gauge field,
+and its candidate falsifiable dispersion is the gauge-sector \emph{common-mode} speed
+anisotropy $\omega^2 = \mathbf{k}^{\!\top}\boldsymbol{\varepsilon}\,\mathbf{k}$
+(Sec.~\ref{subsec:common_mode}). We do not assert it as a bound in hand. It is gated on
+two derivations still open: (1) the effective-action ($\operatorname{Tr}\ln T$)
+legitimization of $\boldsymbol{\varepsilon}$ and $\boldsymbol{\mu}^{-1}$ as the actual
+dynamical vacuum response rather than geometric candidates
+(Remark~\ref{rem:vertex_not_action}); and (2) the $O_h$-restoration computation
+(Remark~\ref{rem:oh_restoration}), which may return that the anisotropy averages to a
+null in the continuum. We name it as the open channel we are still deriving, status
+\texttt{OPEN}, and pursue it as follow-on work rather than claiming it here.
+
+Taken together, these are the framework's falsifiable content, honestly mapped: a
+forbidden birefringence that the data have already corroborated and that excludes the
+birefringent rivals; a real but Planck-suppressed massive dispersion whose distinctive
+target is a sidereal signature; a real $\omega=0$ filtering anisotropy; and a contingent
+photon dispersion still under derivation. The value is not one frontier number but a
+structured, per-channel-honest account of exactly what tests the theory.
