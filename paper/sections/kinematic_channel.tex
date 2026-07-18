@@ -164,20 +164,31 @@ dynamics.
 \label{prop:massless_flat}
 At $\omega=0$ the eigenvalues $\lambda_\pm = \pm|\tilde H_\text{RGB}(\mathbf{k})|$ are
 real, so $\theta_\pm(\mathbf{k}) \in \{0,\pi\}$ independently of $\mathbf{k}$: the
-eigenphase is exactly flat and the group velocity vanishes in every direction. (A
-finite-difference sweep confirms $\max_{\mathbf{k}}|\nabla_{\mathbf{k}}\theta_+| = 0$
-at $\omega=0$, versus $O(1)$ for $\omega\neq0$; \texttt{exp\_02}.)
+eigenphase is exactly flat and the group velocity vanishes in every direction. (This
+is immediate from the closed form---$\lambda_\pm$ real makes $\arg\lambda_\pm$
+constant---and a direct finite-difference sweep confirms
+$\max_{\mathbf{k}}|\nabla_{\mathbf{k}}\theta_+| = 0$ at $\omega=0$, versus $O(1)$ for
+$\omega\neq0$.)
 \end{proposition}
 
-The A=1 normalization does not change this---it fixes $|\lambda|\to1$, but the phase
-is already $\mathbf{k}$-independent. So at $\omega=0$ the entire anisotropy is carried
-by the eigenvalue \emph{magnitude} $|\tilde H_\text{RGB}|$, which renormalization
-flattens: there is no eigenphase energy dispersion. Two consequences follow, and they
-set the honest scope of the channel. First, the directional dispersion of this
-section is a \emph{massive-sector} ($\omega\neq0$) effect. Second, a \emph{massless}
-energy dispersion---the object an astrophysical photon test would constrain---is
-\emph{not} delivered by the $\omega\to0$ limit of the spinor propagator; on this
-lattice the photon is the induced gauge field of Sec.~\ref{sec:gauge_sector}, whose
+The A=1 normalization does not restore a dispersion here---the phase is already
+$\mathbf{k}$-independent---so at $\omega=0$ the entire anisotropy is carried by the
+eigenvalue \emph{magnitude} $|\tilde H_\text{RGB}|$, and there is no eigenphase energy
+dispersion. It is important not to over-read the single-mode step: fixing
+$|\lambda_{\mathbf{k}}|\to1$ per plane wave would flatten one mode's magnitude, but the
+physical A=1 rule renormalizes the \emph{total} norm of a state, which does \emph{not}
+equalize the relative magnitudes across the $\mathbf{k}$-components of a wavepacket. The
+magnitude anisotropy therefore survives into observable amplitudes---this is exactly the
+$\omega$-independent anisotropic spreading that \texttt{exp\_01} measures (present and
+identical at $\omega=0$). What is absent at $\omega=0$ is an energy \emph{dispersion},
+not the anisotropy itself. Two consequences follow, and they set the honest scope of
+the channel. First, the directional-dispersion (group-velocity) reading of this section
+is a \emph{massive-sector} ($\omega\neq0$) effect, whereas the $\omega$-independent
+magnitude anisotropy is a filtering/spreading effect, not an energy dispersion. Second,
+a \emph{massless} energy dispersion---the object an astrophysical photon test would
+constrain---is \emph{not} delivered by the $\omega\to0$ limit of the spinor propagator;
+on this lattice the photon is the induced gauge field of Sec.~\ref{sec:gauge_sector},
+whose
 dispersion is the common-mode $\omega^2 = \mathbf{k}^{\!\top}\boldsymbol{\varepsilon}
 \,\mathbf{k}$. This is the same reason the massless spinor mode is not, without a
 further argument, a photon (Remark~\ref{rem:photon_limit}).
@@ -255,11 +266,16 @@ this lattice, precisely the directional dispersion anisotropy of
 Proposition~\ref{prop:speed_split} and Eq.~\eqref{eq:H2_perp}, not a distinct
 fixed-$\mathbf{k}$ polarization split; it is this section's subject, not a
 separate prediction. Second, the anisotropic \emph{spreading} of an initially
-isotropic packet is the real-space dual of the group-velocity
-dispersion~\eqref{eq:group_velocity}---the same $\nabla_{\mathbf{k}}\theta$
-that Eq.~\eqref{eq:split} names---and is exactly the observable that
-\texttt{exp\_01} already measures (the pulse flattens perpendicular to
-$\hat{\mathbf{n}}_*$). The isotropic-spread rate itself
+isotropic packet is the real-space dual of the $\omega$-independent
+structure-factor magnitude curvature $|\tilde H_\text{RGB}|^2 = 1 -
+\tfrac43|\mathbf{k}_\perp|^2$ (Eq.~\eqref{eq:H2_perp})---\emph{not} the
+massive-sector group velocity of Eq.~\eqref{eq:group_velocity}, which vanishes at
+$\omega=0$---and is exactly the observable that \texttt{exp\_01} already measures
+(the pulse flattens perpendicular to $\hat{\mathbf{n}}_*$, present and identical at
+$\omega=0$). That this spreading is $\omega$-independent, whereas the group-velocity
+contrast~\eqref{eq:split} scales as $\sin\omega$, is precisely the distinction of
+Sec.~\ref{subsec:a1_normalization}: the magnitude anisotropy is a filtering/spreading
+effect, the eigenphase group velocity a massive-sector energy dispersion. The isotropic-spread rate itself
 ($\mathrm{d}^2E/\mathrm{d}p^2$, direction-averaged) is the province of the
 Lorentz-violating dispersion program, whose real-space demonstrator lives
 there rather than here; only its \emph{$(1,1,-1)$-aligned anisotropy} is
