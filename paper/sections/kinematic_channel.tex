@@ -22,11 +22,14 @@ wavevector---and we reserve that word for the gauge sector
 the eigenvalue branches of the spinor transfer operator (the paired
 positive/negative-frequency spinor modes), not two optical polarizations. A second
 caution concerns interpretation: the transfer operator is \emph{non-unitary} away
-from the axis (Sec.~\ref{subsec:speed_split}, $|\lambda_\pm|^2<1$), so identifying
-the eigenphase gradient with a physical group velocity is a reading that the A=1
-normalization must license rather than one that follows automatically. What is
-rigorous throughout is the exact axial--transverse anisotropy of the structure-factor
-magnitude; the group-velocity and photon readings are flagged where they exceed it.
+from the axis ($|\lambda_\pm|^2<1$), so identifying the eigenphase gradient with a
+physical group velocity needs an argument. The A=1 normalization supplies it for the
+\emph{massive} sector but---as we show---\emph{not} in the massless limit, where the
+eigenphase does not disperse at all (Sec.~\ref{subsec:a1_normalization},
+Prop.~\ref{prop:massless_flat}). What is rigorous throughout is the exact
+axial--transverse anisotropy of the structure-factor magnitude; the group-velocity
+reading is earned for $\omega\neq0$, and the massless and photon readings are treated
+with the care they require.
 
 The kinematic channel inherits Paper~I's single-tick spinor
 propagator~\cite{menendez2026geometryfirst}
@@ -137,23 +140,47 @@ This is a contrast between two propagation \emph{directions}, not a
 polarization split at fixed $\mathbf{k}$.
 \end{proposition}
 
-\begin{remark}[Non-unitarity and what the eigenphase licenses]
-\label{rem:nonunitary}
+\subsection{The A=1 normalization and the massless limit}
+\label{subsec:a1_normalization}
+
 Away from the axis the transfer operator is not unitary:
-$|\lambda_\pm|^2 = \sin^2(\omega/2) + \cos^2(\omega/2)\,|\tilde H_\text{RGB}|^2 < 1$,
-so each eigenvalue carries amplitude renormalization as well as phase. Identifying
-$\nabla_{\mathbf{k}}\theta$ with a physical group velocity is therefore not automatic:
-it requires deriving wave-packet motion for this evolution including the momentum
-dependence of $|\lambda|$, or showing that the per-tick A=1 renormalization---which
-rescales $|\lambda|$ to unity at each step---converts $T(\mathbf{k})$ into a unitary
-physical propagator whose eigenphase is the energy. Pending that argument, the
-conservative statement of Eqs.~\eqref{eq:H2_perp}--\eqref{eq:split} is that the
-structure-factor magnitude $|\tilde H_\text{RGB}(\mathbf{k})|$ has an exact
-axial--transverse anisotropy; that it is an anisotropy of physical \emph{transport}
-is corroborated observationally by \texttt{exp\_01} (the isotropic pulse flattens
-perpendicular to $\hat{\mathbf{n}}_*$ under the full renormalized dynamics), which is
-the sense in which the reading is used here.
-\end{remark}
+$|\lambda_\pm(\mathbf{k})|^2 = \sin^2(\omega/2) + \cos^2(\omega/2)\,
+|\tilde H_\text{RGB}(\mathbf{k})|^2 < 1$, so each eigenvalue carries amplitude
+change as well as phase, and $\nabla_{\mathbf{k}}\theta$ is not \emph{a priori} a
+physical group velocity. The A=1 rule supplies the missing step. The scheduler
+renormalizes the amplitude to unit norm every tick---a real, positive rescaling
+$\psi\to\psi/\|\psi\|$ that leaves every phase untouched and writes back
+$\phi=\arg\psi$. For a single Bloch mode this replaces $\lambda_\pm$ by
+$\lambda_\pm/|\lambda_\pm|$: a genuinely \emph{unitary} one-tick map whose eigenphase
+is unchanged, $\theta_\pm(\mathbf{k}) = \arg\lambda_\pm(\mathbf{k})$. Because the
+renormalization moves magnitudes and not phases, the dispersion $\theta_\pm$ and its
+gradient are exactly what the un-renormalized eigenphase already gives. In this sense
+Eq.~\eqref{eq:dispersion_exact} and the group velocity~\eqref{eq:group_velocity} are
+physical: they are the dispersion of the renormalized, norm-conserving evolution,
+corroborated by \texttt{exp\_01}'s transport measurement under the full nonlinear
+dynamics.
+
+\begin{proposition}[Massless-limit degeneracy]
+\label{prop:massless_flat}
+At $\omega=0$ the eigenvalues $\lambda_\pm = \pm|\tilde H_\text{RGB}(\mathbf{k})|$ are
+real, so $\theta_\pm(\mathbf{k}) \in \{0,\pi\}$ independently of $\mathbf{k}$: the
+eigenphase is exactly flat and the group velocity vanishes in every direction. (A
+finite-difference sweep confirms $\max_{\mathbf{k}}|\nabla_{\mathbf{k}}\theta_+| = 0$
+at $\omega=0$, versus $O(1)$ for $\omega\neq0$; \texttt{exp\_02}.)
+\end{proposition}
+
+The A=1 normalization does not change this---it fixes $|\lambda|\to1$, but the phase
+is already $\mathbf{k}$-independent. So at $\omega=0$ the entire anisotropy is carried
+by the eigenvalue \emph{magnitude} $|\tilde H_\text{RGB}|$, which renormalization
+flattens: there is no eigenphase energy dispersion. Two consequences follow, and they
+set the honest scope of the channel. First, the directional dispersion of this
+section is a \emph{massive-sector} ($\omega\neq0$) effect. Second, a \emph{massless}
+energy dispersion---the object an astrophysical photon test would constrain---is
+\emph{not} delivered by the $\omega\to0$ limit of the spinor propagator; on this
+lattice the photon is the induced gauge field of Sec.~\ref{sec:gauge_sector}, whose
+dispersion is the common-mode $\omega^2 = \mathbf{k}^{\!\top}\boldsymbol{\varepsilon}
+\,\mathbf{k}$. This is the same reason the massless spinor mode is not, without a
+further argument, a photon (Remark~\ref{rem:photon_limit}).
 
 Equations~\eqref{eq:H2_exact}, \eqref{eq:dispersion_exact},
 \eqref{eq:group_velocity} and Proposition~\ref{prop:speed_split} have been
@@ -169,29 +196,19 @@ observability of the underlying anisotropy in renormalized amplitudes was
 established separately in \texttt{exp\_01} (Table~\ref{tab:audit};
 \texttt{notes/optical\_axis\_renormalization\_test.md}).
 
-\begin{remark}[The massless limit: what survives, and what it is not yet]
+\begin{remark}[The massless mode is not automatically a photon]
 \label{rem:photon_limit}
-The group-velocity contrast~\eqref{eq:split} scales as $\sin\omega$ and so
-vanishes as $\omega\to0$. The limit is in fact subtle and must be stated
-carefully. At $\omega=0$ the eigenvalues are $\lambda_\pm = \pm|\tilde
-H_\text{RGB}(\mathbf{k})|$, purely real, so the eigen\emph{phase} is
-momentum-independent and the eigenphase group velocity is zero for
-\emph{every} direction. What survives is the axial--transverse anisotropy of the
-eigenvalue \emph{magnitude} $|\tilde H_\text{RGB}|$, Eq.~\eqref{eq:H2_perp}. That
-magnitude curvature is, as it stands, an attenuation or filtering curvature of the
-transfer operator; turning it into a photon \emph{energy} dispersion requires the
-additional physical argument of Remark~\ref{rem:nonunitary} (how the A=1
-normalization builds a unitary propagator whose eigenphase is the energy). Until
-that argument is supplied, the conservative massless claim is the exact
-axial--transverse anisotropy of the structure factor, not a demonstrated photon
-dispersion-curvature split. Relatedly, the massless limit of a spinor propagator is
-in the first instance a massless \emph{spinor} mode; identifying the two-component
-mode with a photon---its helicity content, gauge character, and representation---is a
-separate step this paper does not carry out. The robust, framework-internal content
-of this section is the closed-form uniaxial anisotropy of $|\tilde H_\text{RGB}|$
-about $\hat{\mathbf{n}}_*$ and its survival under A=1 renormalization
-(\texttt{exp\_01}); the massive-sector transport reading~\eqref{eq:split} is its
-clearest observable instance.
+Proposition~\ref{prop:massless_flat} already shows that the $\omega\to0$ eigenphase
+does not disperse. There is a second, independent reason not to read the massless
+limit as a photon result: the $\omega=0$ limit of a spinor propagator is, in the
+first instance, a massless \emph{spinor} mode, and identifying the two-component mode
+with a photon---its helicity content, gauge character, and representation---is a
+separate step this paper does not take. The robust framework-internal content of this
+section is thus the closed-form uniaxial anisotropy of $|\tilde H_\text{RGB}|$ about
+$\hat{\mathbf{n}}_*$ and its survival under A=1 renormalization (\texttt{exp\_01}),
+with the massive-sector group velocity~\eqref{eq:split} as its clearest observable
+instance; the photon-sector dispersion is treated separately in
+Sec.~\ref{sec:gauge_sector}.
 \end{remark}
 
 % ── Scoping remark: mode count is unchanged by the split ──────────────
