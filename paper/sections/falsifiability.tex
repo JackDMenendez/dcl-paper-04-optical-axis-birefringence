@@ -67,7 +67,7 @@ distinct fields. We map them honestly, per channel:
 Optical-axis birefringence & gauge photon & polarization split & \emph{Forbidden}---passed falsifiable prediction (corroborated; conditional on the blocks) \\
 Kinematic massive dispersion & spinor (matter) & dim-6 directional dispersion; sidereal & Candidate falsifiable; real, bound $\gg$ Planck (\texttt{PART}) \\
 Kinematic massless anisotropy & spinor ($\omega=0$) & magnitude / filtering anisotropy & Real observable, testability open (\texttt{PART}) \\
-Gauge-sector photon dispersion & U(1) gauge & common-mode speed anisotropy & Open---derivation + $O_h$ pending; may be null (\texttt{OPEN}) \\
+Gauge-sector photon speed & U(1) gauge & common-mode speed anisotropy & \emph{Tension}---$O(1)$ dim-4, excluded as a single domain; structural fix (four-axis / $O_h$) open (\texttt{FAIL} as-constructed) \\
 \hline
 \end{tabular}
 \end{center}
@@ -87,7 +87,8 @@ First, the \emph{magnitude} is small and the honest expectation is a bound, not 
 detection. Dimension-six suppression is the most suppressed Lorentz-violating case. To
 gauge how weak that makes the reach, take the generic assumption---common to
 Planck-suppressed models, but \emph{not} a delivered result of this framework's own
-(still open, possibly null) photon channel, Sec.~\ref{subsec:gauge_channel}---that a
+photon channel---which, as constructed, carries an $O(1)$ tension of its own rather than
+a suppressed effect (Sec.~\ref{subsec:gauge_channel})---that a
 dimension-six effect of order $(a/\hbar c)^2$ exists: even then, the strongest current
 photon dimension-six time-of-flight bound, LHAASO's observation of
 GRB~221009A~\cite{lhaaso2024grb}, would only require $a \lesssim 3\times10^{-28}$~m
@@ -113,28 +114,83 @@ sidereal modulation of high-energy propagation; high-energy astrophysical
 $\omega=0$ magnitude anisotropy---a direction-dependent \emph{filtering} of amplitudes
 (not an energy dispersion), the anisotropic spreading that \texttt{exp\_01} measures.
 
-\subsection{The gauge-sector photon channel (contingent)}
+\subsection{The gauge-sector photon channel: a stated tension}
 \label{subsec:gauge_channel}
 
-The genuinely \emph{photonic} dispersion---the object an astrophysical dimension-six
-photon bound ($c^{(6)}_{(I)jm}$;
-\cite{kosteleckymewes2009,lhaaso2024grb}) directly constrains---is \emph{not} delivered
-by the $\omega\to0$ limit of the spinor propagator, which does not disperse
-(Prop.~\ref{prop:massless_flat}). On this lattice the photon is the induced gauge field,
-and its candidate falsifiable dispersion is the gauge-sector \emph{common-mode} speed
-anisotropy $\omega^2 = \mathbf{k}^{\!\top}\boldsymbol{\varepsilon}\,\mathbf{k}$
-(Sec.~\ref{subsec:common_mode}). We do not assert it as a bound in hand. It is gated on
-two derivations still open: (1) the effective-action ($\operatorname{Tr}\ln T$)
-legitimization of $\boldsymbol{\varepsilon}$ and $\boldsymbol{\mu}^{-1}$ as the actual
-dynamical vacuum response rather than geometric candidates
-(Remark~\ref{rem:vertex_not_action}); and (2) the $O_h$-restoration computation
-(Remark~\ref{rem:oh_restoration}), which may return that the anisotropy averages to a
-null in the continuum. We name it as the open channel we are still deriving, status
-\texttt{OPEN}, and pursue it as follow-on work rather than claiming it here.
+The genuinely \emph{photonic} dispersion is \emph{not} delivered by the $\omega\to0$
+limit of the spinor propagator, which does not disperse (Prop.~\ref{prop:massless_flat}).
+On this lattice the photon is the induced gauge field, and the corresponding effect is
+the gauge-sector \emph{common-mode} speed anisotropy $\omega^2 =
+\mathbf{k}^{\!\top}\boldsymbol{\varepsilon}\,\mathbf{k}$ (Sec.~\ref{subsec:common_mode}),
+with $\boldsymbol{\varepsilon}$ eigenvalues $\{1,4,4\}$---a factor-$\sim2$
+direction-dependent vacuum speed of light. Honesty requires reporting where this leads,
+because it is the one place the framework is presently in tension with observation.
 
-Taken together, these are the framework's falsifiable content, honestly mapped: a
-forbidden birefringence that the data have already corroborated and that excludes the
-birefringent rivals; a real but Planck-suppressed massive dispersion whose distinctive
-target is a sidereal signature; a real $\omega=0$ filtering anisotropy; and a contingent
-photon dispersion still under derivation. The value is not one frontier number but a
-structured, per-channel-honest account of exactly what tests the theory.
+\paragraph{The anisotropy is order unity, not suppressed.} Three independent routes
+agree that the common-mode anisotropy is $O(1)$ and \emph{dimension-four} (present at
+leading order, surviving the continuum limit), not a suppressed dimension-six effect:
+the geometric induced blocks give a $\mathbf{k}$-independent factor-$\sim2$ speed
+($\boldsymbol{\varepsilon}=\{1,4,4\}$); a Ward-safe physical-band vacuum-polarization
+sweep gives an anisotropic (traceless) part that is $\sim\!50\%$ of the isotropic part
+and stays constant as the photon wavevector $\to0$; and the static density response
+(\texttt{exp\_03a}) is axis-anisotropic at the same order. (See
+\texttt{notes/gauge\_common\_mode\_order.md}.)
+
+\paragraph{As constructed, this is excluded.} An $O(1)$, dimension-four,
+direction-dependent speed of light is a \emph{marginal} Lorentz violation---the
+CPT-even, non-birefringent anisotropic-$k_F$ sector of the
+SME~\cite{kosteleckymewes2009,kosteleckyrussell2011}, bounded by optical-cavity and
+Michelson--Morley isotropy experiments to $\sim\!10^{-18}$. A factor-$\sim2$ effect,
+sidereally modulated by the fixed axis, would have been seen long ago. Crucially it is
+\emph{observable}: it does not cancel as a coordinate choice, because the \emph{matter}
+sector does not share it---the matter's optical-axis anisotropy sits at dimension-six
+(Sec.~\ref{sec:kinematic_channel}), so the two sectors ride \emph{different} light cones,
+and the measurable quantity is their $O(1)$ relative tilt. For the physical vacuum taken
+as the single fixed trigonal domain of the A=1 hop set, the induced electromagnetism is
+therefore Lorentz-violating at order unity, and \emph{excluded}.
+
+\paragraph{Why the two sectors diverge, and the root of the tension.} The divergence has
+a clean structural cause. The matter dispersion's leading term is a \emph{scalar}
+($|\sum_a e^{i\mathbf{k}\cdot\mathbf{V}_a}|^2$, isotropic at $\mathbf{k}=0$), so its
+anisotropy is pushed to the $O(k^2)$, dimension-six correction; the induced photon block
+is a \emph{tensor} from the outset, $\boldsymbol{\varepsilon}=\sum_a
+\mathbf{V}_a\mathbf{V}_a^{\!\top}$, so its anisotropy sits at $O(1)$, dimension-four. The
+matter hides the trigonal breaking in an irrelevant operator; the induced photon wears it
+as a marginal one. The emergent leading-order Lorentz invariance of the matter sector thus
+does \emph{not} descend to the induced gauge sector---a recognized naturalness difficulty
+of emergent-spacetime constructions. And the whole effect is the single tensor
+$\sum_a\mathbf{V}_a\mathbf{V}_a^{\!\top}$: it is anisotropic ($\{1,4,4\}$) precisely because
+the hop set is \emph{three} of the four cube body-diagonals; the \emph{four}-diagonal set
+gives $\sum_a\mathbf{V}_a\mathbf{V}_a^{\!\top}=4\,\mathbb{I}$, exactly isotropic. The
+optical axis (this paper's subject) and the gauge-sector tension therefore share one
+origin: the omission of the fourth diagonal $(1,1,-1)$---equivalently, the selection of a
+single trigonal domain from the four.
+
+\paragraph{The resolution is structural, and open.} Because the anisotropy is fixed by the
+choice of hop set, the framework already admits constructions that remove it: including the
+fourth axis (and, more generally, higher-dimensional and polygonal axis topologies the
+underlying formalism permits) restores the cubic group. In particular, a construction in
+which the vacuum superposes the four diamond orientations would present the induced gauge
+action---a loop over the whole vacuum---with the $O_h$-symmetric average
+($\langle\boldsymbol{\varepsilon}\rangle\propto\mathbb{I}$, isotropic, tension removed),
+while a matter excitation propagating in a single orientation would retain its
+dimension-six optical axis: the two sectors would \emph{decouple}, gauge Lorentz-invariant
+and matter axis-bearing. Whether such a construction preserves the A=1 conservation and the
+Dirac/chiral structure that the three-axis choice was made to secure is a foundational
+question we do not settle here; it is the natural next research direction, and the honest
+status of the gauge channel is that of a \emph{tension with a known structural resolution
+still to be worked out}, not a delivered prediction.
+
+\paragraph{Scope.} This tension is specific to the gauge-sector common-mode speed. It does
+\emph{not} bear on the birefringence null (which passes, Theorem~\ref{thm:doubled_root}),
+the adjugate theorem, the kinematic directional dispersion, or results elsewhere in the
+program; those stand independently of how the gauge-sector construction is resolved.
+
+Taken together, the framework's falsifiability map is thus honestly mixed: a forbidden
+birefringence the data have already corroborated (excluding the birefringent rivals); a
+real but Planck-suppressed massive dispersion with a distinctive sidereal signature; a real
+$\omega=0$ filtering anisotropy; and an induced-photon speed anisotropy that, for the
+single-domain construction, is an $O(1)$ Lorentz violation excluded by experiment and
+pointing to a structural revision of the hop set. The value is not one frontier number but
+a candid, per-channel account of what tests the theory---including where it is presently
+tested and found wanting.
