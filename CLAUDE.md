@@ -11,6 +11,32 @@ new conversation can continue work without the full chat history.
 
 ## CURRENT STATUS (2026-07-09) -- v0.1-DRAFT
 
+> **UPDATE 2026-07-18 (b) -- GAUGE-SECTOR TENSION, published honestly (author decision).**
+> The 2.a computation (board #27) is done: the induced photon common-mode speed anisotropy
+> `v^2=k^T eps k`, `eps={1,4,4}`, is **O(1) and dimension-4 (NOT suppressed)** -- three
+> independent routes (geometric holonomy; Ward-safe physical-band vacuum polarization,
+> traceless/iso ~0.5 and q-independent; density response `exp_03a`). So for the physical
+> vacuum as the single fixed trigonal domain, it is a marginal CPT-even `k_F` Lorentz
+> violation **EXCLUDED** by cavity/Michelson-Morley isotropy bounds (~1e-18) -- observable
+> because MATTER does not share it (matter anisotropy is dim-6, so the sectors ride
+> different light cones). **ROOT (author insight):** the anisotropy is the single tensor
+> `sum_a V_a V_a^T = {1,4,4}`, O(1) only because the hop set is THREE of the four cube
+> body-diagonals (omitting `V_4=(1,1,-1)`); the FOUR-diagonal set = `4*I` (isotropic). The
+> optical axis and the gauge tension share this one origin -- the arbitrary V_4 exclusion /
+> single-domain choice. **Why matter survives:** its leading term is a SCALAR (dim-6
+> anisotropy, viable); the induced photon block is a TENSOR (dim-4, O(1)) -- emergent
+> Lorentz invariance does not descend to the induced gauge sector. **RESOLUTION (open,
+> foundational):** the formalism admits four-axis / higher-dim / polygonal hop topologies;
+> a four-orientation VACUUM would restore O_h for the induced gauge loop while matter keeps
+> its dim-6 axis (decoupling). Whether it preserves A=1/Dirac is a Paper-I-level open
+> question. **DECISION (author, 2026-07-18): publish Paper IV with the tension honestly
+> stated** (abstract + falsifiability section + conclusion + audit reworked; gauge
+> common-mode audit row = `FAIL` as-single-domain / open otherwise). **SCOPE: does NOT
+> touch** the birefringence null (passed), the adjugate theorem, the kinematic dispersion,
+> or Bell/other program results. Builds clean (make paper, 25 pp). See
+> `notes/gauge_anisotropy_root_and_resolution.md`, `notes/gauge_common_mode_order.md`,
+> memory `paper04-gauge-tension-v4-exclusion.md`.
+
 > **UPDATE 2026-07-18 -- FALSIFIABILITY SECTION ADDED (multi-channel map); the
 > birefringence null is now framed as a PASSED falsifiable prediction.** Executes the
 > author's "do both" decision (handoffs `2026-07-18-paper04-falsifiability-do-both-decision`
