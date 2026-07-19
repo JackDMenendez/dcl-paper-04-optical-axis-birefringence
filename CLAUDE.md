@@ -9,7 +9,22 @@ new conversation can continue work without the full chat history.
 
 ---
 
-## CURRENT STATUS (2026-07-09) -- v0.1-DRAFT
+## CURRENT STATUS (2026-07-18) -- v1.0 RELEASED
+
+> **UPDATE 2026-07-18 (d) -- v1.0 RELEASED (DOI 10.5281/zenodo.21435952).** Author
+> decision: publish this paper first (v1.0, final) so Papers I & II can cite its DOI,
+> then publish new versions of those two. Release done: title-page `\thanks{}` +
+> `CITATION.cff` + release notes carry DOI `10.5281/zenodo.21435952` (reserved on Zenodo);
+> tag `v1.0` pushed; GitHub Release created with the PDF asset
+> (`.../releases/tag/v1.0`). Build clean (36 pp). CITATION.cff Paper I DOI reconciled to
+> `10.5281/zenodo.20613677` (was stale `20078529`). **STILL PENDING (user, on Zenodo):**
+> upload the final `build/Paper.pdf` (now carries the DOI on the title page) to the
+> reserved deposit and **click Publish** -- until then the DOI is reserved but not live.
+> Then grab the Zenodo **concept DOI** for the Papers I/II cross-citations. **NEXT
+> (after Zenodo publish):** new versions of Papers I & II citing Paper IV; and the parked
+> Paper II handoff on the shared O_h-average root. Remaining follow-on scope (documented
+> in `release_notes/v1.0.md`): emergence map, dynamical Tr ln T tensor, O_h-restoring
+> vacuum, nonlinear-QM analysis, editorial trims. See memory `paper04-v1.0-released.md`.
 
 > **UPDATE 2026-07-18 (c) -- NO-GO REVISION (referee report M1/M2 verified; matter also
 > excluded as-constructed; title changed).** A full external referee report
