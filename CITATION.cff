@@ -8,8 +8,7 @@ authors:
     affiliation: "Independent Scholar (Eugene, OR)"
 version: v1.0
 date-released: 2026-07-18
-# Zenodo DOI (reserve on Zenodo, then uncomment and fill before the version-bump commit):
-# doi: 10.5281/zenodo.XXXXXXXX
+doi: 10.5281/zenodo.21435952
 repository-code: "https://github.com/JackDMenendez/dcl-paper-04-optical-axis-birefringence"
 license: MIT
 references:
