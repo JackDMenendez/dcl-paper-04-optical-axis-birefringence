@@ -1,4 +1,21 @@
 % acknowledgements.tex
 
-\placeholder{Acknowledge collaborators, reviewers, funding, and tools.
-Keep it brief; one paragraph is typical.}
+This paper was developed in close collaboration with Anthropic's Claude (Claude
+Opus~4.8, working through Claude Code), which carried the digital formalization
+throughout: the closed-form kinematic derivations, the symbolic verification of
+the adjugate and doubled-root theorems, the companion experiments
+(\texttt{exp\_01}--\texttt{exp\_05}) and their numerical checks, and the drafting
+and audit-disciplined revision of the manuscript. The physical framework and its
+guiding insights---among them the recognition that the whole optical-axis
+structure follows from the arbitrary omission of the fourth cube body-diagonal---%
+are the author's; Claude's role was to render them into precise notation, working
+code, and prose, and to hold every claim to the paper's audit-table standard.
+
+The no-go framing and several of its sharpest corrections were shaped by a
+detailed independent review carried out with a large language model, whose
+recomputation of the load-bearing results and whose principal criticisms---the
+exact matter-sector flat band, the linearly accumulating $\omega=0$ filter, and
+the classical antecedents (Cauchy--Binet; impedance-matched media) of the two
+central theorems---materially strengthened the paper. Numerical and symbolic work
+used NumPy and SymPy together with the \texttt{dcl\_core} lattice engine; the
+document was typeset with \LaTeX. Any remaining errors are the author's.
