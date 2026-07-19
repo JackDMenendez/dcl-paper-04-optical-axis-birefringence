@@ -1,14 +1,14 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
-title: "Optical-Axis Birefringence on the A=1 Discrete Causal Lattice"
+title: "Optical-Axis Anisotropy on the A=1 Discrete Causal Lattice: Birefringence Cancellation and a Single-Domain No-Go"
 authors:
   - family-names: Menendez
     given-names: Jack
     orcid: "https://orcid.org/0009-0003-1166-307X"
     affiliation: "Independent Scholar (Eugene, OR)"
-version: v0.1-DRAFT
-date-released: 2026-06-13
-# At release time, fill in the Zenodo DOI assigned for this version:
+version: v1.0
+date-released: 2026-07-18
+# Zenodo DOI (reserve on Zenodo, then uncomment and fill before the version-bump commit):
 # doi: 10.5281/zenodo.XXXXXXXX
 repository-code: "https://github.com/JackDMenendez/dcl-paper-04-optical-axis-birefringence"
 license: MIT
@@ -18,7 +18,7 @@ references:
     authors:
       - family-names: Menendez
         given-names: Jack
-    doi: 10.5281/zenodo.20078529
+    doi: 10.5281/zenodo.20613677
     year: 2026
     notes: "Paper I of the A=1 Discrete Causal Lattice series.  Establishes the bipartite octahedral lattice, the A=1 conservation axiom, and the Dirac/Lorentz structure whose frame-invariance step yields the lattice's optical-axis birefringence that this paper (Paper IV) develops."
   - type: article
