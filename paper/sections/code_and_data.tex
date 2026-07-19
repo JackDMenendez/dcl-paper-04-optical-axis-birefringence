@@ -1,7 +1,44 @@
 % code_and_data.tex
 \label{sec:code_and_data}
 
-\placeholder{Describe what is in the companion repository: directory
-layout, how to inspect the data files, where the figure-generating
-scripts live. The aim is that a reader can reproduce or audit any claim
-in the paper from this appendix plus the linked DOI.}
+Every numerical claim in this paper is reproducible from the companion
+repository (linked at the release DOI). The layout is:
+
+\begin{itemize}
+  \item \texttt{src/experiments/} --- the verification experiments, each a
+    self-contained script with a \texttt{PASS}/\texttt{FAIL} summary:
+    \begin{itemize}
+      \item \texttt{exp\_01\_optical\_axis\_isotropy} --- the optical axis is
+        $(1,1,-1)$ and the anisotropy survives A=1 renormalization in observable
+        amplitudes.
+      \item \texttt{exp\_02\_closed\_form\_split\_check} --- the closed-form
+        kinematic identities (structure factor, eigenphase dispersion, group
+        velocity) to $<10^{-12}$; speed coefficients to $<10^{-5}$.
+      \item \texttt{exp\_05\_matter\_sector\_order} --- the as-constructed
+        matter-sector consequences of Sec.~\ref{subsec:as_constructed}: exact
+        flat band, $O(1)$ kinetic anisotropy, kinetic-scale ratio
+        $\le 8/(9\sqrt3)$, and the linearly-accumulating $\omega=0$ filter.
+      \item \texttt{exp\_03\_geometric\_blocks} --- the two gauge blocks read
+        from the engine and the adjugate relation $\boldsymbol{\mu}^{-1} =
+        \operatorname{adj}(\boldsymbol{\varepsilon})$ to $5\times10^{-15}$.
+      \item \texttt{exp\_03\_dispersion\_core} --- the Fresnel solver on the
+        engine blocks: $\max|v_+-v_-| = 1.6\times10^{-15}$ over $2000$
+        directions (detuned control $0.5$).
+      \item \texttt{exp\_04\_electric\_permittivity\_extraction} --- the electric
+        block read off \texttt{HopOperator.step} (distinct from \texttt{dcl-core}'s
+        magnetic-anchor \texttt{exp\_04}).
+    \end{itemize}
+  \item \texttt{src/utilities/electric\_induced\_action.py} --- the symbolic
+    derivation of both blocks, the adjugate theorem for general vectors, and the
+    dispersion factorization; the paper's displayed equations in
+    \texttt{paper/sections/generated/} are emitted from these verified
+    expressions and are never hand-transcribed.
+  \item \texttt{notes/} --- the derivation and analysis notes backing each audit
+    row; in particular \texttt{gauge\_common\_mode\_order.md}
+    (Appendix~\ref{sec:band_sum}) and \texttt{oh\_average\_inherited\_from\_paper02.md}.
+  \item \texttt{data/} --- the recorded outputs of the experiment runs.
+\end{itemize}
+
+The audit table (Table~\ref{tab:audit}) names, per row, the specific script or
+note that backs it; a reader can audit any claim from that pointer plus this
+appendix.

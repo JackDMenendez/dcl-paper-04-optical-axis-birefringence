@@ -19,16 +19,21 @@
 % Long cells are fine -- the column widths are tuned for prose.
 % ============================================================
 
-\label{tab:audit}
+\noindent\textit{Status legend.}
+\texttt{PASS} -- derivation complete or an experiment confirms the claim to the stated
+precision; \texttt{PART} -- mechanism demonstrated, full quantitative match pending (gaps
+in the evidence column); \texttt{STUB} -- analytic result with no numerical confirmation
+yet, or a planned experiment not run; \texttt{FAIL} -- tested and disconfirmed (here,
+\emph{excluded as constructed}, with the open escape noted).
 
 {\scriptsize
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{0.95}
 \begin{longtable}{@{}p{2.6cm}p{3.8cm}p{3.2cm}p{4.4cm}p{1.0cm}@{}}
 \caption{\small System audit: paper claims mapped to supporting
-derivations and experiments.  Status semantics in the front-matter
+derivations and experiments.  Status legend above
 (\texttt{PASS} / \texttt{PART} / \texttt{STUB} / \texttt{FAIL}).}
-\label{tab:audit_caption} \\
+\label{tab:audit} \\
 \hline
 \textbf{Claim} & \textbf{Mechanism} & \textbf{Continuum / formal limit} & \textbf{Evidence} & \textbf{Status} \\
 \hline

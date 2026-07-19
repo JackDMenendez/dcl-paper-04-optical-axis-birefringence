@@ -1,17 +1,32 @@
 % reproducibility.tex
 \label{sec:reproducibility}
 
-\placeholder{Compact reproducibility quickstart. Goal: a reader who has
-just cloned the repository at the release tag can reproduce the
-paper's headline claim in under five minutes.
+From a fresh clone at the release tag:
 
-Suggested structure:
+\paragraph{Environment.} Python (see \texttt{virtual-env-requirements.txt} for the
+pinned interpreter and the \texttt{dcl\_core} engine version); the experiments use
+only \texttt{numpy} and \texttt{sympy} for the closed-form checks, and
+\texttt{dcl\_core} for the engine read-offs. Install the manifest into a virtual
+environment rather than re-listing dependencies here.
+
+\paragraph{Build the paper.} \texttt{make paper} (pdf\LaTeX\ + Bib\TeX) writes
+\texttt{build/Paper.pdf}.
+
+\paragraph{Verify the headline results.} Each experiment prints its own
+\texttt{PASS}/\texttt{FAIL} summary:
 \begin{itemize}
-\item \textbf{Environment.} Operating system, language version, key
-      dependencies (point to the manifest file rather than re-listing).
-\item \textbf{Build the paper.} The commands needed from a fresh clone.
-\item \textbf{Verify the headline result.} A minimal snippet --- ideally
-      under ten lines --- that re-derives the central numerical claim.
-\item \textbf{Where to look next.} Pointers to the experiment scripts
-      and data files for deeper checks.
-\end{itemize}}
+  \item \texttt{python src/experiments/exp\_02\_closed\_form\_split\_check.py} ---
+    the closed-form kinematic identities (the \texttt{PASS} substrate content of the
+    kinematic row).
+  \item \texttt{python src/experiments/exp\_05\_matter\_sector\_order.py} --- the
+    as-constructed matter exclusion (flat band, $O(1)$ anisotropy, linear filter).
+  \item \texttt{python src/experiments/exp\_03\_geometric\_blocks.py} and
+    \texttt{exp\_03\_dispersion\_core.py} --- the adjugate closure and the null
+    polarization split.
+  \item \texttt{python src/utilities/electric\_induced\_action.py} --- the symbolic
+    derivation and (re)generation of the displayed equations.
+\end{itemize}
+
+\paragraph{Where to look next.} The audit table (Table~\ref{tab:audit}) maps every
+claim to its backing script or note; Appendix~\ref{sec:band_sum} records the
+Ward-safe band-sum estimate behind the dynamical common-mode verdict.

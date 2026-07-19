@@ -59,7 +59,9 @@ $\text{density}_B = \sum_{a<b}\bigl((\mathbf{V}_a\!\times\!\mathbf{V}_b)\!\cdot\
 whose eigenvalues are $\{4,4,16\}$: the optical axis $(1,1,-1)$ is \emph{enhanced}
 (eigenvalue $16$), the perpendicular plane doubly degenerate at $4$. This is the
 Paper~I Appendix~B tensor~\cite{menendez2026geometryfirst}, reproduced from the
-engine's Peierls links by \texttt{dcl-core}'s \texttt{exp\_04}~\cite{dclcore} and
+engine's Peierls links by \texttt{dcl-core}'s \texttt{exp\_04}~\cite{dclcore}
+(distinct from this paper's \texttt{exp\_04\_electric\_permittivity\_extraction}
+below, which reads off the \emph{electric} block) and
 again here (\texttt{exp\_03\_geometric\_blocks}) to machine precision; it is the
 exact consistency anchor throughout (Table~\ref{tab:audit}).
 
@@ -144,8 +146,13 @@ $\operatorname{adj}(M)$, so $Q_B = \operatorname{adj}(M)^{\!\top}\operatorname{a
 vector components in \texttt{src/utilities/electric\_induced\_action.py}.
 \end{proof}
 
-Theorem~\ref{thm:adjugate} is general---it holds for any three hop vectors, not just
-the octahedral ones. The A=1 lattice is the special case:
+The algebraic identity $\operatorname{adj}(M)^{\!\top}\operatorname{adj}(M) =
+\operatorname{adj}(MM^{\!\top})$ is a standard compound-matrix (Cauchy--Binet) fact---the
+second compound of a $3\times3$ matrix is its adjugate up to
+transposition~\cite{hornjohnson2013}; the content of Theorem~\ref{thm:adjugate} is not the
+identity but that the lattice's spatial and temporal plaquette forms realize its two
+sides. It is general---it holds for any three hop vectors, not just the octahedral ones.
+The A=1 lattice is the special case:
 
 \begin{corollary}[The lattice blocks]
 \label{cor:lattice_blocks}
@@ -176,12 +183,13 @@ it upgrades to a theorem.
 
 \begin{theorem}[Doubled transverse root; no gauge-sector birefringence]
 \label{thm:doubled_root}
-For a plane wave of unit direction $\hat{\mathbf{k}}$ in a medium with
+For a plane wave of wavevector $\mathbf{k}$ in a medium with
 $\boldsymbol{\mu}^{-1} = \gamma\operatorname{adj}(\boldsymbol{\varepsilon})$, the
 Fresnel determinant $\det\bigl(K\,\boldsymbol{\mu}^{-1}K + \omega^2
-\boldsymbol{\varepsilon}\bigr)$, $K = [\hat{\mathbf{k}}]_\times$, factorizes---for a
-\emph{general} symmetric $\boldsymbol{\varepsilon}$ and general direction, with no
-shared eigenvectors required---as
+\boldsymbol{\varepsilon}\bigr)$, $K = [\mathbf{k}]_\times$ (the curl operator, built
+from the full wavevector), factorizes---for a \emph{general} symmetric
+$\boldsymbol{\varepsilon}$ and general direction, with no shared eigenvectors
+required---as
 \begin{equation}
     \label{eq:dispersion}
     \input{sections/generated/dispersion_factorization}
@@ -217,6 +225,29 @@ Fresnel solver (\texttt{exp\_03\_dispersion\_core}) returns $\max|v_+-v_-| =
 (breaking the adjugate relation) returns a split of $0.5$. This is an independent
 code-path verification of the theorem---a separate implementation, but within the
 same framework and engine---not an independent physical measurement.
+
+\begin{remark}[The novelty is the automatic impedance match, not the cancellation
+mechanism]
+\label{rem:impedance_novelty}
+Theorem~\ref{thm:doubled_root} is, as a statement about media, classical: $\boldsymbol{\mu}^{-1}
+= \gamma\det(\boldsymbol{\varepsilon})\,\boldsymbol{\varepsilon}^{-1}$ is equivalent to
+$\boldsymbol{\mu}\propto\boldsymbol{\varepsilon}$, the \emph{impedance-matched} condition
+under which both polarizations follow a single effective optical metric and vacuum
+birefringence is absent by construction---the condition transformation optics imposes by
+design~\cite{plebanski1960,pendry2006,leonhardt2006}. The result here is therefore not a new
+cancellation mechanism but a structural fact about \emph{discrete} electrodynamics: the
+plaquette geometry of \emph{any} three-hop lattice lands on the impedance-matched point
+automatically (Theorem~\ref{thm:adjugate}, general vectors), so---\emph{given those
+geometric plaquette forms as the constitutive response} (the block-identification caveat of
+Remark~\ref{rem:vertex_not_action})---\emph{discrete three-hop vacuum electromagnetism
+cannot be birefringent}, no tuning, for any hop set. Two
+consequences follow. First, the null is hop-set-\emph{universal} within this class, so it
+does not by itself distinguish the A=1 hop set from any other three-hop lattice (the
+discrimination in Sec.~\ref{sec:falsifiability} is against \emph{birefringent} rivals, not
+against alternative non-birefringent lattices). Second, the same universality is why the
+null is immune to every deferred normalization: it depends on the adjugate \emph{ratio}, not
+on the scales $\gamma$ or $1/g^2$.
+\end{remark}
 
 \subsection{The common-mode speed anisotropy}
 \label{subsec:common_mode}

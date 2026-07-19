@@ -28,7 +28,7 @@ new conversation can continue work without the full chat history.
 > structure is O(1), so **bare matter is excluded as-constructed just like the photon**.
 > Both escape only via a fuller construction ($O_h$-restoring four-orientation vacuum for the
 > gauge loop; **token->matter emergence map + $\delta p_\text{min}$** for the spinor). Applied
-> (build 33 pp, clean): title -> *"Universal Birefringence Cancellation and a Single-Domain
+> (build 33 pp, clean): title -> *"Birefringence Cancellation and a Single-Domain
 > No-Go"*; abstract/intro/conclusion = survive-vs-excluded; new `kinematic_channel.tex`
 > `subsec:as_constructed` (Props `flat_band` + `filtering`); audit table = kinematic PASS
 > *(substrate)* + NEW **matter FAIL-as-constructed** row; falsifiability matter channels

@@ -1,0 +1,49 @@
+% band_sum.tex -- Appendix: the Ward-safe band-sum estimate of the
+% common-mode anisotropy order (referee M5: bring the load-bearing dynamical
+% evidence into the paper). Source: notes/gauge_common_mode_order.md.
+\label{sec:band_sum}
+
+The ``strong-provisional'' half of the gauge common-mode verdict
+(Sec.~\ref{subsec:gauge_channel}) rests on a dynamical estimate of the
+\emph{order} of the anisotropy, independent of the geometric blocks. We record it
+here so the claim is auditable from the paper.
+
+\paragraph{The object.} On the validated Bloch transfer operator $T(\mathbf{k})$,
+we form the physical-band second-order response to a photon of wavevector
+$\mathbf{q}$, with the intraband contribution dropped per the Ward-safe
+prescription (the physical band is exactly flat along the optical axis, so the
+intraband denominator $\lambda(\mathbf{k})-\lambda(\mathbf{k}\pm\mathbf{q})$
+vanishes there and the naive sum is Ward-divergent). Sweeping $|\mathbf{q}|\to0$
+gives the axis-versus-perpendicular anisotropy ratio of the resulting tensor:
+
+\begin{center}
+\begin{tabular}{@{}lcccc@{}}
+\hline
+$|\mathbf{q}|$ & $0.30$ & $0.20$ & $0.12$ & $0.07$ \\
+\hline
+max\,:\,min ratio & $0.60$ & $0.37$ & $0.33$ & $0.32$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\paragraph{What it shows.} The ratio \emph{converges to a constant} $\approx0.32$
+(not to $1$) as $|\mathbf{q}|\to0$. A dimension-six--suppressed anisotropy would
+have the ratio approach $1$ in that limit; a constant, non-unity limit is the
+signature of an $O(1)$, dimension-four anisotropy---the same order the geometric
+blocks give directly (a $\mathbf{k}$-independent factor-$\sim2$ speed). Two
+independent routes therefore agree that the common-mode anisotropy is not
+suppressed.
+
+\paragraph{The caveat (an instructive wrong tensor).} This interband-only object is
+\emph{not} the correct induced tensor: it is uniaxial about $(1,-1,0)$, not the
+optical axis $(1,1,-1)$, so it is used here only to gauge the \emph{order} of the
+anisotropy, not its structure. The correct assembly is the orbital-susceptibility
+combination (Berry curvature plus quantum metric), a stated open item
+(Remark~\ref{rem:vertex_not_action}). For the correct object to be
+dimension-six--suppressed, those extra terms would have to \emph{cancel} the
+$O(1)$ anisotropy the naive object exhibits---a non-generic cancellation, and the
+available evidence is against it. This is why the dynamical verdict is
+\emph{strong-provisional} rather than decisive: the estimate is robust as to order,
+but the exact tensor is uncomputed. Computation:
+\texttt{notes/gauge\_common\_mode\_order.md} and the associated Ward-safe
+$\mathbf{q}$-scan on $T(\mathbf{k})$.
