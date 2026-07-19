@@ -11,6 +11,36 @@ new conversation can continue work without the full chat history.
 
 ## CURRENT STATUS (2026-07-09) -- v0.1-DRAFT
 
+> **UPDATE 2026-07-18 (c) -- NO-GO REVISION (referee report M1/M2 verified; matter also
+> excluded as-constructed; title changed).** A full external referee report
+> (`notes/referee-report-paper4-v0.1.md` + verifier `src/utilities/verify.py`, both
+> committed) recommended MAJOR REVISION: all algebra correct, but the paper UNDER-claimed
+> consequences. Author decisions: **verify M1/M2 first, then FAIL-as-constructed for matter
+> + adopt a NO-GO framing.** M1/M2 INDEPENDENTLY VERIFIED from the paper's own transfer
+> operator (`src/experiments/exp_05_matter_sector_order.py`, ALL PASS): the bare single-tick
+> spinor has (M1i) an **exact axial flat band** (axial transport identically zero), (M1ii)
+> an **O(1) directional kinetic anisotropy** ($\theta-\omega/2=\tfrac13\sin\omega|k|^2\sin^2\alpha$,
+> no isotropic piece -> Hughes-Drever excludes at zeroth order), (M1iii) kinetic/continuum
+> ratio $\le 8/(9\sqrt3)\approx0.513$; and (M2) an $\omega=0$ amplitude filter that
+> **accumulates LINEARLY in $a$** (e-folds electron ~5 d, N$_2$ ~49 min, neutron ~7 d at
+> $a=\ell_P$). **KEY CORRECTION:** the old "matter is safe because dim-6" claim is
+> OVERTURNED -- dim-6 is only the energy-vs-rest anisotropy; the observable kinetic/level
+> structure is O(1), so **bare matter is excluded as-constructed just like the photon**.
+> Both escape only via a fuller construction ($O_h$-restoring four-orientation vacuum for the
+> gauge loop; **token->matter emergence map + $\delta p_\text{min}$** for the spinor). Applied
+> (build 33 pp, clean): title -> *"Universal Birefringence Cancellation and a Single-Domain
+> No-Go"*; abstract/intro/conclusion = survive-vs-excluded; new `kinematic_channel.tex`
+> `subsec:as_constructed` (Props `flat_band` + `filtering`); audit table = kinematic PASS
+> *(substrate)* + NEW **matter FAIL-as-constructed** row; falsifiability matter channels
+> corrected (each sector INDEPENDENTLY O(1)-excluded; observability no longer rests on
+> "matter is dim-6"); Collins et al. 2004 (`collins2004`) cited. **Referee majors STILL
+> OPEN (v1.0 queue):** M4 (Cauchy-Binet / impedance-matching antecedent citations + "sits on
+> the impedance-matched point automatically" slogan), M5 (Ward-safe band-sum -> appendix;
+> fill Appendix A/B stubs), M6 (A=1 nonlinear-QM / signaling: Weinberg/Gisin/Polchinski),
+> and minors (Eq 14 $K=[k]_\times$ not $[\hat k]_\times$; Table 1/1.1; define status
+> semantics; exp_04 name collision; abstract length; repetition trim). See memory
+> `paper04-nogo-m1m2-matter-excluded.md`.
+
 > **UPDATE 2026-07-18 (b) -- GAUGE-SECTOR TENSION, published honestly (author decision).**
 > The 2.a computation (board #27) is done: the induced photon common-mode speed anisotropy
 > `v^2=k^T eps k`, `eps={1,4,4}`, is **O(1) and dimension-4 (NOT suppressed)** -- three
@@ -403,9 +433,13 @@ claims through the audit table / claim map, not the prose.
 
 | Row | Status | What it claims |
 |---|---|---|
-| Kinematic birefringence along $(1,1,-1)$ | PASS | Closed-form ordinary/extraordinary split. $M_\text{eff}=\tfrac43(I-\hat n_*\hat n_*^T)$; group-velocity split $\Delta v=\tfrac23\sin\omega\,\|k\|$ (massive) + $\omega$-independent curvature split $4/3$ vs $0$ (photon+massive). `exp_01` (axis + A=1 survival) and `exp_02` (analytic identities $<10^{-12}$, speed coeffs $<10^{-5}$). Derivation: `notes/closed_form_speed_split.md`. |
-| Gauge-sector birefringence ($\mathbf{Q}$ eigenvalues $\{4,4,16\}$) | PART | **Operator structure EXACT/done:** dcl-core `exp_04` reproduces $\mathbf{Q}$ from the Peierls plaquette holonomy, $\max|\mathbf{Q}-\mathbf{Q}_{\text{PaperI}}|=0$ (axis $(1,1,-1)$; coupling ratio $g_3^2/g_2^2=3/2$, Paper~II) -- no large $N$, no GPU. **Observability OPEN (why not PASS).** Bipartite structure breaks $O_h$ to a uniaxial subgroup ($\mathbf{Q}$ fixed $12/48$, RGB $6/48$) -> genuinely uniaxially anisotropic; no symmetry forces isotropy. The sole open item is the full **E+B photon-dispersion order** (E/B cancellation uncomputed; `exp_03` / dcl-core test #5, GPU-bound); read as an observable it would be the excluded dim-4 $O(1)$ effect. See `notes/gauge_sector_structural_conclusion.md`. |
-| Multi-channel concordance (P9) | PART | Axis-sharing is a *structural identity* ($M_\text{eff}$ and $\mathbf{Q}$ both inherit $(1,1,-1)$). Kinematic dispersion is the one frontier-testable observational channel; the gauge sector's observable status is itself *open* (`exp_03`), so P9's strength as a multi-witness claim is hostage to that outcome. |
+| Kinematic directional dispersion anisotropy along $(1,1,-1)$ | PASS *(substrate)* | Closed-form axial--transverse anisotropy: $M_\text{eff}=\tfrac43 P_\perp$, $\|H_\text{RGB}\|^2=1-\tfrac43\|k_\perp\|^2$ flat along axis; massive group speed $\tfrac23\sin\omega\|k\|\sin\alpha$. PASS covers the **substrate math** (`exp_02` identities $<10^{-12}$); the **observable reading on a lab particle is the as-constructed FAIL below.** `notes/closed_form_speed_split.md`. |
+| Bare single-tick spinor as literal lab matter (as-constructed) | **FAIL** *(as-constructed; open via emergence map)* | M1/M2 (verified `exp_05_matter_sector_order`): exact axial flat band (axial transport zero); O(1) directional kinetic anisotropy ($\theta-\omega/2=\tfrac13\sin\omega\|k\|^2\sin^2\alpha$, no isotropic piece); kinetic/continuum ratio $\le 8/(9\sqrt3)\approx0.513$; $\omega=0$ filter accumulates **linearly in $a$** (e-folds days--min at $\ell_P$). Excluded as constructed; escape = token->matter emergence map + $\delta p_\text{min}$ (OPEN). |
+| Gauge-sector null polarization split (birefringence cancels), *conditional on the blocks* | PASS | $\mu^{-1}=\gamma\,\text{adj}(\varepsilon)$ (theorem, any hop vectors) forces a doubled transverse root -> split $=0$. `electric_induced_action.py` (symbolic) + `exp_03_geometric_blocks`/`exp_03_dispersion_core` ($\max\|v_+-v_-\|=1.6\times10^{-15}$). **Universal:** no three-hop lattice can be birefringent. |
+| Gauge blocks as the actual *dynamical* induced action | PART | Vertex verified (`exp_04...`, $4\times10^{-19}$) but not the full $\Gamma^{(2)}$ Hessian; $\text{Tr}\ln T$ route Ward-divergent on the flat axis (naive band sum -> wrong $(1,-1,0)$ object). Stated open follow-on. |
+| Gauge-sector common-mode speed anisotropy (factor $\sim2$) -- a stated *tension* | **FAIL** *(as-constructed; geometric decisive / dynamical strong-provisional; open under $O_h$)* | $v^2\in[\gamma,4\gamma]$, ratio 4 ($\gamma$-independent), $O(1)$ dim-4 (3 routes) -> excluded by isotropy bounds as a single domain. Escape = $O_h$-restoring four-orientation vacuum (OPEN). Each sector independently O(1)-excluded (no matter/photon-contrast needed). |
+| Multi-channel concordance (P9) | PART | Kinematic, gauge, and matter sectors inherit the same axis $(1,1,-1)$ (structural identity). Both single-domain sectors excluded as constructed; the birefringence null is the one clean surviving result. |
+| Falsifiability along the optical axis (no-go map) | PART | **Survives:** universal birefringence null (passed postdiction, excludes CPT-odd dim-5 rivals). **Excluded as constructed:** induced photon speed (O(1) dim-4) AND bare matter (flat band + O(1) kinetic + linear filter). Substrate massive dispersion (sidereal) awaits the emergence map. |
 
 Mirror of `paper/sections/audit_table.tex` -- update this table when
 the audit table changes. The claim-auditor agent

@@ -200,6 +200,91 @@ dispersion is the common-mode $\omega^2 = \mathbf{k}^{\!\top}\boldsymbol{\vareps
 \,\mathbf{k}$. This is the same reason the massless spinor mode is not, without a
 further argument, a photon (Remark~\ref{rem:photon_limit}).
 
+\subsection{The as-constructed reading: an $O(1)$ matter-sector exclusion}
+\label{subsec:as_constructed}
+
+The closed forms above are exact, and it is tempting to read the resulting
+anisotropy as only the small, dimension-six fractional energy shift of
+Sec.~\ref{sec:falsifiability}. Taken literally, though, the bare single-tick
+spinor forces three much stronger, order-unity statements about the matter sector,
+all with the same geometric origin: the difference vectors
+$\mathbf{V}_i-\mathbf{V}_j$ of Sec.~\ref{subsec:structure_factor} all lie in the
+plane perpendicular to $\hat{\mathbf{n}}_*$, so \emph{every} axial dependence of
+$\tilde H_\text{RGB}$ is a pure global phase that the modulus discards. We state
+them plainly; all are verified in \texttt{exp\_05\_matter\_sector\_order}.
+
+\begin{proposition}[Exact axial flat band]
+\label{prop:flat_band}
+$\theta(\mathbf{k}) = \theta(\mathbf{k}_\perp)$ to all orders, so
+$\partial\theta/\partial k_\parallel \equiv 0$ at \emph{every} $\mathbf{k}$, not
+merely at small $\mathbf{k}$. A wavepacket with momentum along $\hat{\mathbf{n}}_*$
+does not propagate, and---since $\dot{x}_\parallel = \partial\theta/\partial
+k_\parallel$ and the two-component Berry connection contributes no anomalous
+velocity---$x_\parallel$ stays inert even under forces that change $k_\parallel$.
+This is an exact flat band along the axis, with the attendant infinite degeneracy;
+a hydrogen-like state built on this kinetic term is dynamically two-dimensional.
+\end{proposition}
+
+Two further consequences follow at fixed $|\mathbf{k}|$. First, the kinetic energy
+is \emph{entirely} directional:
+\begin{equation}
+    \theta(\mathbf{k}) - \tfrac{\omega}{2}
+      = \tfrac13\sin\omega\,|\mathbf{k}|^2\sin^2\!\alpha + O(k^4),
+    \label{eq:kinetic_energy}
+\end{equation}
+modulated by $\sin^2\alpha$ with \emph{no} isotropic piece for the anisotropy to be
+a small correction to. The dimension-six fractional number of
+Sec.~\ref{sec:falsifiability} is the energy anisotropy relative to the \emph{rest}
+phase $\omega/2$; the quantity a Hughes--Drever--class experiment compares---kinetic
+and level structure versus orientation---is anisotropic at order unity. If the
+spinor is any laboratory particle, this is excluded at zeroth order, no precision
+required. Second, the scale cannot be tuned away: the lattice perpendicular kinetic
+coefficient over the continuum $\mathbf{k}^2/2m$ (with $m=\sin(\omega/2)/a$) is
+$\tfrac43\sin^2(\omega/2)\cos(\omega/2)\le 8/(9\sqrt3)\approx0.513$ at \emph{any}
+$\omega$, so the single-tick spinor is simultaneously axially inert, $O(1)$
+anisotropic, and kinetically $(ma)^2$-suppressed relative to a continuum particle.
+
+\begin{proposition}[Linearly accumulating $\omega=0$ filtering]
+\label{prop:filtering}
+The eigenvalue magnitude obeys $|\lambda_+(\mathbf{k})|^2 = \sin^2(\omega/2) +
+\cos^2(\omega/2)\,|\tilde H_\text{RGB}(\mathbf{k})|^2$---unity along the axis, and
+$1-\tfrac43\cos^2(\omega/2)|\mathbf{k}_\perp|^2$ across it. The per-tick intensity
+damping of a transverse relative to an axial component is therefore
+$\tfrac43\cos^2(\omega/2)(k_\perp a)^2$; multiplied by the tick rate $c/a$, the
+physical rate is $\tfrac43\cos^2(\omega/2)\,k_\perp^2\,a\,c$---\emph{linear} in $a$,
+because the dimension-six per-tick suppression is repaid by the $a^{-1}$ tick count.
+The dispersion channels do not accumulate (a velocity shift stays $(ka)^2$ forever);
+this amplitude channel does.
+\end{proposition}
+
+At $a=\ell_P$ the resulting $e$-folding times are days to minutes---an electron at
+hydrogenic momentum $\approx5$ days, a thermal $\mathrm{N}_2$ molecule
+$\approx49$ minutes, a cold neutron $\approx7$ days. Even allowing for collisional
+rethermalization (a gas relaxes to a steady-state momentum-distribution anisotropy
+of order the filter-to-collision-rate ratio) and generous modeling slack, the effect
+starts tens of orders of magnitude above co-magnetometer and matter-interferometer
+bounds. The ``testability open'' status this channel formerly carried is therefore
+too sanguine.
+
+\paragraph{The honest verdict, and the escape.} Read as literal laboratory matter,
+the bare single-tick spinor is \emph{excluded as constructed}: axially inert
+(Prop.~\ref{prop:flat_band}), $O(1)$ anisotropic in its kinetic sector, kinematically
+$(ma)^2$-mismatched to a continuum particle, and amplitude-filtering
+(Prop.~\ref{prop:filtering}) at rates far above bound. This is the matter-sector
+counterpart of the gauge-sector common-mode tension (Sec.~\ref{sec:gauge_sector}),
+and it has the same three-of-four geometric origin. The escape is the one the program
+already owns: physical matter is \emph{emergent}---composite ``session'' excitations
+with their own dispersion, not the bare single-tick spinor---so the closed forms above
+are the \emph{substrate} kinematics, and the observable matter dispersion (with it the
+sidereal channel of Sec.~\ref{sec:falsifiability}) follows only once the
+token$\to$matter map is exhibited; the program's minimum-probability floor
+$\delta p_\text{min}$ is the natural regulator that halts the filtering. Until that map
+is delivered, the matter-sector channels read literally are \texttt{FAIL} as
+constructed, with the emergence map the open route to viability
+(Table~\ref{tab:audit}). What changes is \emph{not} the closed-form
+split~\eqref{eq:split}, which remains exact as substrate kinematics, but only the
+claim that it registers as a small observable effect on a laboratory particle.
+
 Equations~\eqref{eq:H2_exact}, \eqref{eq:dispersion_exact},
 \eqref{eq:group_velocity} and Proposition~\ref{prop:speed_split} have been
 checked against independent direct computation in
@@ -207,9 +292,13 @@ checked against independent direct computation in
 dispersion identities to floating-point precision ($<10^{-12}$, versus the
 triple sum and versus $\arg\lambda_+$ respectively), and the group
 velocity and principal speed coefficients $\tfrac23\sin\omega$ and $0$ to
-finite-difference truncation ($<10^{-5}$).  Together with
-\texttt{exp\_01} these checks discharge the kinematic audit row to
-\texttt{PASS} (Table~\ref{tab:audit}).  The
+finite-difference truncation ($<10^{-5}$); the order-unity consequences of
+Sec.~\ref{subsec:as_constructed} are verified in
+\texttt{exp\_05\_matter\_sector\_order}. These checks establish the closed-form
+identities (the kinematic row's \emph{Analytic} content is \texttt{PASS}); the
+\emph{observable} reading of the same identities on a laboratory particle is the
+as-constructed \texttt{FAIL} of Sec.~\ref{subsec:as_constructed}, pending the
+emergence map. The
 observability of the underlying anisotropy in renormalized amplitudes was
 established separately in \texttt{exp\_01} (Table~\ref{tab:audit};
 \texttt{notes/optical\_axis\_renormalization\_test.md}).

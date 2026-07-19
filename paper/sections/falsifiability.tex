@@ -71,8 +71,8 @@ distinct fields. We map them honestly, per channel:
 \textbf{Channel} & \textbf{Field} & \textbf{Effect} & \textbf{Status} \\
 \hline
 Optical-axis birefringence & gauge photon & polarization split & \emph{Forbidden}---passed falsification test (postdiction; corroborated; conditional on the blocks) \\
-Kinematic massive dispersion & spinor (matter) & dim-6 directional dispersion; sidereal & Candidate falsifiable; real, bound $\gg$ Planck (\texttt{PART}) \\
-Kinematic massless anisotropy & spinor ($\omega=0$) & magnitude / filtering anisotropy & Real observable, testability open (\texttt{PART}) \\
+Kinematic massive dispersion & spinor (matter) & dim-6 directional dispersion; sidereal & Real as \emph{substrate} kinematics; lab connection needs the emergence map (\texttt{PART}) \\
+Kinematic massless / kinetic anisotropy & spinor (as-constructed) & $O(1)$ kinetic anisotropy + exact flat band + linearly-accumulating $\omega=0$ filter & \emph{Excluded as constructed}; open via the emergence map / $\delta p_\text{min}$ (\texttt{FAIL} as-constructed) \\
 Gauge-sector photon speed & U(1) gauge & common-mode speed anisotropy & \emph{Tension}---$O(1)$ dim-4, excluded as a single domain; structural fix (four-axis / $O_h$) open (\texttt{FAIL} as-constructed) \\
 \hline
 \end{tabular}
@@ -120,6 +120,19 @@ sidereal modulation of high-energy propagation; high-energy astrophysical
 $\omega=0$ magnitude anisotropy---a direction-dependent \emph{filtering} of amplitudes
 (not an energy dispersion), the anisotropic spreading that \texttt{exp\_01} measures.
 
+\paragraph{The as-constructed caveat.} These handles describe the \emph{substrate}
+kinematics of the bare single-tick spinor. Read as a literal laboratory particle, that
+spinor is excluded as constructed (Sec.~\ref{subsec:as_constructed}): its kinetic and
+level structure is $O(1)$ anisotropic, its axial band is exactly flat, and its $\omega=0$
+amplitude filter accumulates \emph{linearly} in $a$---$e$-folding times of days to minutes
+at Planckian $a$, verified in \texttt{exp\_05\_matter\_sector\_order}, tens of orders above
+co-magnetometer and matter-interferometer bounds. The sidereal massive-dispersion channel
+is therefore a prediction of the \emph{substrate}, connected to an observable particle only
+once the token$\to$matter emergence map---laboratory matter as an emergent, composite
+session---is exhibited; until then the matter channels read literally are excluded, with the
+emergence map (and the $\delta p_\text{min}$ floor that regulates the filter) the open route
+to viability.
+
 \subsection{The gauge-sector photon channel: a stated tension}
 \label{subsec:gauge_channel}
 
@@ -148,13 +161,16 @@ direction-dependent speed of light is a \emph{marginal} Lorentz violation---the
 CPT-even, non-birefringent anisotropic-$k_F$ sector of the
 SME~\cite{kosteleckymewes2009,kosteleckyrussell2011}, bounded by optical-cavity and
 Michelson--Morley isotropy experiments to $\sim\!10^{-18}$. A factor-$\sim2$ effect,
-sidereally modulated by the fixed axis, would have been seen long ago. Crucially it is
-\emph{observable}: it does not cancel as a coordinate choice, because the \emph{matter}
-sector does not share it---the matter's optical-axis anisotropy sits at dimension-six
-(Sec.~\ref{sec:kinematic_channel}), so the two sectors ride \emph{different} light cones,
-and the measurable quantity is their $O(1)$ relative tilt. For the physical vacuum taken
-as the single fixed trigonal domain of the A=1 hop set, the induced electromagnetism is
-therefore Lorentz-violating at order unity, and \emph{excluded}.
+sidereally modulated by the fixed axis, would have been seen long ago. Crucially, the
+exclusion does not hinge on any cancellation between sectors. The induced photon's $O(1)$
+anisotropy is bounded directly by optical-cavity and Michelson--Morley isotropy tests; and
+the bare matter sector, far from providing an isotropic reference that could absorb the
+photon's tilt as a coordinate choice, is \emph{itself} $O(1)$ anisotropic---an exact axial
+flat band and an order-unity kinetic/level-structure anisotropy
+(Sec.~\ref{subsec:as_constructed})---so it too is independently excluded. For the physical
+vacuum taken as the single fixed trigonal domain of the A=1 hop set, both the induced
+electromagnetism and the bare matter are therefore Lorentz-violating at order unity, and
+\emph{excluded}.
 
 \paragraph{The level of the claim.} We state the verdict at two strengths, because the
 geometric and the fully dynamical blocks are established to different degrees. For the
@@ -174,16 +190,22 @@ assembly (the orbital-susceptibility $\operatorname{Tr}\ln T$ object) remains op
 dimension-four traceless part; it need not reproduce $\{1,4,4\}$ exactly, as any
 unsuppressed anisotropy remotely of order unity is already fatal.
 
-\paragraph{Why the two sectors diverge, and the root of the tension.} The divergence has
-a clean structural cause. The matter dispersion's leading term is a \emph{scalar}
+\paragraph{Where the two sectors diverge---and where they do not.} It is tempting to say
+the matter sector is protected: the matter dispersion's leading term is a \emph{scalar}
 ($|\sum_a e^{i\mathbf{k}\cdot\mathbf{V}_a}|^2$, isotropic at $\mathbf{k}=0$), so its
-anisotropy is pushed to the $O(k^2)$, dimension-six correction; the induced photon block
-is a \emph{tensor} from the outset, $\boldsymbol{\varepsilon}=\sum_a
-\mathbf{V}_a\mathbf{V}_a^{\!\top}$, so its anisotropy sits at $O(1)$, dimension-four. The
-matter hides the trigonal breaking in an irrelevant operator; the induced photon wears it
-as a marginal one. The emergent leading-order Lorentz invariance of the matter sector thus
-does \emph{not} descend to the induced gauge sector---a recognized naturalness difficulty
-of emergent-spacetime constructions. And the whole effect is the single tensor
+\emph{energy} anisotropy relative to the rest phase is pushed to the $O(k^2)$,
+dimension-six correction, whereas the induced photon block is a \emph{tensor} from the
+outset, $\boldsymbol{\varepsilon}=\sum_a\mathbf{V}_a\mathbf{V}_a^{\!\top}$, with its
+anisotropy at $O(1)$, dimension-four. That contrast is real but only for the
+energy-dispersion observable; it does \emph{not} make matter safe. As
+Sec.~\ref{subsec:as_constructed} shows, the same operator's kinetic and level
+structure---the quantity an isotropy experiment actually compares---is anisotropic at
+order unity, and its axial band is exactly flat, so the bare matter sector is excluded as
+constructed just as the photon is. The honest statement is thus not that Lorentz
+invariance descends to matter but not the gauge field; it is that emergent leading-order
+Lorentz invariance fails to descend to \emph{either} single-domain sector at the level of
+observable anisotropy---a recognized naturalness difficulty of emergent-spacetime
+constructions~\cite{collins2004}. And the whole effect is the single tensor
 $\sum_a\mathbf{V}_a\mathbf{V}_a^{\!\top}$: it is anisotropic ($\{1,4,4\}$) precisely because
 the hop set is \emph{three} of the four cube body-diagonals; the \emph{four}-diagonal set
 gives $\sum_a\mathbf{V}_a\mathbf{V}_a^{\!\top}=4\,\mathbb{I}$, exactly isotropic. The
@@ -198,24 +220,34 @@ underlying formalism permits) restores the cubic group. In particular, a constru
 which the vacuum superposes the four diamond orientations would present the induced gauge
 action---a loop over the whole vacuum---with the $O_h$-symmetric average
 ($\langle\boldsymbol{\varepsilon}\rangle\propto\mathbb{I}$, isotropic, tension removed),
-while a matter excitation propagating in a single orientation would retain its
-dimension-six optical axis: the two sectors would \emph{decouple}, gauge Lorentz-invariant
-and matter axis-bearing. Whether such a construction preserves the A=1 conservation and the
-Dirac/chiral structure that the three-axis choice was made to secure is a foundational
-question we do not settle here; it is the natural next research direction, and the honest
-status of the gauge channel is that of a \emph{tension with a known structural resolution
-still to be worked out}, not a delivered prediction.
+while laboratory matter, as an \emph{emergent} session rather than the bare spinor
+(Sec.~\ref{subsec:as_constructed}), could carry its own viable dispersion. Two cautions
+keep this honest, both raised by the same logic that forbids the naive $O_h$ average. The
+superposition must be \emph{coherent}, not a classical ensemble: a statistical mixture of
+orientations leaves every realized branch with its excluded $O(1)$ anisotropy. And
+axis-bearing matter can \emph{decohere} that superposition, collapsing the induced medium
+into a single excluded branch, so the sector decoupling must be \emph{exhibited, not
+assumed}---it is dynamical hop-set geometry (orientation promoted to a quantum degree of
+freedom), a genuine extension of the formalism. Whether such a construction, together with
+the token$\to$matter emergence map, preserves the A=1 conservation and the Dirac/chiral
+structure that the three-axis choice was made to secure is a foundational question we do
+not settle here; it is the natural next research direction, and the honest status of both
+single-domain sectors is that of an exclusion with a known-but-unbuilt structural
+resolution, not a delivered prediction.
 
 \paragraph{Scope.} This tension is specific to the gauge-sector common-mode speed. It does
 \emph{not} bear on the birefringence null (which passes, Theorem~\ref{thm:doubled_root}),
 the adjugate theorem, the kinematic directional dispersion, or results elsewhere in the
 program; those stand independently of how the gauge-sector construction is resolved.
 
-Taken together, the framework's falsifiability map is thus honestly mixed: a forbidden
-birefringence the data have already corroborated (excluding the birefringent rivals); a
-real but Planck-suppressed massive dispersion with a distinctive sidereal signature; a real
-$\omega=0$ filtering anisotropy; and an induced-photon speed anisotropy that, for the
-single-domain construction, is an $O(1)$ Lorentz violation excluded by experiment and
-pointing to a structural revision of the hop set. The value is not one frontier number but
-a candid, per-channel account of what tests the theory---including where it is presently
-tested and found wanting.
+Taken together, the framework's falsifiability map is a clean survivor beside a clean
+no-go. What survives: a forbidden birefringence the data have already corroborated
+(excluding the birefringent rivals), and universally so---no three-hop lattice can produce
+it. What is excluded as the single-domain construction stands: the induced-photon speed
+anisotropy ($O(1)$, dimension-four), \emph{and} the bare matter sector itself (an exact
+flat band, $O(1)$ kinetic anisotropy, and a linearly-accumulating filter), both pointing to
+the same structural revision---an $O_h$-restoring vacuum and a token$\to$matter emergence
+map. The substrate massive dispersion, with its distinctive sidereal signature, is a real
+prediction awaiting that emergence map to reach a laboratory particle. The value is not one
+frontier number but a candid, per-channel account of what tests the theory---including,
+squarely, where it is presently tested and found wanting.

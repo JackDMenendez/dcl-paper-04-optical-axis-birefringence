@@ -49,23 +49,30 @@ Euclidean $\mathbb{R}^3$. The isotropizing average uses the full combinatorial 4
 a single physical domain realizes only the trigonal $D_{3d}$ (the 12 orthogonal
 elements about the omitted diagonal). That gap is where the tension lives.
 
-## Why matter survives but the induced photon does not
+## Both sectors are excluded as constructed (CORRECTED 2026-07-18 by referee M1/M2)
 
-A difference of dimension, not of averaging:
+The earlier framing here — "matter survives via dim-6, only the photon fails" — is
+**overturned** by the referee report (majors M1/M2, verified in
+`src/experiments/exp_05_matter_sector_order.py`). The honest reconciliation:
 
-- **Matter (spinor) sector:** residual anisotropy about $(1,1,-1)$ is the
-  **dimension-six, Planck-suppressed scalar** correction (Paper IV's kinematic
-  channel). Empirically viable on a single fixed domain *without* any averaging —
-  which is the real reason Paper II's emergent-Lorentz result is safe, not the
-  average being physical.
-- **Induced gauge block:** a **dimension-four tensor** ($\varepsilon=\{1,4,4\}$,
-  $\mu^{-1}=\{4,4,16\}$), $O(1)$, no suppression. Only a genuinely
-  $O_h$-restoring vacuum (four-orientation / more symmetric hop set) removes it.
+- The matter **energy dispersion relative to the rest phase** IS dim-6
+  (Planck-suppressed) — true, and it is the sidereal massive-dispersion channel.
+- BUT the bare single-tick spinor's **kinetic and level structure** (the quantity
+  an isotropy experiment actually compares) is **$O(1)$ anisotropic**, its axial
+  band is **exactly flat** (axial transport zero), and its $\omega=0$ amplitude
+  filter **accumulates linearly in $a$** (e-folds of days–minutes at $a=\ell_P$).
+  So the bare matter sector is **excluded as constructed**, just like the photon.
+- **Induced gauge block:** dimension-four tensor, $O(1)$, no suppression — also
+  excluded as constructed.
 
-So the two sectors ride different footings. The average Papers I–II could invoke
-harmlessly for matter cannot be invoked for the induced gauge field, and both
-share the same root: the arbitrary omission of the fourth diagonal $V_4=(1,1,-1)$,
-which is exactly the optical axis Paper IV studies.
+So the two sectors ride the **same** footing: both are $O(1)$-excluded as a single
+domain, both share the root (omission of $V_4=(1,1,-1)$), and both need a more
+complete construction to escape — an $O_h$-restoring (four-orientation) vacuum for
+the gauge loop, the **token→matter emergence map** (+ $\delta p_\text{min}$) for the
+spinor, plausibly two faces of one extension. Paper IV now states this as a **no-go**
+(title: "Universal Birefringence Cancellation and a Single-Domain No-Go"). The
+emergent-Lorentz result of Papers I–II is thus safe only through the emergence map,
+not because bare matter is harmless.
 
 ## Framing discipline (do NOT overstate)
 
