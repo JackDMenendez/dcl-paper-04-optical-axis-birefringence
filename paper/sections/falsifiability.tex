@@ -23,17 +23,23 @@ evidence of birefringence.'' A falsifiable prediction, however, is precisely one
 \emph{forbids} an observable outcome. The framework forbids optical-axis vacuum
 birefringence---the doubled transverse root of Theorem~\ref{thm:doubled_root}---and
 vacuum birefringence is both directly observable and among the most tightly bounded
-quantities in physics. Its non-observation is therefore not silence; it is a risky
-prediction the framework has \emph{passed}.
+quantities in physics. Its non-observation is therefore not silence; it is a stringent,
+independently-measured constraint the framework \emph{survives} by construction---a
+falsification test (an observed optical-axis birefringence would kill the framework) that
+it passes. Because the bounds predate the framework, this is a postdiction rather than a
+novel prediction; but it is a non-trivial one, and the distinction below is what makes it
+worth stating.
 
 The test moreover \emph{discriminates}. In the Standard-Model Extension (SME)
 classification of Lorentz-violating photon
 operators~\cite{kosteleckymewes2009,kosteleckyrussell2011}, operators of odd mass
 dimension are CPT-odd and \emph{birefringent}; the leading Planck-suppressed such
-operator is dimension five, giving a helicity-dependent vacuum birefringence. Generic
-discrete, Lorentz-violating, and quantum-gravity models populate this sector, and it
-is exactly the astrophysical non-observation of vacuum birefringence that
-\emph{excludes} them. This framework instead sits in the CPT-even, non-birefringent
+operator is dimension five, giving a helicity-dependent vacuum birefringence. Many
+Lorentz-violating models---in particular the CPT-odd, dimension-five and other
+birefringent classes---populate this sector, and it is exactly the astrophysical
+non-observation of vacuum birefringence that \emph{excludes} them. (The SME also contains
+non-birefringent, dispersive, and vacuum-orthogonal classes; the claim is discrimination
+against the \emph{birefringent} ones, not against all Lorentz violation.) This framework instead sits in the CPT-even, non-birefringent
 sector: the induced photon action's adjugate closure (Theorem~\ref{thm:adjugate})
 cancels the polarization split, placing it with the even-dimension, dispersive-but-not-
 birefringent operators (the $c^{(6)}_{(I)jm}$ family). The same datum that refutes the
@@ -41,8 +47,8 @@ birefringent rivals therefore \emph{corroborates} this one. The null is not luck
 what the framework's operator class requires.
 
 Two guardrails keep this honest. \emph{(a) Retrospectively}, the null is a passed
-falsifiable prediction, and a strong one, because the natural alternatives fail the
-same test. \emph{(b) Prospectively}, a further non-detection of birefringence no longer
+falsification test---a postdiction, since the bounds predate the framework---and a strong
+one, because the natural birefringent alternatives fail the same test. \emph{(b) Prospectively}, a further non-detection of birefringence no longer
 \emph{discriminates} this framework from standard electrodynamics---so the
 forward-testable frontier is the dispersion channels below, not birefringence. And the
 cancellation is a theorem \emph{conditional} on the constitutive blocks
@@ -64,7 +70,7 @@ distinct fields. We map them honestly, per channel:
 \hline
 \textbf{Channel} & \textbf{Field} & \textbf{Effect} & \textbf{Status} \\
 \hline
-Optical-axis birefringence & gauge photon & polarization split & \emph{Forbidden}---passed falsifiable prediction (corroborated; conditional on the blocks) \\
+Optical-axis birefringence & gauge photon & polarization split & \emph{Forbidden}---passed falsification test (postdiction; corroborated; conditional on the blocks) \\
 Kinematic massive dispersion & spinor (matter) & dim-6 directional dispersion; sidereal & Candidate falsifiable; real, bound $\gg$ Planck (\texttt{PART}) \\
 Kinematic massless anisotropy & spinor ($\omega=0$) & magnitude / filtering anisotropy & Real observable, testability open (\texttt{PART}) \\
 Gauge-sector photon speed & U(1) gauge & common-mode speed anisotropy & \emph{Tension}---$O(1)$ dim-4, excluded as a single domain; structural fix (four-axis / $O_h$) open (\texttt{FAIL} as-constructed) \\
@@ -121,9 +127,10 @@ The genuinely \emph{photonic} dispersion is \emph{not} delivered by the $\omega\
 limit of the spinor propagator, which does not disperse (Prop.~\ref{prop:massless_flat}).
 On this lattice the photon is the induced gauge field, and the corresponding effect is
 the gauge-sector \emph{common-mode} speed anisotropy $\omega^2 =
-\mathbf{k}^{\!\top}\boldsymbol{\varepsilon}\,\mathbf{k}$ (Sec.~\ref{subsec:common_mode}),
-with $\boldsymbol{\varepsilon}$ eigenvalues $\{1,4,4\}$---a factor-$\sim2$
-direction-dependent vacuum speed of light. Honesty requires reporting where this leads,
+\gamma\,\mathbf{k}^{\!\top}\boldsymbol{\varepsilon}\,\mathbf{k}$
+(Sec.~\ref{subsec:common_mode}), with $\boldsymbol{\varepsilon}$ eigenvalues
+$\{1,4,4\}$---a factor-$\sim2$ direction-dependent vacuum speed of light whose ratio is
+independent of the overall normalization $\gamma$. Honesty requires reporting where this leads,
 because it is the one place the framework is presently in tension with observation.
 
 \paragraph{The anisotropy is order unity, not suppressed.} Three independent routes
@@ -148,6 +155,24 @@ sector does not share it---the matter's optical-axis anisotropy sits at dimensio
 and the measurable quantity is their $O(1)$ relative tilt. For the physical vacuum taken
 as the single fixed trigonal domain of the A=1 hop set, the induced electromagnetism is
 therefore Lorentz-violating at order unity, and \emph{excluded}.
+
+\paragraph{The level of the claim.} We state the verdict at two strengths, because the
+geometric and the fully dynamical blocks are established to different degrees. For the
+\emph{geometric} single-domain gauge completion---the plaquette forms
+$\boldsymbol{\varepsilon}=\sum_a\mathbf{V}_a\mathbf{V}_a^{\!\top}$ taken as the
+constitutive tensors---the falsification is \emph{decisive}: the tensor is anisotropic by
+construction and the exclusion is immediate. For the \emph{dynamical} single-domain A=1
+model, the reading off \texttt{HopOperator.step} establishes the field--matter vertex but
+not the full effective-action Hessian
+$\varepsilon_{ij}\propto\partial^2\Gamma/\partial E_i\,\partial E_j$
+(Remark~\ref{rem:vertex_not_action}), so the verdict is a \emph{strong provisional}
+falsification: the three routes above (including a Ward-safe band calculation whose
+anisotropy is finite as the photon momentum $\to0$) show that the physical response
+contains an unsuppressed dimension-four anisotropic component, but the complete tensor
+assembly (the orbital-susceptibility $\operatorname{Tr}\ln T$ object) remains open. The
+``provisional'' qualifier is removed once that calculation confirms a nonzero
+dimension-four traceless part; it need not reproduce $\{1,4,4\}$ exactly, as any
+unsuppressed anisotropy remotely of order unity is already fatal.
 
 \paragraph{Why the two sectors diverge, and the root of the tension.} The divergence has
 a clean structural cause. The matter dispersion's leading term is a \emph{scalar}

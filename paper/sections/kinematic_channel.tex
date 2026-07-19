@@ -47,8 +47,9 @@ $\lambda_\pm(\mathbf{k}) = i\sin(\omega/2) \pm
 \cos(\omega/2)\,|\tilde{H}_\text{RGB}(\mathbf{k})|$ carry the entire
 $\mathbf{k}$-dependence through the single scalar
 $|\tilde{H}_\text{RGB}|$.  Here $\omega$ is the per-tick Zitterbewegung
-rate ($m = \sin(\omega/2)/a$), and the massless photon is the limit
-$\omega\to0$.  The RGB basis vectors are
+rate ($m = \sin(\omega/2)/a$), and the massless \emph{spinor} limit is
+$\omega\to0$ (its identification with a photon is examined, and not asserted, in
+Remark~\ref{rem:photon_limit}).  The RGB basis vectors are
 $\mathbf{V}_1=(1,1,1)$, $\mathbf{V}_2=(1,-1,-1)$, $\mathbf{V}_3=(-1,1,-1)$,
 with $\mathbf{V}_1+\mathbf{V}_2+\mathbf{V}_3=(1,1,-1)$ fixing the optical
 axis $\hat{\mathbf{n}}_* = (1,1,-1)/\sqrt{3}$.
@@ -147,18 +148,24 @@ Away from the axis the transfer operator is not unitary:
 $|\lambda_\pm(\mathbf{k})|^2 = \sin^2(\omega/2) + \cos^2(\omega/2)\,
 |\tilde H_\text{RGB}(\mathbf{k})|^2 < 1$, so each eigenvalue carries amplitude
 change as well as phase, and $\nabla_{\mathbf{k}}\theta$ is not \emph{a priori} a
-physical group velocity. The A=1 rule supplies the missing step. The scheduler
-renormalizes the amplitude to unit norm every tick---a real, positive rescaling
-$\psi\to\psi/\|\psi\|$ that leaves every phase untouched and writes back
-$\phi=\arg\psi$. For a single Bloch mode this replaces $\lambda_\pm$ by
-$\lambda_\pm/|\lambda_\pm|$: a genuinely \emph{unitary} one-tick map whose eigenphase
-is unchanged, $\theta_\pm(\mathbf{k}) = \arg\lambda_\pm(\mathbf{k})$. Because the
-renormalization moves magnitudes and not phases, the dispersion $\theta_\pm$ and its
-gradient are exactly what the un-renormalized eigenphase already gives. In this sense
-Eq.~\eqref{eq:dispersion_exact} and the group velocity~\eqref{eq:group_velocity} are
-physical: they are the dispersion of the renormalized, norm-conserving evolution,
-corroborated by \texttt{exp\_01}'s transport measurement under the full nonlinear
-dynamics.
+physical group velocity. The A=1 rule bears on this, with a caveat we state carefully.
+The scheduler renormalizes the amplitude to unit norm every tick---a real, positive
+rescaling $\psi\to\psi/\|\psi\|$ that leaves every phase untouched and writes back
+$\phi=\arg\psi$. For a pure Bloch \emph{eigenmode} this removes the scalar attenuation
+while preserving the eigenphase, replacing $\lambda_\pm$ by
+$\lambda_\pm/|\lambda_\pm|$, so $\theta_\pm(\mathbf{k}) = \arg\lambda_\pm(\mathbf{k})$
+is the physical single-mode dispersion. For a general state the renormalization is
+\emph{nonlinear}---a single global norm does not equalize the different $|\lambda(\mathbf{k})|$
+of a packet's several $\mathbf{k}$-components---so it is \emph{not} a unitary operator on
+the Hilbert space, and the group-velocity reading must be justified at the level of the
+wave packet rather than by calling the map unitary. For a narrow-band packet a
+stationary-phase estimate gives the centroid velocity as the phase-gradient
+$\nabla_{\mathbf{k}}\theta$ (Eqs.~\eqref{eq:dispersion_exact},
+\eqref{eq:group_velocity}), while the momentum dependence of $|\lambda|$ contributes an
+additional amplitude filtering/spreading term, treated separately below and at $\omega=0$.
+This transport reading is corroborated by \texttt{exp\_01} under the full nonlinear
+dynamics; the distinction between the massive-sector phase dispersion and the massless
+magnitude filtering is exactly the one drawn next.
 
 \begin{proposition}[Massless-limit degeneracy]
 \label{prop:massless_flat}

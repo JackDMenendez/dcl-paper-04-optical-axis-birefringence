@@ -379,30 +379,38 @@ def write_latex_fragments() -> list[str]:
     _emit("magnetic_Q.tex", "Q_B = " + sp.latex(Q, mat_delim="["))
     _emit("electric_P.tex", r"\varepsilon = P = " + sp.latex(P, mat_delim="["))
     _emit("adjugate_relation.tex",
-          r"\mu^{-1} = Q_B = \operatorname{adj}(P) = \operatorname{adj}(\varepsilon)")
+          r"\mu^{-1} = Q_B = \operatorname{adj}(P) = \operatorname{adj}(\varepsilon)"
+          r" \quad\text{(exact); physically } \mu^{-1} = \gamma\,"
+          r"\operatorname{adj}(\varepsilon)")
+    # Birefringence condition WITH the relative-normalization scalar gamma
+    # (mu^-1 = gamma*adj(eps)); the impedance product is gamma*det(eps) on every
+    # axis, so the split still vanishes (reviewer 2026-07-18).
     _emit("birefringence_condition.tex",
           r"\Delta(\omega^2) \;\propto\; \bigl|\varepsilon_a\,\mu^{-1}_a"
-          r" - \varepsilon_p\,\mu^{-1}_p\bigr| = |\det\varepsilon - \det\varepsilon| = 0")
+          r" - \varepsilon_p\,\mu^{-1}_p\bigr| = "
+          r"|\gamma\det\varepsilon - \gamma\det\varepsilon| = 0")
 
-    # Dispersion factorization -- emit the GENERAL factored form (prefactor is
-    # det(epsilon), NOT the lattice value 16; reviewer 2026-07-17). The numeric
-    # factorization with P.det()=16 is checked here so the displayed equation
-    # cannot drift, but the DISPLAYED prefactor is the general symbol det(eps).
-    kx, ky, kz, w2 = sp.symbols("kx ky kz w2", real=True)
+    # Dispersion factorization -- emit the GENERAL factored form carrying the
+    # relative-normalization scalar gamma (mu^-1 = gamma*adj(eps)) and the general
+    # prefactor det(epsilon) (NOT the lattice value 16). Both the gamma-general
+    # factorization and the lattice det=16 are verified symbolically here so the
+    # displayed equation cannot drift (reviewers 2026-07-17 / 2026-07-18).
+    kx, ky, kz, w2, gamma = sp.symbols("kx ky kz w2 gamma", real=True)
     kvec = sp.Matrix([kx, ky, kz])
     K = _cross_matrix(kvec)
-    det = sp.expand((K * Q * K + w2 * P).det())
-    shared = sp.expand((kvec.T * P * kvec)[0])
-    factored = sp.factor(P.det()) * w2 * (w2 - shared) ** 2
-    assert sp.expand(det - factored) == 0, "dispersion factorization drifted"
+    shared = sp.expand((kvec.T * P * kvec)[0])          # k^T eps k
+    det_g = sp.expand((K * (gamma * Q) * K + w2 * P).det())  # mu^-1 = gamma*adj(eps)=gamma*Q
+    factored_g = sp.factor(P.det()) * w2 * (w2 - gamma * shared) ** 2
+    assert sp.expand(det_g - factored_g) == 0, "gamma dispersion factorization drifted"
     assert sp.det(P) == 16, "lattice det(eps) should be 16"
     _emit("dispersion_factorization.tex",
           r"\det\!\bigl(K\,\mu^{-1}K + \omega^2\varepsilon\bigr) = "
-          r"\det(\varepsilon)\,\omega^2\,\bigl(\omega^2 - k^{\!\top}\!"
-          r"\varepsilon\,k\bigr)^2 \qquad\bigl(\det\varepsilon = 16"
-          r"\text{ for the lattice blocks}\bigr)")
+          r"\det(\varepsilon)\,\omega^2\,\bigl(\omega^2 - \gamma\,k^{\!\top}\!"
+          r"\varepsilon\,k\bigr)^2 \qquad\bigl(\mu^{-1} = \gamma\operatorname{adj}"
+          r"(\varepsilon),\ \det\varepsilon = 16\text{ for the lattice blocks}\bigr)")
     _emit("shared_dispersion.tex",
-          r"\omega^2 = k^{\!\top}\!\varepsilon\,k = " + sp.latex(shared))
+          r"\omega^2 = \gamma\,k^{\!\top}\!\varepsilon\,k = \gamma\bigl("
+          + sp.latex(shared) + r"\bigr)")
 
     Pbar, Qbar = oh_domain_average()
     _emit("oh_average.tex",
